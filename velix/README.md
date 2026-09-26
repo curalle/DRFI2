@@ -21,3 +21,19 @@ node render.js stills 3,6.2,10,14.5
 node render.js video 15
 ```
 Aset dalam `assets/` dipotong daripada poster Velix.
+
+## Voiceover (BM)
+| Masa | Skrip |
+|---|---|
+| 0–3.4s | Kos sara hidup naik, tapi gaji tak naik-naik. |
+| 3.4–6.6s | Bulan belum habis, duit dah habis. Anda pun sama? |
+| 6.6–10.4s | Kenali Velix PostbioM Choc. Coklat gelap lapan puluh lima peratus, dengan postbiotik dan moringa. |
+| 10.4–15s | Minum, kongsi, dan tambah pendapatan. Jom sertai Velix hari ini! |
+
+```
+pip install edge-tts
+python3 voiceover.py                      # suara ms-MY-YasminNeural (perlu akses speech.platform.bing.com)
+python3 voiceover.py --voice ms-MY-OsmanNeural
+python3 voiceover.py --audio rakaman.m4a  # guna rakaman suara sendiri
+```
+Hasil: `output/velix_vox_9x16_vo.mp4`
