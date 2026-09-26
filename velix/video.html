@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Velix Vox Ad</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(../video/node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(../video/node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(../video/node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(../video/node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(../video/node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(../video/node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+:root{--paper:#F3ECDC;--ink:#1B1B1B;--purple:#5B2A8C;--deep:#35145C;--gold:#C9962E;--choc:#4A2A1A;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:Inter,sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;transform-origin:50% 45%;opacity:0}
+.abs{position:absolute}
+.h1{font-variant-numeric:lining-nums;font-family:Playfair;font-weight:900;font-size:108px;line-height:1.08;letter-spacing:-1px}
+.h2{font-family:Playfair;font-weight:700;font-size:70px;line-height:1.15}
+.hand{font-family:Caveat;font-weight:700;color:var(--red);white-space:nowrap}
+.hl{background-image:linear-gradient(transparent 12%,var(--yellow) 12%,var(--yellow) 88%,transparent 88%);background-repeat:no-repeat;background-size:0% 100%;padding:0 10px;margin:0 -10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker{font-weight:800;font-size:34px;letter-spacing:6px;text-transform:uppercase;color:var(--purple)}
+.card{background:var(--cream);box-shadow:0 18px 0 rgba(0,0,0,.08),0 30px 60px rgba(0,0,0,.12);border-radius:6px}
+.tag{font-weight:800;font-size:46px;padding:14px 30px;border:5px solid var(--ink);border-radius:8px;background:var(--cream);box-shadow:8px 8px 0 var(--ink);white-space:nowrap}
+.chip{font-weight:600;font-size:40px;display:flex;align-items:center;gap:18px;background:var(--cream);padding:14px 28px 14px 14px;border-radius:999px;box-shadow:0 8px 0 rgba(0,0,0,.08);white-space:nowrap}
+.chip b{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--purple);color:#fff;font-size:32px}
+.btn{font-weight:800;font-size:50px;color:#fff;background:var(--purple);padding:34px 56px;border-radius:999px;box-shadow:0 12px 0 var(--deep);white-space:nowrap}
+.photo{background:#fff;padding:18px;box-shadow:0 16px 0 rgba(0,0,0,.10),0 24px 40px rgba(0,0,0,.18)}
+.photo img{display:block}
+.tape{position:absolute;width:170px;height:48px;background:rgba(255,225,77,.75);top:-22px;left:50%;margin-left:-85px;transform:rotate(-4deg)}
+.why{display:flex;flex-direction:column;align-items:center;gap:14px;width:300px;text-align:center;font-weight:800;font-size:34px;line-height:1.15}
+.why i{font-style:normal;display:flex;align-items:center;justify-content:center;width:130px;height:130px;border-radius:50%;background:var(--cream);border:5px solid var(--ink);font-size:62px;box-shadow:6px 6px 0 var(--ink)}
+#grain{position:absolute;inset:-100px;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(60,40,10,.18) 100%)}
+#brandbug{position:absolute;left:50px;top:70px;height:92px}
+svg text{font-family:Inter}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- ===== SCENE 1 : HOOK (0 - 3.4s) ===== -->
+  <div class="scene" id="s1" data-a="0" data-b="3.4">
+    <div class="abs kicker" style="left:80px;top:270px" data-in="0.0" data-fx="up">Masalah kewangan?</div>
+    <div class="abs h1" style="left:80px;top:330px;width:940px">
+      <div data-in="0.1" data-fx="up">Kos naik.</div>
+      <div data-in="0.3" data-fx="up">Gaji <span class="hl" data-hl="0.8">tak naik.</span></div>
+    </div>
+    <!-- chart -->
+    <svg class="abs" style="left:90px;top:700px" width="900" height="720" viewBox="0 0 900 720">
+      <path d="M60 40 L60 640 L870 640" fill="none" stroke="#1B1B1B" stroke-width="6" stroke-linecap="round" data-draw="0.5" data-dur="0.4"/>
+      <path d="M60 560 C 250 540, 380 470, 520 360 S 760 110, 860 70" fill="none" stroke="#E4472B" stroke-width="14" stroke-linecap="round" data-draw="0.9" data-dur="1.0"/>
+      <path d="M60 520 C 300 515, 560 505, 860 495" fill="none" stroke="#5B2A8C" stroke-width="14" stroke-linecap="round" data-draw="1.1" data-dur="1.0"/>
+      <path d="M800 110 L800 480" fill="none" stroke="#1B1B1B" stroke-width="5" stroke-dasharray="4 14" stroke-linecap="round" id="gapline"/>
+      <text x="80" y="690" font-size="30" font-weight="800" fill="#8a7a60" letter-spacing="4">MASA →</text>
+    </svg>
+    <div class="abs tag" style="left:560px;top:690px;transform-origin:center;background:#F6C9BE" data-in="1.8" data-fx="stamp" data-rot="-4">Kos sara hidup</div>
+    <div class="abs tag" style="left:600px;top:1250px;transform-origin:center" data-in="2.0" data-fx="stamp" data-rot="4">Gaji</div>
+    <div class="abs hand" style="left:330px;top:870px;font-size:96px;transform-origin:center" data-in="2.4" data-fx="pop">jurang!</div>
+  </div>
+
+  <!-- ===== SCENE 2 : PAIN (3.4 - 6.6s) ===== -->
+  <div class="scene" id="s2" data-a="3.4" data-b="6.6">
+    <div class="abs kicker" style="left:80px;top:270px" data-in="3.45" data-fx="up">Ramai sedang hadapi</div>
+    <div class="abs h2" style="left:80px;top:330px;width:940px" data-in="3.55" data-fx="up">Bulan belum habis, <span class="hl" data-hl="4.0">duit dah habis.</span></div>
+    <div class="abs" style="left:80px;top:620px;display:flex;flex-direction:column;align-items:flex-start;gap:34px">
+      <div class="chip" data-in="4.0" data-fx="left"><b>✓</b>Gaji tak cukup</div>
+      <div class="chip" data-in="4.25" data-fx="left"><b>✓</b>Kos sara hidup meningkat</div>
+      <div class="chip" data-in="4.5" data-fx="left"><b>✓</b>Hutang &amp; komitmen bulanan</div>
+      <div class="chip" data-in="4.75" data-fx="left"><b>✓</b>Perlu pendapatan tambahan</div>
+    </div>
+    <div class="abs hand" style="left:470px;top:1210px;font-size:110px;transform-origin:center;transform:rotate(-6deg)" data-in="5.2" data-fx="pop" data-rot="-6">Anda juga?</div>
+    <svg class="abs" style="left:300px;top:1180px" width="200" height="160" viewBox="0 0 200 160">
+      <path data-draw="5.4" data-dur="0.3" d="M170 60 C 120 40, 70 60, 40 120" fill="none" stroke="#E4472B" stroke-width="8" stroke-linecap="round"/>
+      <path data-draw="5.65" data-dur="0.15" d="M40 120 L42 88 M40 120 L68 106" fill="none" stroke="#E4472B" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- ===== SCENE 3 : PRODUCT (6.6 - 10.4s) ===== -->
+  <div class="scene" id="s3" data-a="6.6" data-b="10.4">
+    <div class="abs kicker" style="left:80px;top:260px" data-in="6.65" data-fx="up">Kenali</div>
+    <div class="abs h1" style="left:80px;top:310px;width:940px;font-size:100px">
+      <div data-in="6.7" data-fx="up" style="color:var(--purple)">VELIX</div>
+      <div data-in="6.85" data-fx="up" style="font-size:80px"><span class="hl" data-hl="7.3">PostbioM Choc</span></div>
+    </div>
+    <div class="abs photo" style="left:470px;top:600px;transform-origin:center" data-in="6.9" data-fx="drop" data-rot="4">
+      <div class="tape"></div>
+      <img src="assets/box.png" style="width:520px">
+    </div>
+    <svg class="abs" style="left:440px;top:560px" width="600" height="700" viewBox="0 0 600 700">
+      <path data-draw="8.9" data-dur="0.5" d="M170 560 C 110 640, 220 690, 330 660 C 440 630, 470 560, 400 530 C 330 500, 220 520, 180 570" fill="none" stroke="#E4472B" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+    <div class="abs" style="left:60px;top:680px;display:flex;flex-direction:column;align-items:flex-start;gap:28px">
+      <div class="chip" data-in="7.6" data-fx="left"><b>✦</b>85% Dark Chocolate</div>
+      <div class="chip" data-in="7.85" data-fx="left"><b>✦</b>Postbiotics</div>
+      <div class="chip" data-in="8.1" data-fx="left"><b>✦</b>Ekstrak Moringa</div>
+      <div class="chip" data-in="8.35" data-fx="left"><b>✦</b>14 sachet × 25g</div>
+    </div>
+    <div class="abs hand" style="left:80px;top:1330px;font-size:84px;transform-origin:left center" data-in="9.0" data-fx="pop">Rasa coklat pekat ✓</div>
+    <div class="abs" style="left:80px;top:1450px;font-size:40px;font-weight:600;color:#444" data-in="9.3" data-fx="up">Mudah dibancuh · Sesuai seisi keluarga</div>
+  </div>
+
+  <!-- ===== SCENE 4 : OPPORTUNITY + CTA (10.4 - 15s) ===== -->
+  <div class="scene" id="s4" data-a="10.4" data-b="15.2">
+    <div class="abs kicker" style="left:80px;top:260px" data-in="10.45" data-fx="up">Lebih daripada minuman</div>
+    <div class="abs h1" style="left:80px;top:320px;width:940px;font-size:92px">
+      <div data-in="10.5" data-fx="up">Minum. Kongsi.</div>
+      <div data-in="10.65" data-fx="up"><span class="hl" data-hl="11.0">Tambah pendapatan.</span></div>
+    </div>
+    <div class="abs card" style="left:70px;top:590px;width:940px;padding:40px 50px;transform-origin:50% 0;display:flex;align-items:center;gap:30px" data-in="11.1" data-fx="card">
+      <div style="font-weight:600;font-size:36px;line-height:1.25;width:330px">Potensi jana pendapatan seminggu</div>
+      <div style="font-variant-numeric:lining-nums;font-family:Playfair;font-weight:900;font-size:150px;color:var(--purple);letter-spacing:-2px">RM<span id="count">0</span><sup style="font-size:60px;color:var(--red)">*</sup></div>
+    </div>
+    <div class="abs" style="left:30px;top:960px;width:1020px;display:flex;justify-content:space-around">
+      <div class="why" data-in="12.0" data-fx="pop"><i>💰</i>Modal<br>rendah</div>
+      <div class="why" data-in="12.2" data-fx="pop"><i>⏰</i>Bisnes<br>fleksibel</div>
+      <div class="why" data-in="12.4" data-fx="pop"><i>📲</i>Mudah<br>dikongsi</div>
+    </div>
+    <div class="abs" style="left:0;width:1080px;top:1330px;display:flex;justify-content:center" data-in="12.9" data-fx="pop" id="ctabtn">
+      <div class="btn" style="background:var(--red);box-shadow:0 12px 0 #a02f1b">JOM SERTAI VELIX →</div>
+    </div>
+    <div class="abs hand" style="left:0;width:1080px;top:1490px;text-align:center;font-size:72px;color:var(--purple)" data-in="13.3" data-fx="up">Jangan tunggu lagi!</div>
+    <div class="abs" style="left:80px;width:920px;top:1640px;text-align:center;font-size:26px;color:#6b604c;line-height:1.35" data-in="13.0" data-fx="up">*Pendapatan bergantung pada usaha individu dan tidak dijamin.</div>
+  </div>
+
+  <img id="brandbug" src="assets/logo.png">
+  <div id="vignette"></div>
+  <div id="grain"></div>
+</div>
+
+<script>
+const END=15;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+
+const paths=[...document.querySelectorAll('[data-draw]')];
+paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.len=L;});
+
+function fx(el,t){
+  const a=+el.dataset.in, k=el.dataset.fx, rot=+(el.dataset.rot||0);
+  let o=1,tr='';
+  if(k==='up'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateY(${(1-x)*50}px)`;}
+  else if(k==='left'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateX(${(1-x)*-140}px)`;}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`rotate(${rot}deg) scale(${x>0?back(x):0.3})`;}
+  else if(k==='stamp'){const x=P(t,a,.3);o=P(t,a,.08);tr=`rotate(${rot}deg) scale(${1.9-0.9*out3(x)})`;}
+  else if(k==='card'){const x=out3(P(t,a,.5));o=P(t,a,.2);tr=`translateY(${(1-x)*140}px) rotate(${(1-x)*-4}deg)`;}
+  else if(k==='drop'){const x=P(t,a,.8);o=P(t,a,.05);tr=`translateY(${(1-bounce(x))*-1300}px) rotate(${rot}deg)`;}
+  el.style.opacity=o;el.style.transform=tr;
+}
+
+window.render=function(t){
+  document.querySelectorAll('.scene').forEach(s=>{
+    const a=+s.dataset.a,b=+s.dataset.b;
+    if(!(t>=a&&t<b)){s.style.opacity=0;return;}
+    const lp=(t-a)/(b-a);
+    const ex=b>END?0:out3(P(t,b-0.22,0.22));
+    const en=a===0?1:out3(P(t,a,0.22));
+    s.style.opacity=1;
+    s.style.transform=`translateX(${(1-en)*180 - ex*260}px) scale(${1+0.035*lp})`;
+    s.style.filter=(ex>0||en<1)?`blur(${Math.max(ex,1-en)*10}px)`:'none';
+  });
+  document.querySelectorAll('[data-in]').forEach(el=>fx(el,t));
+  document.querySelectorAll('[data-hl]').forEach(el=>{el.style.backgroundSize=`${out3(P(t,+el.dataset.hl,.45))*100}% 100%`;});
+  paths.forEach(p=>{p.style.strokeDashoffset=p.dataset.len*(1-out3(P(t,+p.dataset.draw,+p.dataset.dur)));});
+  document.getElementById('gapline').style.opacity=P(t,2.2,.3);
+  // RM count-up
+  document.getElementById('count').textContent=Math.round(out3(P(t,11.3,1.0))*1000);
+  // CTA pulse
+  const cb=document.getElementById('ctabtn');
+  if(t>13.5){cb.style.transform=`scale(${1+0.04*Math.sin((t-13.5)*9)})`;}
+  // film grain jitter
+  const f=Math.floor(t*24);
+  document.getElementById('grain').style.transform=`translate(${(f*37)%90-45}px,${(f*53)%90-45}px)`;
+};
+window.render(0);
+</script>
+</body>
+</html>
