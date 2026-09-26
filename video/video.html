@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Curalle Vox Ad</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+:root{--paper:#F3ECDC;--ink:#1B1B1B;--purple:#6A3FA0;--deep:#3E1F6B;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--paper);font-family:Inter,sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;transform-origin:50% 45%;opacity:0}
+.abs{position:absolute}
+.h1{font-family:Playfair;font-weight:900;font-size:108px;line-height:1.08;letter-spacing:-1px}
+.h2{font-family:Playfair;font-weight:700;font-size:70px;line-height:1.15}
+.body{font-size:44px;line-height:1.4;font-weight:400}
+.hand{font-family:Caveat;font-weight:700;color:var(--red);white-space:nowrap}
+.hl{background-image:linear-gradient(transparent 12%,var(--yellow) 12%,var(--yellow) 88%,transparent 88%);background-repeat:no-repeat;background-size:0% 100%;padding:0 10px;margin:0 -10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker{font-weight:800;font-size:34px;letter-spacing:6px;text-transform:uppercase;color:var(--purple)}
+.card{background:var(--cream);box-shadow:0 18px 0 rgba(0,0,0,.08),0 30px 60px rgba(0,0,0,.12);border-radius:6px}
+.tag{font-weight:800;font-size:54px;padding:14px 34px;border:5px solid var(--ink);border-radius:8px;background:var(--cream);box-shadow:8px 8px 0 var(--ink);white-space:nowrap}
+.chip{font-weight:600;font-size:40px;display:flex;align-items:center;gap:18px;background:var(--cream);padding:14px 26px 14px 14px;border-radius:999px;box-shadow:0 8px 0 rgba(0,0,0,.08);white-space:nowrap}
+.chip b{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:var(--purple);color:#fff;font-size:34px}
+.btn{font-weight:800;font-size:50px;color:#fff;background:var(--purple);padding:34px 56px;border-radius:999px;box-shadow:0 12px 0 var(--deep);white-space:nowrap}
+.cut{filter:drop-shadow(0 16px 0 rgba(0,0,0,.10)) drop-shadow(0 24px 40px rgba(0,0,0,.18))}
+#grain{position:absolute;inset:-100px;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(60,40,10,.18) 100%)}
+#brandbug{position:absolute;left:56px;top:80px;height:64px;opacity:.9}
+svg text{font-family:Inter}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- ===== SCENE 1 : HOOK (0 - 3.6s) ===== -->
+  <div class="scene" id="s1" data-a="0" data-b="3.6">
+    <div class="abs kicker" style="left:80px;top:260px" data-in="0.0" data-fx="up">Kulit ekzema?</div>
+    <div class="abs h1" style="left:80px;top:320px;width:940px">
+      <div data-in="0.1" data-fx="up">Gatal. Garu.</div>
+      <div data-in="0.3" data-fx="up">Merah. <span class="hl" data-hl="0.9">Ulang.</span></div>
+    </div>
+    <svg class="abs" style="left:190px;top:720px" width="700" height="640" viewBox="0 0 700 640">
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B1B1B"/></marker></defs>
+      <g id="cyc" style="transform-origin:350px 330px">
+        <path data-draw="1.0" data-dur="0.35" d="M430 105 A 240 240 0 0 1 575 395" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah)"/>
+        <path data-draw="1.3" data-dur="0.35" d="M500 520 A 240 240 0 0 1 200 520" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah)"/>
+        <path data-draw="1.6" data-dur="0.35" d="M125 395 A 240 240 0 0 1 270 105" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah)"/>
+      </g>
+    </svg>
+    <div class="abs tag" style="left:450px;top:730px;transform-origin:center;transform:translateX(-50%)" data-in="0.85" data-fx="stamp" data-rot="-4" data-cx="1">Gatal</div>
+    <div class="abs tag" style="left:785px;top:1150px;transform-origin:center" data-in="1.15" data-fx="stamp" data-rot="5" data-cx="1">Garu</div>
+    <div class="abs tag" style="left:300px;top:1150px;transform-origin:center;background:#F6C9BE" data-in="1.45" data-fx="stamp" data-rot="-6" data-cx="1">Merah</div>
+    <div class="abs hand" style="left:540px;top:980px;font-size:84px;transform-origin:center" data-in="2.0" data-fx="pop" data-cx="1">lagi &amp; lagi…</div>
+  </div>
+
+  <!-- ===== SCENE 2 : WHY (3.6 - 7.6s) ===== -->
+  <div class="scene" id="s2" data-a="3.6" data-b="7.6">
+    <div class="abs h2" style="left:80px;top:270px;width:940px;color:#555" data-in="3.65" data-fx="up">Krim steroid cuma <span style="font-style:italic">"tampal"</span> flare.</div>
+    <div class="abs" style="left:80px;top:500px;width:940px">
+      <div class="kicker" data-in="4.4" data-fx="up">Punca sebenar?</div>
+      <div class="h1" style="font-size:92px;margin-top:16px" data-in="4.6" data-fx="up"><span class="hl" data-hl="5.1">Skin barrier lemah</span></div>
+      <div class="h1" style="font-size:92px" data-in="4.8" data-fx="up">&amp; mikrobiom <span class="hl" data-hl="5.6">tak seimbang.</span></div>
+    </div>
+    <div class="abs hand" style="left:640px;top:1000px;font-size:80px;transform-origin:left center" data-in="6.0" data-fx="pop">bocor!</div>
+    <svg class="abs" style="left:560px;top:1060px" width="200" height="140" viewBox="0 0 200 140">
+      <path data-draw="6.1" data-dur="0.3" d="M150 10 C 120 60, 90 90, 40 120" fill="none" stroke="#E4472B" stroke-width="8" stroke-linecap="round"/>
+      <path data-draw="6.35" data-dur="0.15" d="M40 120 L70 118 M40 120 L52 94" fill="none" stroke="#E4472B" stroke-width="8" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- shared barrier diagram (S2 -> S3) -->
+  <svg class="abs" id="barrier" style="left:90px;top:1150px" width="900" height="360" viewBox="0 0 900 360"></svg>
+  <div class="abs" id="barrierlabel" style="left:90px;top:1500px;width:900px;display:flex;justify-content:space-between;font-weight:800;font-size:28px;letter-spacing:4px;color:#8a7a60">
+    <span>SKIN BARRIER</span><span id="blstate">LEMAH</span>
+  </div>
+
+  <!-- ===== SCENE 3 : POSTBIOTIK (7.6 - 11.6s) ===== -->
+  <div class="scene" id="s3" data-a="7.6" data-b="11.6">
+    <div class="abs kicker" style="left:80px;top:250px" data-in="7.65" data-fx="up">Jawapannya</div>
+    <div class="abs card" style="left:70px;top:320px;width:940px;padding:54px 60px;transform-origin:50% 0" data-in="7.7" data-fx="card">
+      <img src="assets/posticon.png" style="position:absolute;right:40px;top:-60px;width:190px" class="cut">
+      <div style="font-family:Playfair;font-weight:900;font-size:108px;letter-spacing:-1px">post·bio·tik</div>
+      <div style="font-size:38px;color:#777;margin:4px 0 26px;font-style:italic">kata nama</div>
+      <div class="body" style="font-size:46px">Hasil fermentasi bakteria baik yang bantu <span class="hl" data-hl="8.9">seimbangkan mikrobiom</span> &amp; <span class="hl" data-hl="9.5">kuatkan skin barrier</span>.</div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 4 : PRODUCT (11.6 - 15.4s) ===== -->
+  <div class="scene" id="s4" data-a="11.6" data-b="15.4">
+    <div class="abs kicker" style="left:80px;top:250px" data-in="11.65" data-fx="up">Kenali</div>
+    <div class="abs h1" style="left:80px;top:300px;width:940px;font-size:96px;color:var(--purple)">
+      <div data-in="11.7" data-fx="up">CURALLÉ</div>
+      <div data-in="11.85" data-fx="up" style="color:var(--ink)"><span class="hl" data-hl="12.3">Skin Rebalance</span></div>
+    </div>
+    <div class="abs" style="left:560px;top:560px" data-in="11.9" data-fx="drop">
+      <img src="assets/tube_hand_s.png" style="width:470px;display:block" class="cut">
+    </div>
+    <svg class="abs" style="left:560px;top:560px" width="480" height="560" viewBox="0 0 480 560">
+      <path data-draw="12.9" data-dur="0.5" d="M300 20 C 470 40, 470 300, 400 470 C 330 600, 120 520, 170 330 C 200 190, 220 40, 340 30" fill="none" stroke="#E4472B" stroke-width="9" stroke-linecap="round"/>
+    </svg>
+    <div class="abs" style="left:70px;top:640px;display:flex;flex-direction:column;align-items:flex-start;gap:30px">
+      <div class="chip" data-in="12.6" data-fx="left"><b>✦</b>Postbiotik</div>
+      <div class="chip" data-in="12.85" data-fx="left"><b>✦</b>Oatmeal koloid</div>
+      <div class="chip" data-in="13.1" data-fx="left"><b>✦</b>Ceramide + Omega-3</div>
+      <div class="chip" data-in="13.35" data-fx="left"><b>✦</b>Panthenol</div>
+    </div>
+    <div class="abs" style="left:80px;top:1290px;font-size:40px;font-weight:600;color:#444" data-in="13.6" data-fx="up">Untuk kulit kering, gatal &amp; sensitif</div>
+    <div class="abs hand" style="left:80px;top:1360px;font-size:72px;transform-origin:left center" data-in="14.0" data-fx="pop">✓ Bebas steroid, SLS &amp; paraben</div>
+    <div class="abs" style="left:80px;top:1470px;transform-origin:left center" data-in="14.4" data-fx="stamp" data-rot="-4">
+      <div style="font-weight:800;font-size:34px;color:var(--purple);border:5px solid var(--purple);padding:10px 22px;border-radius:10px;letter-spacing:2px">BERDAFTAR KKM</div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 5A : TOFU CTA (15.4 - 19s) ===== -->
+  <div class="scene" id="s5t" data-a="15.4" data-b="19.2" data-variant="tofu">
+    <div class="abs card" style="left:70px;top:300px;width:940px;padding:60px 60px 60px;transform-origin:50% 0" data-in="15.45" data-fx="card">
+      <div style="font-family:Playfair;font-weight:900;font-size:160px;line-height:.6;color:var(--purple)">“</div>
+      <div style="font-family:Playfair;font-weight:700;font-size:64px;line-height:1.2;margin-top:10px">Bukan sekadar krim. <span class="hl" data-hl="16.1">Ini misi untuk kulit lebih sihat.</span></div>
+    </div>
+    <div class="abs" style="left:60px;top:930px" data-in="15.9" data-fx="up">
+      <img src="assets/founder.png" style="width:420px;display:block" class="cut">
+    </div>
+    <div class="abs" style="left:500px;top:1000px;width:540px" data-in="16.2" data-fx="left">
+      <div style="font-weight:800;font-size:36px;line-height:1.25">Ts. Dr Muhamad<br>Fareez Ismail</div>
+      <div style="font-size:30px;color:#666;margin-top:10px">Pengasas &amp; Saintis Utama</div>
+      <div style="display:flex;gap:14px;margin-top:22px;align-items:center">
+        <img src="assets/gold.png" style="height:120px"><img src="assets/silver.png" style="height:120px"><img src="assets/kkm.png" style="height:100px">
+      </div>
+    </div>
+    <div class="abs" style="left:0;width:1080px;top:1360px;display:flex;justify-content:center" data-in="16.8" data-fx="pop">
+      <div class="btn">Ketahui lebih → curalle.co</div>
+    </div>
+  </div>
+
+  <!-- ===== SCENE 5B : BOFU CTA (15.4 - 19s) ===== -->
+  <div class="scene" id="s5b" data-a="15.4" data-b="19.2" data-variant="bofu">
+    <div class="abs h1" style="left:80px;top:280px;width:940px;font-size:92px">
+      <div data-in="15.45" data-fx="up">Kulit tenang,</div>
+      <div data-in="15.6" data-fx="up"><span class="hl" data-hl="16.0">tanpa steroid.</span></div>
+    </div>
+    <div class="abs" style="left:70px;top:560px" data-in="15.7" data-fx="drop">
+      <img src="assets/tube_hand_s.png" style="width:400px;display:block" class="cut">
+    </div>
+    <div class="abs" style="left:520px;top:600px;display:flex;flex-direction:column;gap:18px;align-items:center;width:500px">
+      <img src="assets/gold.png" style="width:240px" data-in="16.1" data-fx="pop">
+      <img src="assets/silver.png" style="width:200px" data-in="16.3" data-fx="pop">
+      <div data-in="16.5" data-fx="pop" style="display:flex;align-items:center;gap:14px"><img src="assets/kkm.png" style="width:90px"><div style="font-weight:800;font-size:30px;line-height:1.2">Berdaftar KKM<br><span style="font-weight:400;font-size:24px">NOT260403410K</span></div></div>
+    </div>
+    <div class="abs hand" style="left:540px;top:1170px;font-size:64px;transform-origin:center" data-in="16.7" data-fx="pop" data-cx="1">✓ Diuji makmal</div>
+    <div class="abs" style="left:0;width:1080px;top:1300px;display:flex;justify-content:center" data-in="16.9" data-fx="pop" id="buybtn">
+      <div class="btn" style="background:var(--red);box-shadow:0 12px 0 #a02f1b;font-size:56px">DAPATKAN SEKARANG →</div>
+    </div>
+    <div class="abs" style="left:0;width:1080px;top:1470px;text-align:center;font-weight:800;font-size:40px;color:var(--purple)" data-in="17.2" data-fx="up">curalle.co</div>
+  </div>
+
+  <img id="brandbug" src="assets/logo.png">
+  <div id="vignette"></div>
+  <div id="grain"></div>
+</div>
+
+<script>
+const VARIANT = new URLSearchParams(location.search).get('v') || 'tofu';
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const back=x=>{const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+const NS='http://www.w3.org/2000/svg';
+
+// --- barrier bricks
+const bar=document.getElementById('barrier');
+const bricks=[];const missing=new Set([1,4,8,13]);
+let bi=0;
+for(let r=0;r<3;r++){
+  const off=r%2?-70:0;
+  for(let c=0;c<7;c++){
+    const x=c*145+off, w=135; if(x<-10||x+w>910){continue;}
+    const el=document.createElementNS(NS,'rect');
+    el.setAttribute('x',x);el.setAttribute('y',200+r*52);el.setAttribute('width',w);el.setAttribute('height',44);el.setAttribute('rx',6);
+    el.setAttribute('fill',['#6A3FA0','#7F58B0','#9A7AC4'][r]);
+    el.dataset.miss=missing.has(bi)?1:0;bar.appendChild(el);bricks.push(el);bi++;
+  }
+}
+// microbes: bad (red) and good (yellow)
+const bad=[],good=[];
+for(let i=0;i<9;i++){const el=document.createElementNS(NS,'circle');el.setAttribute('r',14+(i*5)%8);el.setAttribute('fill','#E4472B');el.setAttribute('stroke','#1B1B1B');el.setAttribute('stroke-width','3');bar.appendChild(el);bad.push(el);}
+for(let i=0;i<12;i++){const el=document.createElementNS(NS,'circle');el.setAttribute('r',13+(i*7)%9);el.setAttribute('fill','#FFE14D');el.setAttribute('stroke','#1B1B1B');el.setAttribute('stroke-width','3');bar.appendChild(el);good.push(el);}
+
+const paths=[...document.querySelectorAll('[data-draw]')];
+paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.len=L;});
+
+function fx(el,t){
+  const a=+el.dataset.in, k=el.dataset.fx, rot=+(el.dataset.rot||0);
+  const cx=el.dataset.cx?'translateX(-50%) ':'';
+  let o=1,tr='';
+  if(k==='up'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateY(${(1-x)*50}px)`;}
+  else if(k==='left'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateX(${(1-x)*-140}px)`;}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`scale(${x>0?back(x):0.3})`;}
+  else if(k==='stamp'){const x=P(t,a,.3);o=P(t,a,.08);tr=`rotate(${rot}deg) scale(${1.9-0.9*out3(x)})`;}
+  else if(k==='card'){const x=out3(P(t,a,.5));o=P(t,a,.2);tr=`translateY(${(1-x)*140}px) rotate(${(1-x)*-4}deg)`;}
+  else if(k==='drop'){const x=P(t,a,.8);o=P(t,a,.05);tr=`translateY(${(1-bounce(x))*-1300}px)`;}
+  el.style.opacity=o;el.style.transform=cx+tr;
+}
+
+window.render=function(t){
+  document.querySelectorAll('.scene').forEach(s=>{
+    const a=+s.dataset.a,b=+s.dataset.b;
+    if(s.dataset.variant && s.dataset.variant!==VARIANT){s.style.opacity=0;return;}
+    if(!(t>=a&&t<b)){s.style.opacity=0;return;}
+    const lp=(t-a)/(b-a);
+    const ex=b>19?0:out3(P(t,b-0.22,0.22));
+    const en=a===0?1:out3(P(t,a,0.22));
+    s.style.opacity=1;
+    s.style.transform=`translateX(${(1-en)*180 - ex*260}px) scale(${1+0.035*lp})`;
+    s.style.filter=(ex>0||en<1)?`blur(${Math.max(ex,1-en)*10}px)`:'none';
+  });
+  document.querySelectorAll('[data-in]').forEach(el=>fx(el,t));
+  document.querySelectorAll('[data-hl]').forEach(el=>{el.style.backgroundSize=`${out3(P(t,+el.dataset.hl,.45))*100}% 100%`;});
+  paths.forEach(p=>{p.style.strokeDashoffset=p.dataset.len*(1-out3(P(t,+p.dataset.draw,+p.dataset.dur)));});
+  // cycle arrows spin slowly
+  
+
+  // barrier diagram: visible 5.2 -> 11.6, slides with scene exits
+  const B=document.getElementById('barrier'),BL=document.getElementById('barrierlabel');
+  const bin=out3(P(t,5.2,.4)), bout=out3(P(t,11.38,.22));
+  const bvis=t>=5.2&&t<11.6;
+  const bmv=(1-bin)*120 - bout*260;
+  [B,BL].forEach(e=>{e.style.opacity=bvis?Math.min(bin,1-bout):0;e.style.transform=`translateX(${bmv}px)`;});
+  document.getElementById('blstate').textContent=t<9.9?'LEMAH':'KUAT ✓';
+  document.getElementById('blstate').style.color=t<9.9?'#E4472B':'#6A3FA0';
+  bricks.forEach((el,i)=>{
+    if(el.dataset.miss==='1'){const x=out3(P(t,9.2+i*0.06,.4));el.style.transform=`translateY(${(1-x)*-260}px)`;el.style.opacity=x;}
+    else{el.style.opacity=1;el.style.transform='';}
+  });
+  const clean=out3(P(t,9.4,.6));
+  bad.forEach((d,i)=>{
+    const ph=i*1.9+t*3.2;
+    const cx=60+i*95+Math.sin(ph)*40, cy=120+Math.cos(ph*1.4)*60 + Math.max(0,Math.sin(ph*0.7))*110;
+    d.setAttribute('cx',cx);d.setAttribute('cy',cy);d.style.opacity=(1-clean)*P(t,5.4,.3);
+  });
+  good.forEach((d,i)=>{
+    const x=out3(P(t,9.6+i*0.04,.5));
+    const tx=40+i*75, ty=170-((i*29)%34);
+    d.setAttribute('cx',tx);d.setAttribute('cy',ty-(1-x)*260);d.style.opacity=x;
+  });
+
+  // BOFU button pulse
+  const bb=document.getElementById('buybtn');
+  if(bb&&t>17.4){bb.style.transform=`scale(${1+0.04*Math.sin((t-17.4)*9)})`;}
+  // film grain jitter
+  const f=Math.floor(t*24);
+  document.getElementById('grain').style.transform=`translate(${(f*37)%90-45}px,${(f*53)%90-45}px)`;
+};
+window.render(0);
+</script>
+</body>
+</html>

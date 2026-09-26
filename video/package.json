@@ -1,0 +1,2 @@
+{"name":"curalle-vox-ad","private":true,"scripts":{"tofu":"node render.js video tofu 19","bofu":"node render.js video bofu 19"},
+ "dependencies":{"playwright":"1.56.1","@fontsource/playfair-display":"^5","@fontsource/inter":"^5","@fontsource/caveat":"^5"}}
