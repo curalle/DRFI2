@@ -51,8 +51,8 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
   <canvas id="cv" width="1920" height="1080" class="abs" style="left:0;top:0"></canvas>
 
   <!-- capsule labels (act B) -->
-  <div class="abs check" id="c1" style="left:900px;top:840px" data-in="6.15" data-fx="pop"><b>✓</b>Survives heat</div>
-  <div class="abs check" id="c2" style="left:1440px;top:840px" data-in="6.45" data-fx="pop"><b>✓</b>Survives stomach acid</div>
+  <div class="abs check" id="c1" style="left:900px;top:840px" data-in="10.2" data-fx="pop"><b>✓</b>Survives heat</div>
+  <div class="abs check" id="c2" style="left:1440px;top:840px" data-in="11.0" data-fx="pop"><b>✓</b>Survives stomach acid</div>
 
   <!-- certificate (act C) -->
   <div id="cert">
@@ -89,11 +89,11 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
 
   <!-- ACT B copy -->
   <div class="act" id="actB">
-    <div class="kicker" style="color:var(--purple);position:absolute;top:300px" data-in="4.35" data-fx="up">My solution</div>
-    <div class="h1" style="position:absolute;top:350px;font-size:84px" data-in="4.5" data-fx="up"><span class="hl" data-hl="5.1">Micro-</span></div>
-    <div class="h1" style="position:absolute;top:440px;font-size:84px" data-in="4.6" data-fx="up"><span class="hl" data-hl="5.3">encapsulation.</span></div>
-    <div class="sub" style="position:absolute;top:596px" data-in="5.0" data-fx="up">A protective shell around every probiotic, so it arrives alive.</div>
-    <div style="position:absolute;top:736px;display:flex;align-items:center;gap:18px" data-in="5.7" data-fx="up">
+    <div class="kicker" style="color:var(--purple);position:absolute;top:300px" data-in="7.35" data-fx="up">My solution</div>
+    <div class="h1" style="position:absolute;top:350px;font-size:84px" data-in="7.5" data-fx="up"><span class="hl" data-hl="8.1">Micro-</span></div>
+    <div class="h1" style="position:absolute;top:440px;font-size:84px" data-in="7.6" data-fx="up"><span class="hl" data-hl="8.3">encapsulation.</span></div>
+    <div class="sub" style="position:absolute;top:596px" data-in="8.0" data-fx="up">A protective shell around every probiotic, so it arrives alive.</div>
+    <div style="position:absolute;top:736px;display:flex;align-items:center;gap:18px" data-in="12.0" data-fx="up">
       <div style="font-weight:900;font-size:30px;letter-spacing:3px;color:#fff;background:var(--deep);padding:12px 22px;border-radius:10px">LRGS</div>
       <div style="font-size:22px;line-height:1.35;color:var(--muted)">Research project funded under the<br><b style="color:var(--ink)">Long-Term Research Grant Scheme</b></div>
     </div>
@@ -101,10 +101,15 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
 
   <!-- ACT C copy -->
   <div class="act" id="actC">
-    <div class="kicker" style="color:var(--purple);position:absolute;top:320px" data-in="7.55" data-fx="up">Protected by patent</div>
-    <div class="h1" style="position:absolute;top:370px" data-in="7.7" data-fx="up">Patented</div>
-    <div class="h1" style="position:absolute;top:470px;color:var(--purple)" data-in="7.85" data-fx="up"><span class="hl" data-hl="8.3">formulation.</span></div>
-    <div class="sub" style="position:absolute;top:620px" data-in="8.2" data-fx="up">Utility Innovation granted in <b style="color:var(--ink)">2020</b>.</div>
+    <div class="kicker" style="color:var(--purple);position:absolute;top:320px" data-in="14.55" data-fx="up">Protected by patent</div>
+    <div class="h1" style="position:absolute;top:370px" data-in="14.7" data-fx="up">Patented</div>
+    <div class="h1" style="position:absolute;top:470px;color:var(--purple)" data-in="14.85" data-fx="up"><span class="hl" data-hl="15.3">formulation.</span></div>
+    <div class="sub" style="position:absolute;top:620px" data-in="15.2" data-fx="up">Utility Innovation granted in <b style="color:var(--ink)">2020</b>.</div>
+    <div style="position:absolute;top:740px;display:flex;align-items:center;gap:26px" data-in="16.6" data-fx="up">
+      <img src="assets/logo.png" style="height:92px;display:block">
+      <div style="width:2px;height:70px;background:rgba(0,0,0,.15)"></div>
+      <div style="font-size:22px;line-height:1.4;color:var(--muted)">From an LRGS research project<br>to <b style="color:var(--ink)">your skin</b>.</div>
+    </div>
   </div>
 
   <div id="vignette"></div>
@@ -112,7 +117,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
 </div>
 
 <script>
-window.DURATION=10;window.OUTPUT='output/curalle_microencap_16x9.mp4';
+window.DURATION=20;window.OUTPUT='output/curalle_microencap_16x9.mp4';
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
 const P=(t,a,d)=>clamp((t-a)/d);
 const out3=x=>1-Math.pow(1-x,3);
@@ -162,7 +167,7 @@ function bacterium(x,y,ang,len,rad,gold,dead,t,ph,alpha=1){
 // ---------- act A: hazard panels ----------
 const PH={x:1090,y:520},PA={x:1590,y:520},PR=200;
 const mk=(n,cx,cy)=>[...Array(n)].map((_,i)=>{const a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*(PR-60);
-  return {x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,ang:rnd()*Math.PI,len:lerp(22,40,rnd()),rad:lerp(10,13,rnd()),gold:rnd()<.35,ph:rnd()*9,die:lerp(1.3,3.1,rnd())}});
+  return {x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,ang:rnd()*Math.PI,len:lerp(22,40,rnd()),rad:lerp(10,13,rnd()),gold:rnd()<.35,ph:rnd()*9,die:lerp(2.0,5.6,rnd())}});
 const heatB=mk(8,PH.x,PH.y),acidB=mk(8,PA.x,PA.y);
 const bubbles=[...Array(26)].map(()=>({x:rnd()*2-1,s:lerp(40,110,rnd()),r:lerp(3,9,rnd()),p:rnd()*9}));
 
@@ -202,12 +207,12 @@ const CC={x:1340,y:500},CR=230;
 const inside=[...Array(9)].map((_,i)=>{const a=i/9*Math.PI*2+rnd()*.4,r=i===0?0:lerp(70,140,rnd());
   return {x:Math.cos(a)*r,y:Math.sin(a)*r,ang:rnd()*Math.PI,len:lerp(24,40,rnd()),rad:lerp(11,14,rnd()),gold:i%3===0,ph:rnd()*9,
     fx:lerp(860,1860,rnd()),fy:lerp(120,960,rnd())}});
-const threats=[...Array(16)].map((_,i)=>{const left=i%2===0;return {left,t0:5.55+i*.09,y:lerp(-170,170,rnd()),sp:lerp(480,620,rnd()),r:lerp(9,15,rnd())}});
+const threats=[...Array(22)].map((_,i)=>{const left=i%2===0;return {left,t0:9.2+i*.19,y:lerp(-170,170,rnd()),sp:lerp(480,620,rnd()),r:lerp(9,15,rnd())}});
 
 function capsule(t){
-  const g0=P(t,4.25,.9); // gather
-  const sh=out3(P(t,4.9,.7)); // shell forms
-  const gone=inout(P(t,7.2,.55)); // shrink into certificate seal
+  const g0=P(t,7.25,1.1); // gather
+  const sh=out3(P(t,7.9,.8)); // shell forms
+  const gone=inout(P(t,14.2,.55)); // shrink into certificate seal
   if(g0<=0||gone>=1)return;
   const sc=lerp(1,.28,gone), ox=lerp(0,0,gone), cx=lerp(CC.x,1340,gone), cy=lerp(CC.y,820,gone);
   ctx.save();ctx.globalAlpha=1-P(gone,.6,.4);
@@ -228,9 +233,9 @@ function capsule(t){
   // shell rings drawn on
   const ring=(r,w,col,dash,p,rot)=>{if(p<=0)return;ctx.save();ctx.rotate(rot);ctx.strokeStyle=col;ctx.lineWidth=w;ctx.setLineDash(dash);
     ctx.beginPath();ctx.arc(0,0,r,-Math.PI/2,-Math.PI/2+Math.PI*2*p);ctx.stroke();ctx.restore();};
-  ring(CR,7,'#6A3FA0',[],out3(P(t,4.9,.6)),0);
-  ring(CR+22,3,'rgba(217,154,30,.9)',[4,12],out3(P(t,5.05,.6)),t*.3);
-  ring(CR-18,2,'rgba(106,63,160,.35)',[],out3(P(t,5.2,.6)),0);
+  ring(CR,7,'#6A3FA0',[],out3(P(t,7.9,.6)),0);
+  ring(CR+22,3,'rgba(217,154,30,.9)',[4,12],out3(P(t,8.05,.6)),t*.3);
+  ring(CR-18,2,'rgba(106,63,160,.35)',[],out3(P(t,8.2,.6)),0);
   // specular highlight
   ctx.globalAlpha*=sh;ctx.fillStyle='rgba(255,255,255,.75)';ctx.beginPath();ctx.ellipse(-CR*.42,-CR*.52,CR*.22,CR*.09,-.6,0,Math.PI*2);ctx.fill();
   ctx.restore();
@@ -276,13 +281,13 @@ const show=(id,a,b,t)=>{document.getElementById(id).style.visibility=(t>=a&&t<b)
 window.render=function(t){
   document.querySelectorAll('[data-in]').forEach(el=>fx(el,t));
   document.querySelectorAll('[data-hl]').forEach(el=>{el.style.backgroundSize=`${out3(P(t,+el.dataset.hl,.5))*100}% 100%`;});
-  show('actA',0,4.4,t);show('actB',4.3,7.7,t);show('actC',7.5,99,t);
-  leave(document.getElementById('actA'),t,3.9);leave(document.getElementById('actB'),t,7.15);
-  ['c1','c2'].forEach(id=>{const el=document.getElementById(id);show(id,6,7.6,t);if(t>7.1){const x=inout(P(t,7.1,.35));el.style.opacity=1-x;el.style.transform=`scale(${1-.2*x})`;}});
-  leave(document.getElementById('panels'),t,3.85,.45);
+  show('actA',0,7.4,t);show('actB',7.3,14.7,t);show('actC',14.5,99,t);
+  leave(document.getElementById('actA'),t,6.9);leave(document.getElementById('actB'),t,14.15);
+  ['c1','c2'].forEach(id=>{const el=document.getElementById(id);show(id,10,14.6,t);if(t>14.1){const x=inout(P(t,14.1,.35));el.style.opacity=1-x;el.style.transform=`scale(${1-.2*x})`;}});
+  leave(document.getElementById('panels'),t,6.85,.45);
 
   // hazard intensity and survivors
-  const hz=inout(P(t,.9,2.2));
+  const hz=inout(P(t,1.0,4.5));
   document.getElementById('phv').textContent='pH '+lerp(7,2,hz).toFixed(1);
   document.getElementById('merc').setAttribute('width',lerp(18,62,hz));
   const alive=[...heatB,...acidB].filter(b=>t<b.die+.5).length/16;
@@ -291,15 +296,15 @@ window.render=function(t){
   const L=document.getElementById('livelbl');L.textContent=alive>.6?'HIGH':alive>.25?'DROPPING':'CRITICAL';L.style.color=alive>.6?'#6A3FA0':'#E4472B';
 
   // certificate
-  const C=document.getElementById('cert');const ci=P(t,7.45,.8);
-  C.style.visibility=t>7.4?'visible':'hidden';C.style.opacity=clamp(ci*3);
+  const C=document.getElementById('cert');const ci=P(t,14.45,.8);
+  C.style.visibility=t>14.4?'visible':'hidden';C.style.opacity=clamp(ci*3);
   C.style.transform=`translateY(${(1-out3(ci))*120}px) rotate(${(1-out3(ci))*-5+1.2}deg)`;
-  const sl=P(t,8.35,.4);const S=document.getElementById('seal');
+  const sl=P(t,15.35,.4);const S=document.getElementById('seal');
   S.style.opacity=clamp(sl*4);S.style.transformOrigin='100px 95px';S.style.transform=`scale(${sl>0?lerp(2.2,1,out3(sl)):2.2}) rotate(${(1-out3(sl))*-25}deg)`;
 
   // canvas
   ctx.clearRect(0,0,1920,1080);
-  const pf=inout(P(t,3.85,.45));
+  const pf=inout(P(t,6.85,.45));
   panel(PH,t,'heat',P(t,.15,.6),hz,pf);
   panel(PA,t,'acid',P(t,.3,.6),hz,pf);
   if(pf<1){[[heatB,PH,.15],[acidB,PA,.3]].forEach(([arr,c,a0])=>arr.forEach(b=>{
@@ -310,7 +315,7 @@ window.render=function(t){
   }));}
   capsule(t);
 
-  document.getElementById('stage').style.transform=`scale(${1+.02*P(t,0,10)})`;
+  document.getElementById('stage').style.transform=`scale(${1+.02*P(t,0,20)})`;
   const f=Math.floor(t*24);
   document.getElementById('grain').style.transform=`translate(${(f*37)%90-45}px,${(f*53)%90-45}px)`;
 };
