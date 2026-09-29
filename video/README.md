@@ -47,9 +47,21 @@ Aset dalam `assets/` diambil daripada poster A3 CURALLÉ.
 | 7.3–14.5s | "Micro-encapsulation.": bakteria dikumpul dalam kapsul; haba & titisan asid melantun keluar; ✓ Survives heat / stomach acid; lencana LRGS |
 | 14.5–20s | "Patented formulation.": sijil Utility Innovation, meterai GRANTED 2020; penutup logo CURALLÉ "From an LRGS research project to your skin." |
 
+# Babak Produk (16:9, 16 saat)
+
+`output/curalle_products_16x9.mp4`: 1920×1080, 30fps, tiada audio. Produk dilukis (tiada foto produk dalam `assets/`).
+
+| Masa | Babak |
+|---|---|
+| 0–3.5s | "From the lab to *innovation.*": kapsul besar pecah jadi awan mikrokapsul |
+| 3.5–8.8s | PROBIOLOAF: mikrokapsul terbang masuk ke dalam kepingan roti; roset "Award winning" + cip "Award-winning innovation" |
+| 8.8–13.6s | BrewCoffee Cube: mikrokapsul masuk ke kiub kopi; kiub jatuh ke dalam cawan, riak & wap; "Just drop, stir & sip" |
+| 13.6–16s | "One microcapsule. Many innovations.": PROBIOLOAF + BrewCoffee Cube bersebelahan |
+
 ## Render semula (16:9)
 ```
 node render-intro.js intro.html stills 1.6,5.5,7.9      # semak frame
 node render-intro.js intro.html video                   # output/curalle_intro_16x9.mp4
 node render-intro.js microencap.html video              # output/curalle_microencap_16x9.mp4
+node render-intro.js products.html video                # output/curalle_products_16x9.mp4
 ```
