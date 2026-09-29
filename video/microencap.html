@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Curalle Microencapsulation 16:9</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:700;font-style:italic;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-italic.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+:root{--paper:#F3ECDC;--ink:#1B1B1B;--purple:#6A3FA0;--deep:#3E1F6B;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE;--muted:#6d6457;--acid:#8CC63F;--heat:#F07A2B}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink);
+  background:radial-gradient(circle at 1340px 540px,#FFFDF7 0,var(--cream) 30%,var(--paper) 80%)}
+.abs{position:absolute}
+.kicker{font-weight:800;font-size:24px;letter-spacing:7px;text-transform:uppercase}
+.h1{font-family:Playfair;font-weight:900;font-size:96px;line-height:1.04;letter-spacing:-1.5px;white-space:nowrap}
+.sub{font-size:30px;line-height:1.45;color:var(--muted);width:700px}
+.mono{font-family:'DejaVu Sans Mono',monospace;letter-spacing:3px}
+.hl{background-image:linear-gradient(transparent 58%,var(--yellow) 58%,var(--yellow) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%;padding:0 12px;margin:0 -12px}
+.act{position:absolute;left:120px;top:0;width:760px;height:1080px}
+.plabel{position:absolute;width:420px;text-align:center;font-weight:800;font-size:22px;letter-spacing:6px}
+.check{display:flex;align-items:center;gap:14px;font-weight:800;font-size:26px;background:var(--cream);padding:12px 24px 12px 12px;border-radius:999px;box-shadow:0 10px 30px rgba(62,31,107,.14);white-space:nowrap}
+.check b{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--purple);color:#fff;font-size:24px}
+#cert{position:absolute;left:1010px;top:150px;width:660px;height:780px;background:#FFFDF6;border-radius:6px;
+  box-shadow:0 30px 0 rgba(0,0,0,.05),0 50px 90px rgba(62,31,107,.25);padding:34px}
+#cert .in{position:relative;width:100%;height:100%;border:3px solid var(--purple);outline:1px solid rgba(106,63,160,.4);outline-offset:-12px;padding:70px 56px 0;text-align:center}
+#grain{position:absolute;inset:-100px;pointer-events:none;opacity:.12;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(0,0,0,.3) 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- hazard panels (act A) -->
+  <div id="panels">
+    <div class="abs plabel" style="left:880px;top:238px;color:var(--heat)" data-in="0.3" data-fx="fade">▲ HEAT</div>
+    <div class="abs plabel" style="left:1380px;top:238px;color:#5E9A1E" data-in="0.45" data-fx="fade">▲ STOMACH ACID</div>
+    <div class="abs mono" id="phv" style="left:1380px;width:420px;top:806px;text-align:center;font-size:30px;font-weight:bold;color:#5E9A1E" data-in="0.8" data-fx="fade">pH 7.0</div>
+    <svg class="abs" style="left:1040px;top:790px" width="100" height="60" viewBox="0 0 100 60" data-in="0.8" data-fx="fade">
+      <rect x="4" y="18" width="70" height="24" rx="12" fill="none" stroke="#F07A2B" stroke-width="4"/>
+      <rect id="merc" x="10" y="24" width="20" height="12" rx="6" fill="#F07A2B"/>
+      <circle cx="80" cy="30" r="16" fill="#F07A2B"/>
+    </svg>
+  </div>
+
+  <canvas id="cv" width="1920" height="1080" class="abs" style="left:0;top:0"></canvas>
+
+  <!-- capsule labels (act B) -->
+  <div class="abs check" id="c1" style="left:900px;top:840px" data-in="6.15" data-fx="pop"><b>✓</b>Survives heat</div>
+  <div class="abs check" id="c2" style="left:1440px;top:840px" data-in="6.45" data-fx="pop"><b>✓</b>Survives stomach acid</div>
+
+  <!-- certificate (act C) -->
+  <div id="cert">
+    <div class="in">
+      <div class="kicker" style="font-size:18px;letter-spacing:8px;color:var(--muted)">Intellectual Property</div>
+      <div style="font-family:Playfair;font-weight:900;font-size:62px;line-height:1.05;margin-top:22px;color:var(--deep)">Utility<br>Innovation</div>
+      <div style="width:90px;height:4px;background:var(--yellow);margin:30px auto"></div>
+      <div style="font-family:Playfair;font-style:italic;font-weight:700;font-size:32px;line-height:1.3;color:var(--ink)">Microencapsulated<br>probiotic formulation</div>
+      <div style="font-size:19px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:40px">Inventor</div>
+      <div style="font-weight:800;font-size:24px;margin-top:8px">Ts. Dr Muhamad Fareez Ismail</div>
+      <svg class="abs" style="left:50%;bottom:-6px;margin-left:-100px" width="200" height="230" viewBox="0 0 200 230" id="seal">
+        <path d="M70 120 L45 225 L75 205 L95 228 L100 130 Z" fill="#4E2A88"/>
+        <path d="M130 120 L155 225 L125 205 L105 228 L100 130 Z" fill="#6A3FA0"/>
+        <g id="rosette"></g>
+        <circle cx="100" cy="95" r="62" fill="#F2C14E" stroke="#C99422" stroke-width="3"/>
+        <circle cx="100" cy="95" r="52" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2" stroke-dasharray="2 5"/>
+        <text x="100" y="84" text-anchor="middle" font-family="Inter" font-weight="800" font-size="15" letter-spacing="3" fill="#6B4A0E">GRANTED</text>
+        <text x="100" y="118" text-anchor="middle" font-family="Playfair" font-weight="900" font-size="38" fill="#3E1F6B">2020</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ACT A copy -->
+  <div class="act" id="actA">
+    <div class="kicker" style="color:var(--red);position:absolute;top:300px" data-in="0.1" data-fx="up">The problem</div>
+    <div class="h1" style="position:absolute;top:350px" data-in="0.25" data-fx="up">Probiotics are</div>
+    <div class="h1" style="position:absolute;top:450px;color:var(--red)" data-in="0.4" data-fx="up"><i style="font-weight:700">fragile.</i></div>
+    <div class="sub" style="position:absolute;top:600px" data-in="1.2" data-fx="up">Heat and stomach acid destroy them long before they can do their work.</div>
+    <div style="position:absolute;top:740px;width:520px" data-in="1.5" data-fx="up">
+      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:18px;letter-spacing:4px;color:var(--muted)"><span>LIVE PROBIOTICS</span><span id="livelbl" style="color:var(--purple)">HIGH</span></div>
+      <div style="height:14px;border-radius:99px;background:rgba(0,0,0,.08);margin-top:12px;overflow:hidden"><div id="livebar" style="height:100%;width:100%;border-radius:99px;background:var(--purple)"></div></div>
+    </div>
+  </div>
+
+  <!-- ACT B copy -->
+  <div class="act" id="actB">
+    <div class="kicker" style="color:var(--purple);position:absolute;top:300px" data-in="4.35" data-fx="up">My solution</div>
+    <div class="h1" style="position:absolute;top:350px;font-size:84px" data-in="4.5" data-fx="up"><span class="hl" data-hl="5.1">Micro-</span></div>
+    <div class="h1" style="position:absolute;top:440px;font-size:84px" data-in="4.6" data-fx="up"><span class="hl" data-hl="5.3">encapsulation.</span></div>
+    <div class="sub" style="position:absolute;top:596px" data-in="5.0" data-fx="up">A protective shell around every probiotic, so it arrives alive.</div>
+    <div style="position:absolute;top:736px;display:flex;align-items:center;gap:18px" data-in="5.7" data-fx="up">
+      <div style="font-weight:900;font-size:30px;letter-spacing:3px;color:#fff;background:var(--deep);padding:12px 22px;border-radius:10px">LRGS</div>
+      <div style="font-size:22px;line-height:1.35;color:var(--muted)">Research project funded under the<br><b style="color:var(--ink)">Long-Term Research Grant Scheme</b></div>
+    </div>
+  </div>
+
+  <!-- ACT C copy -->
+  <div class="act" id="actC">
+    <div class="kicker" style="color:var(--purple);position:absolute;top:320px" data-in="7.55" data-fx="up">Protected by patent</div>
+    <div class="h1" style="position:absolute;top:370px" data-in="7.7" data-fx="up">Patented</div>
+    <div class="h1" style="position:absolute;top:470px;color:var(--purple)" data-in="7.85" data-fx="up"><span class="hl" data-hl="8.3">formulation.</span></div>
+    <div class="sub" style="position:absolute;top:620px" data-in="8.2" data-fx="up">Utility Innovation granted in <b style="color:var(--ink)">2020</b>.</div>
+  </div>
+
+  <div id="vignette"></div>
+  <div id="grain"></div>
+</div>
+
+<script>
+window.DURATION=10;window.OUTPUT='output/curalle_microencap_16x9.mp4';
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const inout=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const hex=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16));
+const mix=(a,b,x)=>{const A=hex(a),B=hex(b);return `rgb(${A.map((v,i)=>Math.round(lerp(v,B[i],x))).join(',')})`};
+let seed=11;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+const NS='http://www.w3.org/2000/svg';
+
+// seal rosette
+const ros=document.getElementById('rosette');
+for(let i=0;i<24;i++){const a=i/24*Math.PI*2;const c=document.createElementNS(NS,'circle');
+  c.setAttribute('cx',100+Math.cos(a)*64);c.setAttribute('cy',95+Math.sin(a)*64);c.setAttribute('r',11);c.setAttribute('fill','#E3B03C');ros.appendChild(c);}
+
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+
+// ---------- bacterium ----------
+// dead: 0 alive -> 1 dead (grey, cracked, fading)
+function bacterium(x,y,ang,len,rad,gold,dead,t,ph,alpha=1){
+  const live=gold?['#FFE38A','#D99A1E','#FFF3C4','#E0B04A']:['#B08AE0','#4E2A88','#E6D6FA','#8E6BC4'];
+  const grey=['#C9C3B8','#8E877B','#E4DFD6','#A59E92'];
+  const d=clamp(dead);
+  const c0=mix(live[0],grey[0],d),c1=mix(live[1],grey[1],d),edge=mix(live[2],grey[2],d),fl=mix(live[3],grey[3],d);
+  const shrink=1-.25*P(d,.6,.4);
+  ctx.save();ctx.translate(x,y);ctx.rotate(ang);ctx.scale(shrink,shrink);
+  ctx.globalAlpha=alpha*(1-P(d,.75,.25));
+  if(ctx.globalAlpha<=.01){ctx.restore();return;}
+  // flagella (stop waving as they die)
+  ctx.strokeStyle=fl;ctx.lineWidth=2.2;ctx.lineCap='round';
+  const L=len/2+rad;
+  for(let k=0;k<2;k++){ctx.beginPath();const off=(k-.5)*rad*.55;ctx.moveTo(-L+2,off);
+    for(let s=1;s<=12;s++){const u=s/12;ctx.lineTo(-L-u*rad*3.2,off*(1+u)+Math.sin(u*9-t*6*(1-d)+ph+k)*rad*.35*u*(1-d*.7));}
+    ctx.stroke();}
+  ctx.shadowColor=gold?`rgba(255,200,80,${.8*(1-d)})`:`rgba(150,100,230,${.8*(1-d)})`;ctx.shadowBlur=22;
+  const g=ctx.createLinearGradient(0,-rad,0,rad);g.addColorStop(0,c0);g.addColorStop(1,c1);
+  ctx.fillStyle=g;ctx.beginPath();ctx.roundRect(-len/2-rad,-rad,len+2*rad,2*rad,rad);ctx.fill();ctx.shadowBlur=0;
+  ctx.lineWidth=2;ctx.strokeStyle=edge;ctx.stroke();
+  ctx.globalAlpha*=.45;ctx.fillStyle='#fff';ctx.beginPath();ctx.ellipse(-len*.15,-rad*.45,len*.45,rad*.2,0,0,Math.PI*2);ctx.fill();
+  // crack
+  if(d>.35){ctx.globalAlpha=alpha*P(d,.35,.2)*(1-P(d,.75,.25));ctx.strokeStyle='#5b554b';ctx.lineWidth=2.5;ctx.beginPath();
+    ctx.moveTo(-len*.1,-rad);ctx.lineTo(len*.05,-rad*.2);ctx.lineTo(-len*.08,rad*.3);ctx.lineTo(len*.06,rad);ctx.stroke();}
+  ctx.restore();
+}
+
+// ---------- act A: hazard panels ----------
+const PH={x:1090,y:520},PA={x:1590,y:520},PR=200;
+const mk=(n,cx,cy)=>[...Array(n)].map((_,i)=>{const a=rnd()*Math.PI*2,r=Math.sqrt(rnd())*(PR-60);
+  return {x:cx+Math.cos(a)*r,y:cy+Math.sin(a)*r,ang:rnd()*Math.PI,len:lerp(22,40,rnd()),rad:lerp(10,13,rnd()),gold:rnd()<.35,ph:rnd()*9,die:lerp(1.3,3.1,rnd())}});
+const heatB=mk(8,PH.x,PH.y),acidB=mk(8,PA.x,PA.y);
+const bubbles=[...Array(26)].map(()=>({x:rnd()*2-1,s:lerp(40,110,rnd()),r:lerp(3,9,rnd()),p:rnd()*9}));
+
+function panel(c,t,kind,appear,hz,fadeOut){
+  const s=lerp(.85,1,back(appear)),A=clamp(appear*2)*(1-fadeOut);
+  if(A<=0)return;
+  ctx.save();ctx.globalAlpha=A;ctx.translate(c.x,c.y);ctx.scale(s,s);
+  // dish shadow + rim
+  ctx.shadowColor='rgba(62,31,107,.22)';ctx.shadowBlur=50;ctx.shadowOffsetY=24;
+  ctx.fillStyle='#FFFDF7';ctx.beginPath();ctx.arc(0,0,PR,0,Math.PI*2);ctx.fill();
+  ctx.shadowColor='transparent';
+  ctx.save();ctx.beginPath();ctx.arc(0,0,PR-8,0,Math.PI*2);ctx.clip();
+  if(kind==='heat'){
+    const g=ctx.createLinearGradient(0,PR,0,-PR);
+    g.addColorStop(0,`rgba(228,71,43,${.75*hz})`);g.addColorStop(.55,`rgba(240,122,43,${.45*hz})`);g.addColorStop(1,`rgba(255,200,90,${.12*hz})`);
+    ctx.fillStyle=g;ctx.fillRect(-PR,-PR,PR*2,PR*2);
+    ctx.strokeStyle=`rgba(255,255,255,${.55*hz})`;ctx.lineWidth=5;ctx.lineCap='round';
+    for(let k=-2;k<=2;k++){ctx.beginPath();const off=((t*120+k*50)%260)-130;
+      for(let s=0;s<=20;s++){const yy=PR-s*22-((t*90)%44);ctx.lineTo(k*70+Math.sin(s*.7-t*6+k)*12,yy);}ctx.stroke();}
+  } else {
+    const lvl=lerp(PR+10,-PR*.55,out3(hz));
+    const g=ctx.createLinearGradient(0,lvl,0,PR);g.addColorStop(0,'rgba(170,215,70,.75)');g.addColorStop(1,'rgba(94,154,30,.85)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(-PR,PR);
+    for(let s=0;s<=40;s++){const xx=-PR+s*(PR*2/40);ctx.lineTo(xx,lvl+Math.sin(s*.5+t*5)*7);}
+    ctx.lineTo(PR,PR);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.6)';
+    bubbles.forEach(b=>{const yy=PR-((t*b.s+b.p*40)%(PR*2));if(yy>lvl+10){ctx.beginPath();ctx.arc(b.x*PR*.9,yy,b.r,0,Math.PI*2);ctx.fill();}});
+  }
+  ctx.restore();
+  ctx.lineWidth=6;ctx.strokeStyle=kind==='heat'?'#F07A2B':'#7DB43A';ctx.globalAlpha=A*.9;
+  ctx.beginPath();ctx.arc(0,0,PR-3,0,Math.PI*2);ctx.stroke();
+  ctx.restore();
+}
+
+// ---------- act B: capsule ----------
+const CC={x:1340,y:500},CR=230;
+const inside=[...Array(9)].map((_,i)=>{const a=i/9*Math.PI*2+rnd()*.4,r=i===0?0:lerp(70,140,rnd());
+  return {x:Math.cos(a)*r,y:Math.sin(a)*r,ang:rnd()*Math.PI,len:lerp(24,40,rnd()),rad:lerp(11,14,rnd()),gold:i%3===0,ph:rnd()*9,
+    fx:lerp(860,1860,rnd()),fy:lerp(120,960,rnd())}});
+const threats=[...Array(16)].map((_,i)=>{const left=i%2===0;return {left,t0:5.55+i*.09,y:lerp(-170,170,rnd()),sp:lerp(480,620,rnd()),r:lerp(9,15,rnd())}});
+
+function capsule(t){
+  const g0=P(t,4.25,.9); // gather
+  const sh=out3(P(t,4.9,.7)); // shell forms
+  const gone=inout(P(t,7.2,.55)); // shrink into certificate seal
+  if(g0<=0||gone>=1)return;
+  const sc=lerp(1,.28,gone), ox=lerp(0,0,gone), cx=lerp(CC.x,1340,gone), cy=lerp(CC.y,820,gone);
+  ctx.save();ctx.globalAlpha=1-P(gone,.6,.4);
+  ctx.translate(cx,cy);ctx.scale(sc,sc);
+  // soft glow
+  const glow=ctx.createRadialGradient(0,0,CR*.4,0,0,CR*1.5);glow.addColorStop(0,`rgba(255,225,77,${.18*sh})`);glow.addColorStop(1,'rgba(255,225,77,0)');
+  ctx.fillStyle=glow;ctx.beginPath();ctx.arc(0,0,CR*1.5,0,Math.PI*2);ctx.fill();
+  // shell fill
+  if(sh>0){const f=ctx.createRadialGradient(-CR*.35,-CR*.4,CR*.1,0,0,CR);
+    f.addColorStop(0,`rgba(255,255,255,${.9*sh})`);f.addColorStop(.55,`rgba(214,196,240,${.45*sh})`);f.addColorStop(1,`rgba(106,63,160,${.42*sh})`);
+    ctx.fillStyle=f;ctx.beginPath();ctx.arc(0,0,CR*lerp(.7,1,sh),0,Math.PI*2);ctx.fill();}
+  // bacteria gather into the core
+  const e=inout(g0);
+  inside.forEach((b,i)=>{
+    const x=lerp(b.fx-cx,b.x,e)+Math.sin(t*1.6+b.ph)*6, y=lerp(b.fy-cy,b.y,e)+Math.cos(t*1.3+b.ph)*6;
+    bacterium(x,y,b.ang+Math.sin(t+b.ph)*.3,b.len,b.rad,b.gold,0,t,b.ph,clamp(g0*3));
+  });
+  // shell rings drawn on
+  const ring=(r,w,col,dash,p,rot)=>{if(p<=0)return;ctx.save();ctx.rotate(rot);ctx.strokeStyle=col;ctx.lineWidth=w;ctx.setLineDash(dash);
+    ctx.beginPath();ctx.arc(0,0,r,-Math.PI/2,-Math.PI/2+Math.PI*2*p);ctx.stroke();ctx.restore();};
+  ring(CR,7,'#6A3FA0',[],out3(P(t,4.9,.6)),0);
+  ring(CR+22,3,'rgba(217,154,30,.9)',[4,12],out3(P(t,5.05,.6)),t*.3);
+  ring(CR-18,2,'rgba(106,63,160,.35)',[],out3(P(t,5.2,.6)),0);
+  // specular highlight
+  ctx.globalAlpha*=sh;ctx.fillStyle='rgba(255,255,255,.75)';ctx.beginPath();ctx.ellipse(-CR*.42,-CR*.52,CR*.22,CR*.09,-.6,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+
+  // heat / acid hitting the shell and bouncing off
+  if(gone>0)return;
+  threats.forEach(h=>{
+    const lt=t-h.t0;if(lt<0)return;
+    const dir=h.left?1:-1;
+    const sx=CC.x-dir*560;let x=sx+dir*h.sp*lt,y=CC.y+h.y;
+    const hitX=CC.x-dir*Math.sqrt(Math.max(0,(CR+24)**2-h.y**2));
+    let a=1,hit=false,since=0;
+    if(dir*(x-hitX)>0){hit=true;since=(x-hitX)/(dir*h.sp);
+      const n=Math.atan2(h.y,-dir*Math.sqrt(Math.max(1,(CR+24)**2-h.y**2)));
+      x=hitX+Math.cos(n)*since*420;y=CC.y+h.y+Math.sin(n)*since*420;a=1-P(since,0,.45);}
+    if(a<=0)return;
+    ctx.save();ctx.globalAlpha=a*P(lt,0,.1);
+    if(h.left){ // heat: orange flame wisp
+      ctx.strokeStyle='#F07A2B';ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();
+      for(let s=0;s<8;s++){ctx.lineTo(x-dir*s*9,y+Math.sin(s*1.1+t*14)*5);}ctx.stroke();
+    } else { // acid droplet
+      ctx.fillStyle='#8CC63F';ctx.beginPath();ctx.arc(x,y,h.r,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,.7)';ctx.beginPath();ctx.arc(x-h.r*.3,y-h.r*.3,h.r*.3,0,Math.PI*2);ctx.fill();
+    }
+    ctx.restore();
+    if(hit&&since<.35){ // ripple on the shell
+      const q=since/.35;ctx.save();ctx.globalAlpha=(1-q)*.8;ctx.strokeStyle=h.left?'#F07A2B':'#7DB43A';ctx.lineWidth=4;
+      ctx.beginPath();ctx.arc(hitX,CC.y+h.y,8+q*40,0,Math.PI*2);ctx.stroke();ctx.restore();}
+  });
+}
+
+// ---------- DOM fx ----------
+function fx(el,t){
+  const a=+el.dataset.in,k=el.dataset.fx;let o=1,tr='',f='none';
+  if(k==='up'){const x=out3(P(t,a,.55));o=P(t,a,.35);tr=`translateY(${(1-x)*40}px)`;f=x<1?`blur(${(1-x)*8}px)`:'none';}
+  else if(k==='fade'){o=P(t,a,.3);}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`scale(${x>0?back(x):.3})`;}
+  el.style.opacity=o;el.style.transform=tr;el.style.filter=f;
+}
+const leave=(el,t,a,d=.4)=>{const x=inout(P(t,a,d));if(x>0){el.style.opacity=1-x;el.style.transform=`translateY(${-40*x}px)`;el.style.filter=`blur(${x*12}px)`;}else{el.style.opacity='';el.style.transform='';el.style.filter='';}};
+const show=(id,a,b,t)=>{document.getElementById(id).style.visibility=(t>=a&&t<b)?'visible':'hidden';};
+
+window.render=function(t){
+  document.querySelectorAll('[data-in]').forEach(el=>fx(el,t));
+  document.querySelectorAll('[data-hl]').forEach(el=>{el.style.backgroundSize=`${out3(P(t,+el.dataset.hl,.5))*100}% 100%`;});
+  show('actA',0,4.4,t);show('actB',4.3,7.7,t);show('actC',7.5,99,t);
+  leave(document.getElementById('actA'),t,3.9);leave(document.getElementById('actB'),t,7.15);
+  ['c1','c2'].forEach(id=>{const el=document.getElementById(id);show(id,6,7.6,t);if(t>7.1){const x=inout(P(t,7.1,.35));el.style.opacity=1-x;el.style.transform=`scale(${1-.2*x})`;}});
+  leave(document.getElementById('panels'),t,3.85,.45);
+
+  // hazard intensity and survivors
+  const hz=inout(P(t,.9,2.2));
+  document.getElementById('phv').textContent='pH '+lerp(7,2,hz).toFixed(1);
+  document.getElementById('merc').setAttribute('width',lerp(18,62,hz));
+  const alive=[...heatB,...acidB].filter(b=>t<b.die+.5).length/16;
+  document.getElementById('livebar').style.width=`${lerp(6,100,alive)}%`;
+  document.getElementById('livebar').style.background=alive>.5?'#6A3FA0':'#E4472B';
+  const L=document.getElementById('livelbl');L.textContent=alive>.6?'HIGH':alive>.25?'DROPPING':'CRITICAL';L.style.color=alive>.6?'#6A3FA0':'#E4472B';
+
+  // certificate
+  const C=document.getElementById('cert');const ci=P(t,7.45,.8);
+  C.style.visibility=t>7.4?'visible':'hidden';C.style.opacity=clamp(ci*3);
+  C.style.transform=`translateY(${(1-out3(ci))*120}px) rotate(${(1-out3(ci))*-5+1.2}deg)`;
+  const sl=P(t,8.35,.4);const S=document.getElementById('seal');
+  S.style.opacity=clamp(sl*4);S.style.transformOrigin='100px 95px';S.style.transform=`scale(${sl>0?lerp(2.2,1,out3(sl)):2.2}) rotate(${(1-out3(sl))*-25}deg)`;
+
+  // canvas
+  ctx.clearRect(0,0,1920,1080);
+  const pf=inout(P(t,3.85,.45));
+  panel(PH,t,'heat',P(t,.15,.6),hz,pf);
+  panel(PA,t,'acid',P(t,.3,.6),hz,pf);
+  if(pf<1){[[heatB,PH,.15],[acidB,PA,.3]].forEach(([arr,c,a0])=>arr.forEach(b=>{
+    const ap=clamp(P(t,a0+.1,.6)*2)*(1-pf);
+    const d=P(t,b.die,.9);
+    const jit=Math.sin(t*30+b.ph)*3*P(t,b.die-.4,.4)*(1-d);
+    bacterium(b.x+jit+Math.sin(t*1.5+b.ph)*5*(1-d),b.y+Math.cos(t*1.2+b.ph)*5*(1-d)+d*20,b.ang+Math.sin(t+b.ph)*.3*(1-d),b.len,b.rad,b.gold,d,t,b.ph,ap);
+  }));}
+  capsule(t);
+
+  document.getElementById('stage').style.transform=`scale(${1+.02*P(t,0,10)})`;
+  const f=Math.floor(t*24);
+  document.getElementById('grain').style.transform=`translate(${(f*37)%90-45}px,${(f*53)%90-45}px)`;
+};
+window.render(0);
+</script>
+</body>
+</html>

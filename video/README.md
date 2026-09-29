@@ -37,7 +37,19 @@ Aset dalam `assets/` diambil daripada poster A3 CURALLÉ.
 | 4.0–6.0s | "I see them as **a solution.**" + founder dalam kanta (Ts. Dr Muhamad Fareez Ismail) |
 | 6.2–8s | Logo CURALLÉ: "The science of postbiotics. Good bacteria, working for healthier skin." |
 
+# Babak Mikroenkapsulasi (16:9, 10 saat)
+
+`output/curalle_microencap_16x9.mp4`: 1920×1080, 30fps, tiada audio.
+
+| Masa | Babak |
+|---|---|
+| 0–4.2s | "Probiotics are *fragile.*": dua piring (haba & asid perut, pH 7 → 2); bakteria mati, bar "Live probiotics" jatuh ke CRITICAL |
+| 4.3–7.4s | "Micro-encapsulation.": bakteria dikumpul dalam kapsul; haba & titisan asid melantun keluar; ✓ Survives heat / stomach acid; lencana LRGS |
+| 7.5–10s | "Patented formulation.": sijil Utility Innovation, meterai GRANTED 2020 |
+
+## Render semula (16:9)
 ```
-node render-intro.js stills 1.6,5.5,7.9   # semak frame
-node render-intro.js video                # tulis output/curalle_intro_16x9.mp4
+node render-intro.js intro.html stills 1.6,5.5,7.9      # semak frame
+node render-intro.js intro.html video                   # output/curalle_intro_16x9.mp4
+node render-intro.js microencap.html video              # output/curalle_microencap_16x9.mp4
 ```
