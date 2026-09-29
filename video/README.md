@@ -23,3 +23,21 @@ node render.js stills tofu 2.8,14.9   # semak frame
 npm run tofu && npm run bofu           # perlukan ffmpeg dengan libx264 (tukar laluan FF dalam render.js)
 ```
 Aset dalam `assets/` diambil daripada poster A3 CURALLÉ.
+
+---
+
+# CURALLÉ Intro (16:9, 8 saat)
+
+`output/curalle_intro_16x9.mp4`: 1920×1080, 30fps, tiada audio.
+
+| Masa | Babak |
+|---|---|
+| 0–3.4s | Mikroskop gelap, bakteria merah gelisah: "Some see bacteria as a **threat.**" + amaran patogen |
+| 3.4–4.4s | Cahaya mekar dari kanta; bakteria bertukar ungu/emas & mengorbit dengan tenang |
+| 4.0–6.0s | "I see them as **a solution.**" + founder dalam kanta (Ts. Dr Muhamad Fareez Ismail) |
+| 6.2–8s | Logo CURALLÉ: "The science of postbiotics. Good bacteria, working for healthier skin." |
+
+```
+node render-intro.js stills 1.6,5.5,7.9   # semak frame
+node render-intro.js video                # tulis output/curalle_intro_16x9.mp4
+```
