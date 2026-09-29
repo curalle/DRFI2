@@ -58,10 +58,24 @@ Aset dalam `assets/` diambil daripada poster A3 CURALLÉ.
 | 8.8–13.6s | BrewCoffee Cube: mikrokapsul masuk ke kiub kopi; kiub jatuh ke dalam cawan, riak & wap; "Just drop, stir & sip" |
 | 13.6–16s | "One microcapsule. Many innovations.": PROBIOLOAF + BrewCoffee Cube bersebelahan |
 
+# Babak Pengiktirafan (16:9, 30 saat)
+
+`output/curalle_recognition_16x9.mp4`: 1920×1080, 30fps, tiada audio.
+
+| Masa | Babak |
+|---|---|
+| 0–7.5s | "Born from *research.*": kad geran FRGS, kaunter RM0 → RM186,000 |
+| 7.5–14s | "From lab to *market.*": tiub CURALLÉ + langkah Research (FRGS) → Incubation (PMI · UiTM) → Market |
+| 14–22s | "Award-*winning.*": lencana ITEX, MTE (dilukis) + IIDEX Gold 25 & Silver 24 (aset asal) |
+| 22–30s | "Shared with *the world.*": peta titik Asia (Natural Earth), pin Malaysia → Indonesia, Korea Selatan, Jepun; penutup logo |
+
+`assets/asia_dots.js` dijana daripada `world-atlas` (land-50m) dengan unjuran Mercator 860×780.
+
 ## Render semula (16:9)
 ```
 node render-intro.js intro.html stills 1.6,5.5,7.9      # semak frame
 node render-intro.js intro.html video                   # output/curalle_intro_16x9.mp4
 node render-intro.js microencap.html video              # output/curalle_microencap_16x9.mp4
 node render-intro.js products.html video                # output/curalle_products_16x9.mp4
+node render-intro.js recognition.html video             # output/curalle_recognition_16x9.mp4
 ```
