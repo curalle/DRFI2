@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Curalle Explainer 16x9</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:700;font-style:italic;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-italic.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+:root{--paper:#F3ECDC;--ink:#1B1B1B;--purple:#6A3FA0;--deep:#3E1F6B;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE;--blue:#3B8FD9}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:#000;font-family:Inter,sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;opacity:0;overflow:hidden}
+.scene.vox{background:var(--paper)}
+.inner{position:absolute;inset:0;transform-origin:50% 50%}
+.abs{position:absolute}
+.foot{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover;transform-origin:50% 50%}
+.h1{font-family:Playfair;font-weight:900;font-size:96px;line-height:1.08;letter-spacing:-1px}
+.h2{font-family:Playfair;font-weight:700;font-size:62px;line-height:1.15}
+.body{font-size:38px;line-height:1.4}
+.hand{font-family:Caveat;font-weight:700;color:var(--red);white-space:nowrap}
+.hl{background-image:linear-gradient(transparent 12%,var(--yellow) 12%,var(--yellow) 88%,transparent 88%);background-repeat:no-repeat;background-size:0% 100%;padding:0 10px;margin:0 -10px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.kicker{font-weight:800;font-size:28px;letter-spacing:6px;text-transform:uppercase;color:var(--purple)}
+.card{background:var(--cream);box-shadow:0 14px 0 rgba(0,0,0,.08),0 26px 50px rgba(0,0,0,.14);border-radius:6px}
+.tag{font-weight:800;font-size:44px;padding:12px 28px;border:5px solid var(--ink);border-radius:8px;background:var(--cream);box-shadow:7px 7px 0 var(--ink);white-space:nowrap}
+.chip{font-weight:600;font-size:34px;display:flex;align-items:center;gap:16px;background:var(--cream);padding:12px 26px 12px 12px;border-radius:999px;box-shadow:0 7px 0 rgba(0,0,0,.08);white-space:nowrap}
+.chip b{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:var(--purple);color:#fff;font-size:28px;flex:none}
+.chip small{font-weight:400;color:#666;font-size:28px}
+.btn{font-weight:800;font-size:44px;color:#fff;background:var(--red);padding:26px 48px;border-radius:999px;box-shadow:0 10px 0 #a02f1b;white-space:nowrap}
+.polaroid{background:#fff;padding:16px 16px 56px;box-shadow:0 14px 0 rgba(0,0,0,.08),0 26px 50px rgba(0,0,0,.18)}
+.ring{border-radius:50%;overflow:hidden;border:12px solid var(--cream);box-shadow:0 0 0 8px var(--purple),0 26px 50px rgba(0,0,0,.2);background:#ddd}
+.cut{filter:drop-shadow(0 14px 0 rgba(0,0,0,.10)) drop-shadow(0 22px 36px rgba(0,0,0,.18))}
+.bug{position:absolute;left:60px;top:46px;height:52px;opacity:.9}
+.walllabel{display:flex;justify-content:space-between;font-weight:800;font-size:24px;letter-spacing:4px;color:#8a7a60}
+.strip{background:var(--cream);box-shadow:0 -8px 30px rgba(0,0,0,.18)}
+.tick{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:34px;margin-right:46px}
+.tick i{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--purple);color:#fff;font-weight:800;font-size:26px}
+#subs{position:absolute;left:0;right:0;bottom:34px;display:flex;justify-content:center;pointer-events:none;z-index:50}
+#subs span{font-weight:600;font-size:38px;color:#fff;background:rgba(27,27,27,.80);padding:10px 26px;border-radius:12px;max-width:1500px;text-align:center}
+#grain{position:absolute;inset:-100px;pointer-events:none;opacity:.12;mix-blend-mode:multiply;z-index:40;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,transparent 60%,rgba(60,40,10,.16) 100%)}
+svg text{font-family:Inter}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ================= A: cold open ================= -->
+<div class="scene" data-k="a"><img class="foot" data-foot="a"></div>
+
+<!-- ================= B: itch ================= -->
+<div class="scene" data-k="b"><img class="foot" data-foot="b">
+  <div class="abs hand" style="left:1180px;top:560px;font-size:110px;transform-origin:left center;text-shadow:0 2px 0 rgba(255,255,255,.6)" data-w="Lagi" data-fx="pop">lagi…</div>
+  <svg class="abs" style="left:980px;top:520px" width="220" height="160" viewBox="0 0 220 160"><path data-w="Lagi" data-off="0.15" data-dur="0.3" data-draw d="M200 70 C 150 40, 90 60, 30 110" fill="none" stroke="#E4472B" stroke-width="9" stroke-linecap="round"/><path data-w="Lagi" data-off="0.4" data-dur="0.12" data-draw d="M30 110 L62 106 M30 110 L42 80" fill="none" stroke="#E4472B" stroke-width="9" stroke-linecap="round"/></svg>
+</div>
+
+<!-- ================= V1: title ================= -->
+<div class="scene vox" data-k="v1"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs polaroid" style="left:1180px;top:170px;transform:rotate(4deg)" data-u="0.25" data-fx="card"><img src="explainer/foot/b/0110.jpg" style="width:560px;height:420px;object-fit:cover;display:block;filter:saturate(.9)"></div>
+  <div class="abs hand" style="left:1290px;top:700px;font-size:84px;transform-origin:left center" data-u="1.6" data-fx="pop">berulang…</div>
+  <div class="abs kicker" style="left:120px;top:250px" data-u="0.3" data-fx="up">Soalan</div>
+  <div class="abs h1" style="left:120px;top:310px;width:1000px;font-size:118px">
+    <div data-u="0.45" data-fx="up">Kenapa ekzema</div>
+    <div data-u="0.65" data-fx="up"><span class="hl" data-u="1.2">asyik</span> datang</div>
+    <div data-u="0.85" data-fx="up">balik?</div>
+  </div>
+</div></div>
+
+<!-- ================= C: mum ================= -->
+<div class="scene" data-k="c" data-zo="64% 66%"><img class="foot" data-foot="c">
+  <div class="abs card" style="left:70px;top:70px;width:620px;padding:30px 36px;transform-origin:0 0" data-w="Ramai" data-fx="card">
+    <div class="kicker" style="font-size:22px">Tahukah anda?</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:76px;line-height:1;margin-top:8px;color:var(--purple)">1 dalam 5</div>
+    <div style="font-size:30px;line-height:1.3;margin-top:8px">kanak-kanak di seluruh dunia mengalami <span class="hl" data-w="terperangkap">ekzema</span></div>
+  </div>
+  <div class="abs hand" style="left:1250px;top:150px;font-size:92px;transform-origin:left center;text-shadow:0 2px 0 rgba(255,255,255,.7)" data-w="Sangat" data-fx="pop">lebih dekat…</div>
+</div>
+
+<!-- ================= V2: brick wall ================= -->
+<div class="scene vox" data-k="v2"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.5" data-fx="up">Lapisan 1 · Skin barrier</div>
+  <div class="abs h1" style="left:110px;top:220px;width:700px;font-size:84px" data-w="dinding" data-fx="up">Kulit = <span class="hl" data-w="bata">dinding bata</span></div>
+  <div class="abs" style="left:110px;top:470px;display:flex;flex-direction:column;gap:22px;width:700px">
+    <div class="chip" data-w="Batanya" data-fx="left"><b>1</b>Bata <small>= sel kulit</small></div>
+    <div class="chip" data-w="Simennya" data-fx="left"><b style="background:#C9A54A">2</b>Simen <small>= lipid / ceramide</small></div>
+    <div class="chip" data-w="ekzema" data-fx="left" style="color:var(--red)"><b style="background:var(--red)">!</b>Ekzema: <span class="hl" data-w="cukup">simen tak cukup</span></div>
+    <div class="chip" data-w="Air" data-fx="left"><b style="background:var(--blue)">↑</b>Air keluar <small>→ kulit kering</small></div>
+    <div class="chip" data-w="Bahan" data-fx="left"><b style="background:var(--red)">↓</b>Perengsa masuk <small>→ meradang</small></div>
+  </div>
+  <svg class="abs wall" data-wall="v2" style="left:840px;top:190px" width="1000" height="520" viewBox="0 0 1000 520"></svg>
+  <div class="abs walllabel" style="left:840px;top:720px;width:1000px"><span>SKIN BARRIER</span><span class="wstate" data-wall-label="v2"></span></div>
+  <div class="abs hand" style="left:1530px;top:120px;font-size:64px;transform-origin:center" data-w="ceramide" data-fx="pop">ceramide!</div>
+</div></div>
+
+<!-- ================= V3: itch-scratch cycle ================= -->
+<div class="scene vox" data-k="v3"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Kenapa susah nak berhenti</div>
+  <svg class="abs" style="left:160px;top:240px" width="760" height="760" viewBox="0 0 760 760">
+    <defs><marker id="ah3" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1B1B1B"/></marker></defs>
+    <g id="cyc3" style="transform-origin:380px 380px">
+      <path data-w="digaru" data-dur="0.35" data-draw d="M470 95 A 290 290 0 0 1 665 290" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah3)"/>
+      <path data-w="rosak" data-dur="0.35" data-draw d="M665 470 A 290 290 0 0 1 470 665" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah3)"/>
+      <path data-w="gatal#2" data-off="-0.4" data-dur="0.35" data-draw d="M290 665 A 290 290 0 0 1 95 470" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah3)"/>
+      <path data-w="gatal#2" data-off="0.1" data-dur="0.35" data-draw d="M95 290 A 290 290 0 0 1 290 95" fill="none" stroke="#1B1B1B" stroke-width="9" stroke-linecap="round" marker-end="url(#ah3)"/>
+    </g>
+  </svg>
+  <div class="abs tag" style="left:540px;top:250px;transform-origin:center" data-cx="1" data-w="gatal" data-fx="stamp" data-rot="-4">Gatal</div>
+  <div class="abs tag" style="left:860px;top:590px;transform-origin:center" data-cx="1" data-w="digaru" data-fx="stamp" data-rot="5">Garu</div>
+  <div class="abs tag" style="left:540px;top:930px;transform-origin:center;background:#F6C9BE" data-cx="1" data-w="rosak" data-fx="stamp" data-rot="-3">Barrier rosak</div>
+  <div class="abs tag" style="left:220px;top:590px;transform-origin:center;color:var(--red)" data-cx="1" data-w="gatal#2" data-fx="stamp" data-rot="4">Makin gatal</div>
+  <div class="abs" style="left:540px;top:600px;transform-origin:center;text-align:center" data-cx="1" data-w="Inilah" data-fx="pop">
+    <div style="font-family:Playfair;font-weight:900;font-size:48px;line-height:1.05;white-space:nowrap">Kitaran<br><span class="hl" data-w="kitaran">gatal-garu</span></div>
+  </div>
+  <svg class="abs wall" data-wall="v3" style="left:1100px;top:330px" width="700" height="364" viewBox="0 0 1000 520"></svg>
+  <div class="abs walllabel" style="left:1100px;top:700px;width:700px"><span>SKIN BARRIER</span><span class="wstate" data-wall-label="v3"></span></div>
+  <div class="abs hand" style="left:1260px;top:790px;font-size:76px;transform-origin:left center" data-w="kitaran" data-off="0.3" data-fx="pop">susah nak berhenti</div>
+</div></div>
+
+<!-- ================= V4: microbiome ================= -->
+<div class="scene vox" data-k="v4"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Lapisan 2 · Mikrobiom</div>
+  <div class="abs h1" style="left:110px;top:220px;width:820px;font-size:76px">
+    <div data-w="dihuni" data-fx="up">Berbilion bakteria</div>
+    <div data-w="dihuni" data-off="0.2" data-fx="up">hidup atas kulit.</div>
+  </div>
+  <div class="abs" style="left:110px;top:470px;width:760px" data-w="sihat" data-fx="up">
+    <div style="display:flex;justify-content:space-between;font-weight:800;font-size:28px;margin-bottom:12px"><span style="color:#B08A00">● BAIK</span><span id="v4state" style="letter-spacing:3px">SEIMBANG</span><span style="color:var(--red)">JAHAT ●</span></div>
+    <div style="height:46px;border-radius:999px;background:var(--red);overflow:hidden;border:4px solid var(--ink)"><div id="v4meter" style="height:100%;width:50%;background:var(--yellow);border-right:4px solid var(--ink)"></div></div>
+  </div>
+  <div class="abs body" style="left:110px;top:620px;width:760px" data-w="seimbang" data-fx="up">Kulit sihat: <span class="hl" data-w="seimbang" data-off="0.2">baik &amp; jahat seimbang.</span></div>
+  <div class="abs body" style="left:110px;top:720px;width:760px;color:var(--red);font-weight:600" data-w="flare" data-fx="up">Masa flare: bakteria jahat <span class="hl" data-w="ambil">ambil alih</span>.</div>
+  <svg class="abs wall" data-wall="v4" style="left:880px;top:220px" width="960" height="500" viewBox="0 0 1000 520"></svg>
+  <div class="abs walllabel" style="left:880px;top:730px;width:960px"><span>MIKROBIOM + BARRIER</span><span class="wstate" data-wall-label="v4"></span></div>
+  <div class="abs hand" style="left:1430px;top:120px;font-size:62px;transform-origin:left center" data-w="Staph" data-fx="pop"><i>Staph aureus</i> ↓</div>
+</div></div>
+
+<!-- ================= V5: patch vs rebuild ================= -->
+<div class="scene vox" data-k="v5"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Bagaimana dengan steroid?</div>
+  <div class="abs h1" style="left:110px;top:220px;width:1700px;font-size:88px" data-u="0.4" data-fx="up">Tampal <span style="color:var(--red)">≠</span> <span class="hl" data-w="membina">bina semula</span></div>
+  <div class="abs card" style="left:110px;top:420px;width:760px;height:470px;padding:40px;transform-origin:50% 0" data-w="Krim" data-fx="card">
+    <svg width="680" height="380" viewBox="0 0 680 380">
+      <g fill="#6A3FA0" opacity=".9">
+        <rect x="0" y="40" width="160" height="60" rx="6"/><rect x="170" y="40" width="160" height="60" rx="6" fill="#7F58B0"/><rect x="340" y="40" width="160" height="60" rx="6"/><rect x="510" y="40" width="160" height="60" rx="6" fill="#7F58B0"/>
+        <rect x="-80" y="110" width="160" height="60" rx="6" fill="#9A7AC4"/><rect x="90" y="110" width="160" height="60" rx="6" fill="#9A7AC4"/><rect x="430" y="110" width="160" height="60" rx="6" fill="#9A7AC4"/><rect x="600" y="110" width="160" height="60" rx="6" fill="#9A7AC4"/>
+        <rect x="0" y="180" width="160" height="60" rx="6"/><rect x="340" y="180" width="160" height="60" rx="6"/><rect x="510" y="180" width="160" height="60" rx="6" fill="#7F58B0"/>
+      </g>
+      <path d="M300 30 L270 120 L320 150 L280 250" fill="none" stroke="#1B1B1B" stroke-width="6"/>
+      <g data-w="meredakan" data-fx="stamp" data-rot="-18" style="transform-origin:300px 140px">
+        <rect x="190" y="105" width="220" height="74" rx="30" fill="#F1C9A0" stroke="#1B1B1B" stroke-width="5"/>
+        <rect x="265" y="115" width="70" height="54" rx="8" fill="#E8B486"/>
+        <g fill="#C88E5E"><circle cx="220" cy="130" r="4"/><circle cx="235" cy="155" r="4"/><circle cx="365" cy="130" r="4"/><circle cx="380" cy="155" r="4"/></g>
+      </g>
+      <text x="0" y="330" font-size="34" font-weight="800" fill="#1B1B1B">Krim steroid = "plaster"</text>
+    </svg>
+  </div>
+  <div class="abs" style="left:960px;top:440px;display:flex;flex-direction:column;gap:34px">
+    <div class="chip" data-w="meredakan" data-fx="left" style="font-size:40px"><b style="background:#2E9E5B">✓</b>Redakan radang</div>
+    <div class="chip" data-w="membina" data-fx="left" style="font-size:40px"><b style="background:var(--red)">✗</b>Bina semula dinding</div>
+    <div class="chip" data-w="seimbangkan" data-fx="left" style="font-size:40px"><b style="background:var(--red)">✗</b>Seimbangkan bakteria</div>
+  </div>
+  <div class="abs" style="left:960px;top:820px;font-size:26px;color:#777;font-style:italic" data-w="doktor" data-fx="up">Ikut nasihat doktor. Rujuk doktor untuk ekzema teruk.</div>
+</div></div>
+
+<!-- ================= D: product reveal ================= -->
+<div class="scene" data-k="d"><img class="foot" data-foot="d">
+  <div class="abs card" style="left:24px;top:160px;width:840px;height:640px;padding:60px 56px;transform-origin:0 50%" data-u="0.1" data-fx="left">
+    <div class="kicker">Memperkenalkan</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:110px;line-height:1.05;color:var(--purple)">CURALLÉ</div>
+    <div style="font-size:42px;line-height:1.35;margin-top:18px">Bantu <span class="hl" data-w="baiki">baiki barrier</span> &amp; <span class="hl" data-w="kedua-duanya">seimbangkan mikrobiom</span>, sekali gus.</div>
+  </div>
+</div>
+
+<!-- ================= V6: founder ================= -->
+<div class="scene vox" data-k="v6"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs ring" style="left:150px;top:180px;width:640px;height:640px;transform-origin:center" data-u="0.2" data-fx="pop">
+    <img id="fsuit" src="explainer/founder_suit.png" style="position:absolute;left:-23px;top:-42px;width:686px">
+  </div>
+  <div class="abs kicker" style="left:900px;top:230px" data-w="Doktor" data-fx="up">Siapa di sebalik CURALLÉ</div>
+  <div class="abs h1" style="left:900px;top:285px;width:950px;font-size:92px" data-w="Doktor" data-fx="up">Dr. Fareez Ismail</div>
+  <div class="abs h2" style="left:900px;top:400px;width:950px;font-size:46px;color:#555" data-w="saintis" data-fx="up">Saintis Bioperubatan · <span class="hl" data-w="U-I-T-M">Universiti Teknologi MARA</span></div>
+  <div class="abs card" style="left:900px;top:540px;width:880px;padding:34px 42px;transform-origin:0 0" data-w="cuba" data-fx="card">
+    <div style="font-family:Playfair;font-weight:900;font-size:110px;line-height:.5;color:var(--purple)">“</div>
+    <div style="font-family:Playfair;font-weight:700;font-style:italic;font-size:46px;line-height:1.25">Macam mana nak baiki barrier <u>dan</u> mikrobiom, sekali gus?</div>
+  </div>
+  <div class="abs hand" style="left:1340px;top:860px;font-size:66px;transform-origin:left center" data-w="formulasikan" data-fx="pop">→ lahirlah CURALLÉ</div>
+</div></div>
+
+<!-- ================= V7: postbiotik ================= -->
+<div class="scene vox" data-k="v7"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Bahan utama</div>
+  <div class="abs card" style="left:100px;top:230px;width:860px;padding:50px 56px;transform-origin:50% 0" data-w="postbiotik" data-fx="card">
+    <img src="assets/posticon.png" style="position:absolute;right:30px;top:-60px;width:170px" class="cut">
+    <div style="font-family:Playfair;font-weight:900;font-size:112px;letter-spacing:-1px">post·bio·tik</div>
+    <div style="font-size:34px;color:#777;margin:4px 0 22px;font-style:italic">kata nama</div>
+    <div class="body" style="font-size:40px">Hasil <span class="hl" data-w="fermentasi">fermentasi bakteria baik</span> yang bantu kulit <span class="hl" data-w="seimbangkan">seimbangkan semula mikrobiom</span>.</div>
+  </div>
+  <svg class="abs" style="left:1020px;top:260px" width="820" height="560" viewBox="0 0 820 560" id="v7svg">
+    <g data-w="hasil" data-fx="pop" style="transform-origin:110px 200px">
+      <circle cx="110" cy="200" r="70" fill="#FFE14D" stroke="#1B1B1B" stroke-width="6"/><circle cx="88" cy="185" r="8" fill="#1B1B1B"/><circle cx="132" cy="185" r="8" fill="#1B1B1B"/><path d="M85 222 Q110 245 135 222" fill="none" stroke="#1B1B1B" stroke-width="6" stroke-linecap="round"/>
+      <text x="110" y="320" text-anchor="middle" font-size="30" font-weight="800">bakteria baik</text>
+    </g>
+    <path data-w="fermentasi" data-dur="0.4" data-draw d="M200 200 L330 200" stroke="#1B1B1B" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <g data-w="fermentasi" data-fx="pop" style="transform-origin:410px 200px">
+      <path d="M380 110 L380 170 L340 270 Q335 290 355 290 L465 290 Q485 290 480 270 L440 170 L440 110 Z" fill="#E9DDF7" stroke="#1B1B1B" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="370" y="98" width="80" height="16" rx="6" fill="#1B1B1B"/>
+      <circle cx="395" cy="250" r="10" fill="#6A3FA0"/><circle cx="425" cy="235" r="7" fill="#6A3FA0"/><circle cx="410" cy="268" r="6" fill="#6A3FA0"/>
+      <text x="410" y="340" text-anchor="middle" font-size="30" font-weight="800">fermentasi</text>
+    </g>
+    <path data-w="bakteria#2" data-dur="0.4" data-draw d="M500 200 L620 200" stroke="#1B1B1B" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <g id="v7dots" data-w="baik" data-fx="pop" style="transform-origin:700px 200px">
+      <circle cx="680" cy="180" r="12" fill="#FFE14D" stroke="#B08A00" stroke-width="3"/><circle cx="715" cy="205" r="9" fill="#FFE14D" stroke="#B08A00" stroke-width="3"/><circle cx="690" cy="225" r="7" fill="#FFE14D" stroke="#B08A00" stroke-width="3"/><circle cx="725" cy="172" r="7" fill="#FFE14D" stroke="#B08A00" stroke-width="3"/><circle cx="745" cy="215" r="10" fill="#FFE14D" stroke="#B08A00" stroke-width="3"/>
+      <text x="710" y="320" text-anchor="middle" font-size="30" font-weight="800" fill="#6A3FA0">postbiotik</text>
+    </g>
+  </svg>
+  <div class="abs hand" style="left:1080px;top:690px;font-size:64px;transform-origin:left center" data-w="Bukan" data-fx="pop">✗ bukan bakteria hidup</div>
+  <div class="abs hand" style="left:1080px;top:780px;font-size:64px;transform-origin:left center;color:var(--purple)" data-w="mesej" data-fx="pop">✓ "mesej" untuk kulit</div>
+</div></div>
+
+<!-- ================= F: glycerosome 3D ================= -->
+<div class="scene" data-k="f"><img class="foot" data-foot="f">
+  <div class="abs strip" style="left:0;top:790px;width:1920px;height:300px;padding:26px 70px" data-w="glycerosome" data-off="-0.6" data-fx="up">
+    <div class="kicker" style="font-size:30px">Teknologi <span class="hl" data-w="glycerosome">Glycerosome</span></div>
+    <div style="margin-top:22px">
+      <span class="tick" data-w="melentur" data-fx="pop"><i>1</i>Lembut &amp; melentur</span>
+      <span class="tick" data-w="menyelit" data-fx="pop"><i>2</i>Menyelit di celah sel kulit</span>
+      <span class="tick" data-w="lepaskan" data-fx="pop"><i>3</i>Lepaskan postbiotik</span>
+    </div>
+  </div>
+  <div class="abs card" style="left:70px;top:70px;width:760px;padding:26px 34px;transform-origin:0 0" data-u="0.2" data-fx="card">
+    <div style="font-family:Playfair;font-weight:700;font-size:44px;line-height:1.2">Bahan bagus tak berguna kalau <span class="hl" data-w="sampai">tak sampai</span>.</div>
+  </div>
+</div>
+
+<!-- ================= V8: rebuild ================= -->
+<div class="scene vox" data-k="v8"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Bina semula dinding</div>
+  <div class="abs h1" style="left:110px;top:220px;width:760px;font-size:76px" data-w="barisan" data-fx="up">Satu formula, <span class="hl" data-w="kerja">kerja berpasukan</span></div>
+  <div class="abs" style="left:110px;top:450px;display:flex;flex-direction:column;gap:24px">
+    <div class="chip" data-w="Oatmeal" data-fx="left"><b>1</b>Oatmeal koloid <small>→ redakan gatal</small></div>
+    <div class="chip" data-w="Ceramide" data-fx="left"><b style="background:#C9A54A">2</b>Ceramide + Omega-3 <small>→ tampal simen</small></div>
+    <div class="chip" data-w="Panthenol" data-fx="left"><b style="background:var(--blue)">3</b>Panthenol &amp; Gliserin <small>→ hidrasi</small></div>
+    <div class="chip" data-w="lapisan" data-fx="left"><b style="background:var(--deep)">4</b>Mineral oil + Dimethicone <small>→ kunci lembap</small></div>
+  </div>
+  <svg class="abs wall" data-wall="v8" style="left:840px;top:190px" width="1000" height="520" viewBox="0 0 1000 520"></svg>
+  <div class="abs walllabel" style="left:840px;top:720px;width:1000px"><span>SKIN BARRIER</span><span class="wstate" data-wall-label="v8"></span></div>
+</div></div>
+
+<!-- ================= E: how to use ================= -->
+<div class="scene" data-k="e"><img class="foot" data-foot="e">
+  <div class="abs card" style="left:60px;top:70px;width:700px;padding:28px 36px;transform-origin:0 0" data-w="Sapu" data-fx="card">
+    <div class="kicker" style="font-size:24px">Cara guna</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:56px;line-height:1.1;margin-top:6px">Sapu pada kulit bersih, <span class="hl" data-w="dua">2× sehari</span></div>
+    <div style="display:flex;gap:40px;margin-top:18px;align-items:center">
+      <div data-w="Pagi" data-fx="pop" style="display:flex;align-items:center;gap:12px;transform-origin:left center"><svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="12" fill="#F5B301"/><g stroke="#F5B301" stroke-width="5" stroke-linecap="round"><path d="M28 3v8M28 45v8M3 28h8M45 28h8M10 10l6 6M40 40l6 6M10 46l6-6M40 16l6-6"/></g></svg><span class="hand" style="font-size:60px;color:var(--ink)">pagi</span></div>
+      <div data-w="malam" data-fx="pop" style="display:flex;align-items:center;gap:12px;transform-origin:left center"><svg width="56" height="56" viewBox="0 0 56 56"><path d="M38 6a22 22 0 1 0 12 32A18 18 0 0 1 38 6z" fill="#3E1F6B"/></svg><span class="hand" style="font-size:60px;color:var(--ink)">malam</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= V9: proof ================= -->
+<div class="scene vox" data-k="v9"><div class="inner">
+  <img class="bug" src="assets/logo.png">
+  <div class="abs kicker" style="left:110px;top:170px" data-u="0.3" data-fx="up">Bukti, bukan janji</div>
+  <div class="abs h1" style="left:110px;top:220px;width:900px;font-size:80px" data-u="0.4" data-fx="up">Diiktiraf &amp; <span class="hl" data-w="Berdaftar">diuji</span></div>
+  <img class="abs" src="assets/gold.png" style="left:150px;top:420px;width:330px;transform-origin:center" data-w="Pemenang" data-fx="stamp" data-rot="-6">
+  <img class="abs" src="assets/silver.png" style="left:470px;top:460px;width:270px;transform-origin:center" data-w="IIDEX" data-fx="stamp" data-rot="5">
+  <div class="abs" style="left:880px;top:300px;transform-origin:center" data-w="Berdaftar" data-fx="stamp" data-rot="-4">
+    <div style="display:flex;align-items:center;gap:18px;background:var(--cream);border:6px solid var(--purple);border-radius:14px;padding:16px 26px;box-shadow:8px 8px 0 var(--deep)">
+      <img src="assets/kkm.png" style="width:110px"><div style="font-weight:800;font-size:48px;color:var(--purple);line-height:1.05">BERDAFTAR KKM<div style="font-weight:600;font-size:26px;color:#555;letter-spacing:1px;margin-top:6px">NOT260403410K</div></div>
+    </div>
+  </div>
+  <div class="abs tag" style="left:1000px;top:520px;transform-origin:center;font-size:46px" data-w="Diuji" data-fx="stamp" data-rot="3">✓ Diuji makmal</div>
+  <div class="abs tag" style="left:900px;top:660px;transform-origin:center;font-size:42px;background:#E9DDF7" data-w="bebas" data-fx="stamp" data-rot="-3">Bebas steroid · SLS · paraben</div>
+  <div class="abs hand" style="left:180px;top:820px;font-size:80px;transform-origin:left center" data-w="Cukup" data-fx="pop">lembut untuk seisi keluarga ♥</div>
+</div></div>
+
+<!-- ================= G: hug ================= -->
+<div class="scene" data-k="g"><img class="foot" data-foot="g"></div>
+
+<!-- ================= H: CTA ================= -->
+<div class="scene" data-k="h"><img class="foot" data-foot="h">
+  <div class="abs card" id="ctacard" style="left:1130px;top:110px;width:720px;padding:44px 50px;transform-origin:50% 0" data-w="Dapatkan" data-off="-0.3" data-fx="card">
+    <img src="assets/logo.png" style="height:70px">
+    <div style="font-family:Playfair;font-weight:900;font-size:66px;line-height:1.05;margin-top:12px">Skin Rebalance</div>
+    <div style="font-size:28px;color:#666;margin-top:6px">Krim postbiotik untuk kulit ekzema &amp; sensitif</div>
+    <div style="display:flex;align-items:flex-end;gap:26px;margin-top:26px">
+      <div style="position:relative;font-family:Playfair;font-weight:700;font-size:64px;color:#999;line-height:1">RM79
+        <svg style="position:absolute;left:-6px;top:6px" width="170" height="60" viewBox="0 0 170 60"><path data-w="Dapatkan" data-off="0.3" data-dur="0.25" data-draw d="M5 50 L165 10" stroke="#E4472B" stroke-width="9" stroke-linecap="round" fill="none"/></svg>
+      </div>
+      <div style="font-family:Playfair;font-weight:900;font-size:130px;line-height:.9;color:var(--purple);transform-origin:left bottom" data-w="sekarang" data-fx="pop"><span class="hl" data-w="sekarang" data-off="0.2">RM55</span></div>
+    </div>
+    <div style="font-size:26px;color:#555;margin-top:10px"><b>100 g</b> · 50 g RM35 · *sementara stok masih ada</div>
+    <div style="margin-top:30px" data-w="curalle" data-fx="pop" id="ctabtn"><span class="btn">Dapatkan di curalle.co →</span></div>
+    <div class="hand" style="font-size:52px;color:var(--purple);margin-top:22px;transform-origin:left center" data-w="farmasi" data-fx="pop">atau tanya ahli farmasi anda</div>
+  </div>
+</div>
+
+<div id="subs"><span></span></div>
+<div id="grain"></div>
+</div>
+
+<script src="explainer/timeline.js"></script>
+<script>
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const inout=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+const NS='http://www.w3.org/2000/svg';
+const S={};TL.scenes.forEach(s=>S[s.key]=s);
+const ENTER={cut:0,fade:.5,slide:.6,wipe:.55,zoom:.8};
+
+// word time (absolute) inside a scene: "word" or "word#n"
+function WT(key,spec){
+  const [w,n]=spec.split('#');let c=0;
+  for(const x of TL.words[key]){ if(x[2].toLowerCase().startsWith(w.toLowerCase())){ c++; if(c==(+n||1)) return S[key].vo+x[0]; } }
+  console.warn('word not found',key,spec); return S[key].a;
+}
+// resolve element times
+document.querySelectorAll('.scene').forEach(sc=>{
+  const k=sc.dataset.k; sc._s=S[k];
+  sc.querySelectorAll('[data-w],[data-u]').forEach(el=>{
+    let t= el.dataset.w? WT(k,el.dataset.w) : S[k].a+(+el.dataset.u);
+    el._t=t+(+(el.dataset.off||0));
+  });
+  sc._foot=sc.querySelector('[data-foot]');
+  sc._inner=sc.querySelector('.inner');
+});
+const paths=[...document.querySelectorAll('[data-draw]')];
+paths.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.len=L;});
+
+function fx(el,t){
+  const a=el._t,k=el.dataset.fx,rot=+(el.dataset.rot||0);
+  const cx=el.dataset.cx?'translate(-50%,-50%) ':'';
+  let o=1,tr='';
+  if(k==='up'){const x=out3(P(t,a,.45));o=P(t,a,.25);tr=`translateY(${(1-x)*44}px)`;}
+  else if(k==='left'){const x=out3(P(t,a,.45));o=P(t,a,.25);tr=`translateX(${(1-x)*-120}px)`;}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`scale(${x>0?back(x):0.3})`;}
+  else if(k==='stamp'){const x=P(t,a,.3);o=P(t,a,.08);tr=`rotate(${rot}deg) scale(${1.9-0.9*out3(x)})`;}
+  else if(k==='card'){const x=out3(P(t,a,.55));o=P(t,a,.2);tr=`translateY(${(1-x)*120}px) rotate(${(1-x)*-3}deg)`;}
+  else if(k==='drop'){const x=P(t,a,.8);o=P(t,a,.05);tr=`translateY(${(1-bounce(x))*-1000}px)`;}
+  else return;
+  if(el instanceof SVGElement){el.style.opacity=o;el.style.transform=tr;el.style.transformBox='view-box';return;}
+  el.style.opacity=o;el.style.transform=cx+tr;
+}
+
+// ---------------- brick wall ----------------
+const WALLS={};
+function makeWall(svg){
+  const g=(tag,attrs,parent=svg)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e;};
+  const id='c'+Math.random().toString(36).slice(2);
+  const cp=g('clipPath',{id});g('rect',{x:0,y:150,width:1000,height:345,rx:10},cp);
+  const W={};
+  W.mortar=g('rect',{x:0,y:150,width:1000,height:345,fill:'#E2C98F',rx:10});
+  const wall=g('g',{'clip-path':`url(#${id})`});
+  W.bricks=[];W.holes=[];
+  for(let r=0;r<5;r++){const off=r%2?-94:0;
+    for(let c=0;c<7;c++){const x=c*188+off;if(x>1000)continue;
+      const b=g('rect',{x:x+4,y:156+r*67,width:180,height:58,rx:6,fill:['#6A3FA0','#7451A8','#7F58B0','#8A68BA','#9A7AC4'][r]},wall);W.bricks.push(b);}}
+  // missing-mortar holes at chosen joints
+  const joints=[[1,0],[3,0],[0,1],[4,1],[2,2],[5,2],[1,3],[3,3],[4,4],[0,4]];
+  joints.forEach(([c,r])=>{const off=r%2?-94:0;const x=c*188+off+184;const h=g('rect',{x:x-3,y:150+r*67,width:14,height:72,fill:'#3a2617',rx:3},wall);W.holes.push({el:h,x:x+4,y:150+r*67});});
+  W.hydr=g('rect',{x:0,y:150,width:1000,height:345,fill:'#7EC8E3',opacity:0},wall);
+  W.red=g('rect',{x:0,y:150,width:1000,height:345,fill:'#E4472B',opacity:0},wall);
+  W.scr=[0,1,2].map(i=>g('path',{d:`M${380+i*60} 170 C ${360+i*60} 280, ${420+i*60} 360, ${390+i*60} 480`,stroke:'#E4472B','stroke-width':12,'stroke-linecap':'round',fill:'none'}));
+  W.scr.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p._L=L;});
+  W.shield=g('rect',{x:-6,y:118,width:1012,height:385,rx:26,fill:'rgba(106,63,160,.10)',stroke:'#6A3FA0','stroke-width':10});
+  W.shL=W.shield.getTotalLength();W.shield.style.strokeDasharray=W.shL;
+  W.drops=[];for(let i=0;i<10;i++){W.drops.push(g('path',{d:'M0 -16 C 8 -4, 12 4, 0 12 C -12 4, -8 -4, 0 -16 Z',fill:'#3B8FD9'}));}
+  W.irr=[];for(let i=0;i<10;i++){W.irr.push(g('polygon',{points:'0,-14 4,-4 14,-4 6,3 9,13 0,7 -9,13 -6,3 -14,-4 -4,-4',fill:'#E4472B',stroke:'#1B1B1B','stroke-width':2}));}
+  W.good=[];W.bad=[];
+  for(let i=0;i<16;i++){W.good.push(g('circle',{r:13+(i*7)%10,fill:'#FFE14D',stroke:'#1B1B1B','stroke-width':3}));}
+  for(let i=0;i<16;i++){W.bad.push(g('circle',{r:12+(i*5)%10,fill:'#E4472B',stroke:'#1B1B1B','stroke-width':3}));}
+  return W;
+}
+function wallUpdate(W,t,s){
+  const N=W.bricks.length;
+  W.bricks.forEach((b,i)=>{const x=out3(clamp((s.build??1)*1.8-(i/N)*0.8));b.style.transform=`translateY(${(1-x)*-420}px)`;b.style.opacity=x>0?1:0;b.setAttribute('fill-opacity',1);});
+  W.mortar.setAttribute('opacity',(s.mortar??1)*(s.build??1));
+  W.holes.forEach(h=>h.el.setAttribute('opacity',s.gaps??0));
+  W.red.setAttribute('opacity',(s.red??0)*0.4);
+  W.hydr.setAttribute('opacity',(s.hydrate??0)*0.35);
+  W.scr.forEach((p,i)=>p.style.strokeDashoffset=p._L*(1-out3(clamp((s.scratch??0)*1.6-i*0.3))));
+  W.shield.style.strokeDashoffset=W.shL*(1-(s.shield??0));W.shield.setAttribute('fill-opacity',s.shield??0);W.shield.setAttribute('opacity',(s.shield??0)>0?1:0);
+  W.drops.forEach((d,i)=>{const h=W.holes[i%W.holes.length];const ph=((t*0.55+i*0.137)%1);
+    d.setAttribute('transform',`translate(${h.x+Math.sin(i+t*2)*10},${h.y+20-ph*(h.y+40)})`);d.setAttribute('opacity',(s.leak??0)*Math.sin(ph*Math.PI));});
+  W.irr.forEach((d,i)=>{const h=W.holes[(i*3)%W.holes.length];const ph=((t*0.5+i*0.173)%1);
+    d.setAttribute('transform',`translate(${h.x+Math.cos(i+t*2)*14},${-20+ph*(h.y+60)}) rotate(${t*90+i*30})`);d.setAttribute('opacity',(s.irr??0)*Math.sin(ph*Math.PI));});
+  const place=(arr,count,seed,pop)=>arr.forEach((c,i)=>{
+    const vis=clamp(count*arr.length-i);const x=60+((i*137+seed)%880), y=40+((i*61+seed*3)%90);
+    c.setAttribute('cx',x+Math.sin(t*1.6+i)*10);c.setAttribute('cy',y+Math.cos(t*1.9+i*1.3)*8);
+    c.setAttribute('opacity',vis>0?1:0);c.style.transformBox='fill-box';c.style.transformOrigin='center';c.style.transform=`scale(${vis>0?back(clamp(vis)):0})`;});
+  place(W.good,s.good??0,13);place(W.bad,s.bad??0,71);
+}
+document.querySelectorAll('svg[data-wall]').forEach(svg=>{WALLS[svg.dataset.wall]=makeWall(svg);});
+const label=(k,txt,col)=>{const e=document.querySelector(`[data-wall-label="${k}"]`);e.textContent=txt;e.style.color=col;};
+const WS={
+  v2:(t)=>{const w=s=>WT('v2',s);
+    label('v2',t<w('bocor')?(t<w('ekzema')?'':'LEMAH'):'BOCOR','#E4472B');
+    return {build:P(t,w('bata')-0.8,1.2),mortar:out3(P(t,w('Simennya'),.6)),gaps:out3(P(t,w('ekzema')+0.4,.8)),leak:P(t,w('Air'),.4),irr:P(t,w('Bahan'),.4),red:out3(P(t,w('meradang')-0.4,1))};},
+  v3:(t)=>{const w=s=>WT('v3',s);label('v3',t<w('rosak')?'BOCOR':'MAKIN ROSAK','#E4472B');
+    return {gaps:1,scratch:P(t,w('digaru'),.8),red:0.3+0.5*P(t,w('rosak'),.8)+0.2*Math.max(0,Math.sin(t*6))*P(t,w('gatal#2'),.3),irr:0.6};},
+  v4:(t)=>{const w=s=>WT('v4',s);const fl=out3(P(t,w('flare'),2.2));
+    label('v4',t<w('flare')?'SEIMBANG':'FLARE','#E4472B');
+    const m=document.getElementById('v4meter');m.style.width=`${50-38*fl}%`;
+    const st=document.getElementById('v4state');st.textContent=t<w('flare')?'SEIMBANG':'TAK SEIMBANG';st.style.color=t<w('flare')?'#1B1B1B':'#E4472B';
+    return {gaps:1,good:0.5*P(t,w('dihuni'),1.2)*(1-0.7*fl),bad:0.45*P(t,w('dihuni')+0.3,1.2)+0.55*fl,red:0.15+0.75*out3(P(t,w('keradangan'),.8))};},
+  v8:(t)=>{const w=s=>WT('v8',s);const ok=t>=w('kelembapan');
+    label('v8',ok?'KUAT ✓':'BOCOR',ok?'#6A3FA0':'#E4472B');
+    return {gaps:1-out3(P(t,w('Ceramide'),1.4)),red:0.8*(1-out3(P(t,w('Oatmeal'),1.4))),irr:0.5*(1-P(t,w('Oatmeal'),.6)),hydrate:out3(P(t,w('Panthenol'),1))*(1-0.5*P(t,w('lapisan'),1)),shield:out3(P(t,w('lapisan'),1.4)),good:out3(P(t,S.v8.a+0.2,1.5))*0.7,bad:0.25*(1-P(t,w('Oatmeal'),1))};},
+};
+
+// ---------------- subtitles ----------------
+const SUBS=[];
+const FIX=[[/Kurale/g,'CURALLÉ'],[/U-I-T-M/g,'UiTM'],[/Doktor/g,'Dr.'],[/dua ribu dua puluh lima/g,'2025'],[/omega tiga/g,'omega-3'],[/curalle dot co/g,'curalle.co']];
+TL.scenes.forEach(s=>{const ws=TL.words[s.key];let cur=[];
+  const flush=()=>{if(!cur.length)return;let txt=cur.map(x=>x[2]).join(' ');FIX.forEach(([a,b])=>txt=txt.replace(a,b));
+    SUBS.push({a:s.vo+cur[0][0],b:s.vo+cur[cur.length-1][1]+0.25,txt});cur=[];};
+  ws.forEach((w,i)=>{if(cur.length&&(w[0]-cur[cur.length-1][1]>0.28||cur.length>=8)) flush();cur.push(w);});flush();
+});
+for(let i=0;i<SUBS.length-1;i++) SUBS[i].b=Math.min(SUBS[i].b,SUBS[i+1].a);
+const subEl=document.querySelector('#subs span');
+
+// ---------------- render ----------------
+const scenes=[...document.querySelectorAll('.scene')];
+window.render=function(t){
+  const waits=[];
+  scenes.forEach((sc,i)=>{
+    const s=sc._s, nx=scenes[i+1]?._s, nEnter=nx?ENTER[nx.enter]:0;
+    const vis=t>=s.a && t< s.b+nEnter;
+    if(!vis){sc.style.opacity=0;sc.style.visibility='hidden';return;}
+    sc.style.visibility='visible';
+    const u=t-s.a, dur=s.b-s.a, lp=clamp(u/dur);
+    const e=ENTER[s.enter]?out3(P(u,0,ENTER[s.enter])):1;
+    let op=1,tr='',clip='none';
+    if(s.enter==='fade') op=e;
+    if(s.enter==='slide'){tr=`translateX(${(1-e)*1920}px)`; sc.style.boxShadow=e<1?'-30px 0 60px rgba(0,0,0,.35)':'none';}
+    if(s.enter==='wipe') clip=`inset(0 ${(1-e)*100}% 0 0)`;
+    if(s.enter==='zoom'){op=e;tr=`scale(${1.12-0.12*e})`;}
+    // outgoing zoom: previous scene flies into its zoom origin
+    if(nx&&nx.enter==='zoom'&&t>=nx.a){const z=inout(P(t,nx.a,ENTER.zoom));tr=`scale(${1+2.2*z})`;sc.style.transformOrigin=sc.dataset.zo||'50% 50%';}
+    sc.style.opacity=op;sc.style.transform=tr;sc.style.clipPath=clip;
+    sc.style.zIndex=i;
+    if(sc._inner) sc._inner.style.transform=`scale(${1+0.03*lp})`;
+    if(sc._foot){
+      const k=Math.max(1,Math.min(s.n,Math.round(u*30)+1));
+      const src=`explainer/foot/${s.key}/${String(k).padStart(4,'0')}.jpg`;
+      if(sc._foot.getAttribute('src')!==src){sc._foot.setAttribute('src',src);waits.push(sc._foot.decode().catch(()=>{}));}
+      sc._foot.style.transform=`scale(${1+0.04*lp})`;
+    }
+    sc.querySelectorAll('[data-fx]').forEach(el=>fx(el,t));
+    sc.querySelectorAll('.hl').forEach(el=>{if(el._t!==undefined)el.style.backgroundSize=`${out3(P(t,el._t,.45))*100}% 100%`;});
+    sc.querySelectorAll('[data-draw]').forEach(p=>{const q=out3(P(t,p._t,+(p.dataset.dur||.4)));p.style.strokeDashoffset=p.dataset.len*(1-q);if(p.getAttribute('marker-end'))p.style.opacity=q>0?1:0;p.style.markerEnd=q>0.97?'':'none';});
+    if(WS[s.key]) wallUpdate(WALLS[s.key],t,WS[s.key](t));
+  });
+  // extras
+  const cyc=document.getElementById('cyc3');const ci=WT('v3','Inilah');cyc.style.transform=`rotate(${t>ci?(t-ci)*(t-ci)*25:0}deg)`;
+  const fs=document.getElementById('fsuit');fs.style.transform=`rotate(${Math.sin(t*1.3)*1.2}deg) translateY(${Math.sin(t*1.9)*5}px)`;
+  const cb=document.getElementById('ctabtn');const ct=WT('h','curalle')+0.5;if(t>ct)cb.style.transform=`scale(${1+0.04*Math.sin((t-ct)*8)})`;
+  // global fade out at end
+  document.getElementById('stage').style.filter=t>TL.total-0.8?`brightness(${1-P(t,TL.total-0.8,0.8)})`:'none';
+  const sub=SUBS.find(x=>t>=x.a&&t<x.b);subEl.textContent=sub?sub.txt:'';subEl.style.visibility=sub?'visible':'hidden';
+  const f=Math.floor(t*24);document.getElementById('grain').style.transform=`translate(${(f*37)%90-45}px,${(f*53)%90-45}px)`;
+  return Promise.all(waits);
+};
+// SFX cue list for the audio mixer
+window.SFX=()=>{const c=[];
+  scenes.forEach(sc=>{const s=sc._s;if(s.enter==='slide'||s.enter==='wipe')c.push(['swipe',s.a]);if(s.enter==='zoom')c.push(['whoosh',s.a]);
+    sc.querySelectorAll('[data-fx="stamp"]').forEach(el=>c.push(['pop',el._t+0.12]));
+    sc.querySelectorAll('[data-fx="pop"]').forEach(el=>c.push(['tick',el._t]));});
+  return c;};
+window.render(0);
+</script>
+</body>
+</html>
