@@ -49,20 +49,20 @@ node render15.js video && python3 mix_audio.py
 
 ---
 
-# Explainer 3 minit: gaya VOX, 16:9 (`output/curalle_explainer_16x9.mp4`)
+# Explainer 2 minutes: Vox style, 16:9, English (`output/curalle_explainer_16x9.mp4`)
 
-3:08, 1920×1080, suara latar BM (ms-MY-OsmanNeural), sari kata BM dibakar ke dalam video. Menggunakan footage `CURALLE VIDEO.mp4` (botol pam) + 9 babak penerangan gaya Vox. Skrip penuh: `script_2min_vox.md`.
+1:55, 1920×1080, English voiceover (en-US-AndrewNeural) with burned-in English subtitles. Uses the `CURALLE VIDEO.mp4` footage (pump bottle) plus Vox-style explainer scenes. Script and shot list: `script_2min_vox.md`.
 
-Aliran: hook (footage) → soalan "Kenapa ekzema asyik datang balik?" → dinding bata (skin barrier) → kitaran gatal-garu → mikrobiom → steroid "tampal ≠ bina semula" → produk → Dr. Fareez → post·bio·tik → glycerosome (footage 3D) → dinding dibina semula → cara guna → bukti (IIDEX, KKM) → CTA (RM55, curalle.co / ahli farmasi).
+Flow: hook (footage) → "Why does eczema keep coming back?" → brick-wall skin barrier → microbiome → product → Dr. Fareez → post·bi·ot·ics → glycerosomes (3D footage) → wall rebuilt → how to use → proof (IIDEX, KKM) → CTA (RM55, curalle.co / ask your pharmacist).
 
-## Render semula
+## Re-render
 ```
 pip install edge-tts imageio-ffmpeg numpy
-cd explainer && python3 tts_lines.py                       # suara latar per babak -> vo/
-python3 build_timeline.py "/path/CURALLE VIDEO.mp4"        # masa babak + potong footage -> foot/
-cd .. && node renderex.js stills 13,40,72,124              # semak
-node renderex.js sfx                                       # senarai bunyi
-for i in 0 1 2 3; do node renderex.js video $((i*1412)) $(((i+1)*1412)) explainer/part$i.mp4 & done; wait
-# gabung part0-3 -> explainer/silent.mp4 (ffmpeg concat), kemudian:
+cd explainer && python3 tts_lines.py                       # voiceover per scene -> vo/
+python3 build_timeline.py "/path/CURALLE VIDEO.mp4"        # scene timing + footage cuts -> foot/
+cd .. && node renderex.js stills 20,35,60,90               # check
+node renderex.js sfx                                       # sound-effect cues
+N=3446; Q=862; for i in 0 1 2 3; do node renderex.js video $((i*Q)) $(((i+1)*Q)) explainer/part$i.mp4 & done; wait
+# concat part0-3 -> explainer/silent.mp4 (ffmpeg concat), then:
 python3 mix_explainer.py
 ```

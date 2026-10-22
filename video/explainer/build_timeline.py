@@ -3,12 +3,11 @@ import json, os, subprocess, imageio_ffmpeg, sys
 FF=imageio_ffmpeg.get_ffmpeg_exe(); SRC=sys.argv[1] if len(sys.argv)>1 else 'CURALLE_VIDEO.mp4'
 W=json.load(open('vo/words.json'))
 # key, kind, footage (src_in, src_out) or None, lead, tail, enter-transition
-PLAN=[('a','foot',(0.0,4.0),1.4,0.4,'cut'),('b','foot',(4.0,8.0),0.2,0.5,'cut'),('v1','vox',None,0.6,0.6,'slide'),
-('c','foot',(8.0,17.5),0.4,0.6,'fade'),('v2','vox',None,0.8,0.8,'zoom'),('v3','vox',None,0.4,0.7,'wipe'),
-('v4','vox',None,0.4,0.7,'wipe'),('v5','vox',None,0.4,0.7,'slide'),('d','foot',(18.5,22.9),0.4,0.5,'fade'),
-('v6','vox',None,0.4,0.6,'slide'),('v7','vox',None,0.4,0.6,'wipe'),('f','foot',(28.5,42.0),0.3,0.6,'fade'),
-('v8','vox',None,0.4,0.7,'fade'),('e','foot',(23.5,28.05),0.3,0.5,'slide'),('v9','vox',None,0.4,0.7,'slide'),
-('g','foot',(42.1,47.0),0.3,0.5,'fade'),('h','foot',(47.3,50.8),0.3,3.0,'fade')]
+PLAN=[('a','foot',(0.0,4.0),1.2,0.4,'cut'),('b','foot',(4.5,7.5),0.2,0.5,'cut'),('v1','vox',None,0.5,0.6,'slide'),
+('c','foot',(8.5,15.5),0.3,0.5,'fade'),('v2','vox',None,0.6,0.6,'zoom'),('v4','vox',None,0.4,0.6,'wipe'),
+('d','foot',(19.0,22.4),0.3,0.5,'fade'),('v6','vox',None,0.3,0.5,'slide'),('v7','vox',None,0.3,0.5,'wipe'),
+('f','foot',(28.5,42.0),0.3,0.5,'fade'),('v8','vox',None,0.4,0.5,'fade'),('e','foot',(23.5,28.05),0.3,0.5,'slide'),
+('v9','vox',None,0.3,0.6,'slide'),('g','foot',(42.1,47.0),0.3,0.6,'fade'),('h','foot',(47.3,50.8),0.3,2.6,'fade')]
 t=0; scenes=[]
 for k,kind,src,lead,tail,tr in PLAN:
     sp=W[k][-1][1]; dur=round(lead+sp+tail,3)
