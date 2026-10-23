@@ -42,8 +42,8 @@ async function page(b){
       }
     }));
     spawnSync(FF,['-y','-v','error','-framerate',String(FPS),'-i',path.join(FR,'f%05d.jpg'),'-i',arg,
-      '-filter_complex','[1:a]apad[a]','-map','0:v','-map','[a]','-t',String(dur),
-      '-c:v','libx264','-pix_fmt','yuv420p','-crf','18','-preset','medium','-c:a','aac','-b:a','192k','-movflags','+faststart',out],{stdio:'inherit'});
+      '-filter_complex','[0:v]hqdn3d=1.5:1.5:6:6[v];[1:a]apad[a]','-map','[v]','-map','[a]','-t',String(dur),
+      '-c:v','libx264','-pix_fmt','yuv420p','-crf','21','-maxrate','5M','-bufsize','10M','-preset','slow','-c:a','aac','-b:a','192k','-movflags','+faststart',out],{stdio:'inherit'});
     fs.rmSync(FR,{recursive:true});
   }
   await b.close();
