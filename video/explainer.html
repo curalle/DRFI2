@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Curalle Ceramide Explainer 9:16</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:700;font-style:italic;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-italic.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+:root{--paper:#F3ECDC;--table:#DCCFB4;--ink:#1B1B1B;--purple:#6A3FA0;--deep:#3E1F6B;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE;--muted:#6d6457;--gold:#D99A1E;--skin:#F4D3C2}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--table)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink);
+  background:radial-gradient(circle at 50% 40%,#E6DBC4 0,var(--table) 70%)}
+.abs,.tile *{position:absolute}
+.tile .flow,.tile .flow *{position:static}
+.tile b,.tile i,.tile br{position:static}
+#jars>div{position:absolute}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+.tile{position:absolute;width:1080px;height:1920px;background:var(--paper);border-radius:6px;
+  box-shadow:0 30px 0 rgba(0,0,0,.05),0 40px 120px rgba(60,40,10,.25);overflow:hidden}
+.tile::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 60%,rgba(120,90,40,.12) 100%)}
+.kicker{font-weight:800;font-size:32px;letter-spacing:6px;text-transform:uppercase;color:var(--purple);white-space:nowrap}
+.title{font-family:Playfair;font-weight:900;font-size:84px;line-height:1.06;letter-spacing:-1px}
+.title div{position:static}
+.body{font-size:38px;line-height:1.4;color:#3d3830}
+.hl{background-image:linear-gradient(transparent 14%,var(--yellow) 14%,var(--yellow) 90%,transparent 90%);background-repeat:no-repeat;background-size:0% 100%;padding:0 10px;margin:0 -10px;-webkit-box-decoration-break:clone;box-decoration-break:clone;position:static!important}
+.hand{font-family:Caveat;font-weight:700;color:var(--red);white-space:nowrap}
+.tag{font-weight:800;font-size:44px;padding:12px 28px;border:5px solid var(--ink);border-radius:8px;background:var(--cream);box-shadow:7px 7px 0 var(--ink);white-space:nowrap}
+.chip{font-weight:700;font-size:38px;display:flex;align-items:center;gap:16px;background:var(--cream);padding:12px 28px 12px 12px;border-radius:999px;box-shadow:0 8px 0 rgba(0,0,0,.07),0 14px 30px rgba(60,40,10,.1);white-space:nowrap}
+.chip b{position:static;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--purple);color:#fff;font-size:30px}
+.chip.no b{background:var(--red)}
+.card{background:var(--cream);border-radius:10px;box-shadow:0 16px 0 rgba(0,0,0,.06),0 28px 60px rgba(60,40,10,.14)}
+.num{width:120px;height:120px;border-radius:50%;background:var(--purple);color:#fff;font-family:Playfair;font-weight:900;font-size:76px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 var(--deep)}
+.cut{filter:drop-shadow(0 16px 0 rgba(0,0,0,.08)) drop-shadow(0 26px 40px rgba(60,40,10,.25))}
+.lbl{font-weight:800;font-size:26px;letter-spacing:4px;text-transform:uppercase;color:#8a7a60;white-space:nowrap}
+#vidbox{position:absolute;overflow:hidden;background:#222;transform-origin:50% 50%}
+#vid{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:1920px}
+#pipname{position:absolute;left:690px;width:340px;top:652px;text-align:center}
+#pipname span{display:inline-block;font-weight:800;font-size:22px;background:var(--ink);color:#fff;padding:7px 16px;border-radius:999px;white-space:nowrap}
+#overlay>*{position:absolute}
+.ocard{background:var(--cream);border-radius:14px;box-shadow:0 14px 0 rgba(0,0,0,.12),0 30px 60px rgba(0,0,0,.25);padding:30px 40px}
+#noise{position:absolute;inset:-60px;pointer-events:none;opacity:.07}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 60%,rgba(40,25,5,.22) 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="world">
+  <svg id="trail" class="abs" style="left:0;top:0;overflow:visible" width="10" height="10"></svg>
+
+  <!-- ===== T1: formulation decides (0,0) ===== -->
+  <div class="tile" id="T1" style="left:0;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="5.1" data-fx="up">Sebenarnya tak.</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="6.1" data-fx="up">Cara ia</div>
+      <div data-in="7.9" data-fx="up"><span class="hl" data-hl="8.3">diformulasi</span></div>
+    </div>
+    <div class="body" style="left:70px;top:500px;width:580px" data-in="9.8" data-fx="up">yang tentukan ceramide <b>meresap masuk</b> atau sekadar <b>duduk di atas</b> kulit.</div>
+    <svg style="left:60px;top:760px" width="960" height="760" viewBox="0 0 960 760" id="skin1"></svg>
+    <div class="tag" style="left:80px;top:1550px;border-color:var(--purple);color:var(--purple);box-shadow:7px 7px 0 var(--purple);transform-origin:left center" data-in="12.5" data-fx="stamp" data-rot="-3">✓ Meresap masuk</div>
+    <div class="tag" style="left:540px;top:1550px;border-color:var(--red);color:var(--red);box-shadow:7px 7px 0 var(--red);transform-origin:left center" data-in="14.5" data-fx="stamp" data-rot="3">✗ Duduk di atas</div>
+  </div>
+
+  <!-- ===== T2: Ceramide NP (1300,0) ===== -->
+  <div class="tile" id="T2" style="left:1300px;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="16.6" data-fx="up">Ceramide biasa</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="18.6" data-fx="up">Contoh:</div>
+      <div data-in="19.3" data-fx="up"><span class="hl" data-hl="19.9">Ceramide NP</span></div>
+    </div>
+    <div class="card" style="left:70px;top:720px;width:940px;height:440px" data-in="19.5" data-fx="card">
+      <svg style="left:0;top:0" width="940" height="440" viewBox="0 0 940 440" id="npmol"></svg>
+      <div class="lbl" style="left:40px;top:30px">Struktur ceramide</div>
+    </div>
+    <div class="chip" style="left:70px;top:1230px" data-in="21.9" data-fx="left"><b>✓</b>Repair skin barrier</div>
+    <div class="chip" style="left:70px;top:1340px" data-in="23.8" data-fx="left"><b>✓</b>Lock in moisture</div>
+    <svg style="left:120px;top:1480px" width="840" height="200" viewBox="0 0 840 200" id="wall2"></svg>
+  </div>
+
+  <!-- ===== T3: the problem (2600,0) ===== -->
+  <div class="tile" id="T3" style="left:2600px;top:0">
+    <div class="kicker" style="left:70px;top:250px;color:var(--red)" data-in="26.7" data-fx="up">Masalahnya…</div>
+    <div class="title" style="left:70px;top:300px;width:620px">
+      <div data-in="26.9" data-fx="up">Molekulnya</div>
+      <div data-in="30.0" data-fx="up" style="color:var(--red)">keras &amp;</div>
+      <div data-in="31.6" data-fx="up"><span class="hl" data-hl="31.9">susah stabil.</span></div>
+    </div>
+    <svg style="left:90px;top:720px" width="900" height="520" viewBox="0 0 900 520" id="lattice"></svg>
+    <div class="tag" style="left:620px;top:760px;color:var(--red);border-color:var(--red);box-shadow:7px 7px 0 var(--red);transform-origin:center" data-in="30.2" data-fx="stamp" data-rot="-8">KERAS</div>
+    <svg style="left:110px;top:1290px" width="300" height="330" viewBox="0 0 300 330" id="jar3"></svg>
+    <div class="hand" style="left:440px;top:1360px;font-size:70px;transform-origin:left center" data-in="32.1" data-fx="pop">susah stabil<br>dalam krim</div>
+  </div>
+
+  <!-- ===== T4: separate lipids (2600,1900) ===== -->
+  <div class="tile" id="T4" style="left:2600px;top:1900px">
+    <div class="kicker" style="left:70px;top:250px;color:var(--red)" data-in="33.9" data-fx="up">Lagi satu…</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="34.1" data-fx="up">Nak kesan</div>
+      <div data-in="35.2" data-fx="up"><i style="font-weight:700;color:var(--purple)">soothing?</i></div>
+    </div>
+    <div class="chip" style="left:70px;top:530px" data-in="38.5" data-fx="left"><b>↓</b>Kurangkan keradangan</div>
+    <div class="body" style="left:70px;top:720px;width:940px;font-size:44px" data-in="40.4" data-fx="up">Kena <b>campur lipid lain</b> secara berasingan:</div>
+    <div class="card" style="left:70px;top:860px;width:270px;height:270px" data-in="41.0" data-fx="pop"><svg style="left:35px;top:20px" width="200" height="170" viewBox="0 0 200 170"><circle cx="70" cy="60" r="34" fill="#9A74D0" stroke="#3E1F6B" stroke-width="5"/><path d="M95 70 q30 20 0 40 q-30 20 0 40 M60 92 q-25 20 0 40 q25 20 0 40" fill="none" stroke="#3E1F6B" stroke-width="6" stroke-linecap="round"/></svg><div style="left:0;width:270px;top:200px;text-align:center;font-weight:800;font-size:30px">Ceramide</div></div>
+    <div class="abs" style="left:350px;top:950px;font-family:Playfair;font-weight:900;font-size:90px;color:var(--muted)" data-in="42.2" data-fx="pop">+</div>
+    <div class="card" style="left:420px;top:860px;width:270px;height:270px" data-in="42.4" data-fx="pop"><svg style="left:60px;top:25px" width="150" height="160" viewBox="0 0 150 160"><path d="M75 10 C 40 60, 20 90, 20 110 a55 45 0 0 0 110 0 C 130 90, 110 60, 75 10Z" fill="#F2C14E" stroke="#8a5a10" stroke-width="5"/></svg><div style="left:0;width:270px;top:200px;text-align:center;font-weight:800;font-size:30px">Lipid A</div></div>
+    <div class="abs" style="left:700px;top:950px;font-family:Playfair;font-weight:900;font-size:90px;color:var(--muted)" data-in="42.7" data-fx="pop">+</div>
+    <div class="card" style="left:770px;top:860px;width:240px;height:270px" data-in="42.8" data-fx="pop"><svg style="left:45px;top:25px" width="150" height="160" viewBox="0 0 150 160"><path d="M75 10 C 40 60, 20 90, 20 110 a55 45 0 0 0 110 0 C 130 90, 110 60, 75 10Z" fill="#8CC63F" stroke="#3f6b10" stroke-width="5"/></svg><div style="left:0;width:240px;top:200px;text-align:center;font-weight:800;font-size:30px">Lipid B</div></div>
+    <svg style="left:200px;top:1190px" width="680" height="420" viewBox="0 0 680 420" id="bowl4"></svg>
+    <div class="hand" style="left:600px;top:1560px;font-size:72px;transform-origin:center" data-in="43.4" data-fx="pop">tak bersatu…</div>
+  </div>
+
+  <!-- ===== T5: CURALLÉ Omega-3 Ceramide Flex (1300,1900) ===== -->
+  <div class="tile" id="T5" style="left:1300px;top:1900px">
+    <div class="kicker" style="left:70px;top:250px" data-in="44.9" data-fx="up">Sebab tu, dalam</div>
+    <img src="assets/logo.png" style="left:64px;top:300px;width:470px;transform-origin:left center" data-in="46.1" data-fx="pop">
+    <div class="body" style="left:70px;top:470px;width:600px" data-in="47.2" data-fx="up">kita pakai teknologi</div>
+    <div class="title" style="left:70px;top:530px;width:940px;font-size:96px;color:var(--deep)">
+      <div data-in="48.4" data-fx="up">Omega-3</div>
+      <div data-in="49.2" data-fx="up"><span class="hl" data-hl="49.7">Ceramide Flex</span></div>
+    </div>
+    <div class="abs" style="left:600px;top:820px;width:440px;height:760px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%)" data-in="45.7" data-fx="drop">
+      <img src="assets/tube_hand_s.png" style="left:0;top:0;width:440px" class="cut">
+    </div>
+    <div class="lbl" style="left:70px;top:860px" data-in="50.9" data-fx="up">Gabungan</div>
+    <div class="chip" style="left:70px;top:920px" data-in="51.4" data-fx="left"><b style="background:#7A9A3A">●</b>Linseed oil</div>
+    <div class="abs" style="left:110px;top:1020px;font-family:Playfair;font-weight:900;font-size:64px;color:var(--muted)" data-in="52.4" data-fx="pop">+</div>
+    <div class="chip" style="left:70px;top:1100px" data-in="52.5" data-fx="left"><b style="background:#D99A1E">●</b>Palm oil</div>
+    <div class="abs" style="left:110px;top:1200px;font-family:Playfair;font-weight:900;font-size:64px;color:var(--muted)" data-in="53.2" data-fx="pop">=</div>
+    <div class="tag" style="left:70px;top:1290px;font-size:36px;transform-origin:left center;border-color:var(--deep);color:var(--deep);box-shadow:7px 7px 0 var(--deep)" data-in="53.4" data-fx="stamp" data-rot="-2">Aminopropanediol<br>esters</div>
+  </div>
+
+  <!-- ===== T6: pseudo-ceramide biomimetic (0,1900) ===== -->
+  <div class="tile" id="T6" style="left:0;top:1900px">
+    <div class="kicker" style="left:70px;top:250px" data-in="55.7" data-fx="up">Dari segi sains</div>
+    <div class="card" style="left:60px;top:310px;width:610px;padding:34px 40px;transform-origin:50% 0" data-in="58.6" data-fx="card">
+      <div class="flow" style="font-family:Playfair;font-weight:900;font-size:58px;line-height:1.05">pseudo-ceramide biomimetik</div>
+      <div class="flow" style="font-size:28px;color:#888;font-style:italic;margin:10px 0 14px">kata nama</div>
+      <div class="flow" style="font-size:31px;line-height:1.4">Ceramide yang dibina <span class="hl" data-hl="60.2">meniru struktur semula jadi</span> kulit.</div>
+    </div>
+    <svg style="left:40px;top:860px" width="1000" height="700" viewBox="0 0 1000 700" id="omega6"></svg>
+    <div class="chip" style="left:90px;top:1000px" data-in="62.0" data-fx="left"><b style="background:var(--gold)">ω</b>Asid lemak omega-3</div>
+    <div class="hand" style="left:90px;top:1500px;font-size:66px;transform-origin:left center" data-in="64.2" data-fx="pop">diikat terus dalam rantai!</div>
+  </div>
+
+  <!-- ===== T7: 1 - more stable (0,3800) ===== -->
+  <div class="tile" id="T7" style="left:0;top:3800px">
+    <div class="num" style="left:70px;top:240px" data-in="71.1" data-fx="pop">1</div>
+    <div class="title" style="left:70px;top:400px;width:620px">
+      <div data-in="71.8" data-fx="up">Omega-3 jauh</div>
+      <div data-in="74.0" data-fx="up"><span class="hl" data-hl="74.4">lebih stabil.</span></div>
+    </div>
+    <svg style="left:40px;top:700px" width="1000" height="820" viewBox="0 0 1000 820" id="shield7"></svg>
+    <div class="chip" style="left:70px;top:1560px" data-in="77.5" data-fx="left"><b>✓</b>Tak mudah rosak / teroksida</div>
+  </div>
+
+  <!-- ===== T8: 2 - dual action (1300,3800) ===== -->
+  <div class="tile" id="T8" style="left:1300px;top:3800px">
+    <div class="num" style="left:70px;top:240px" data-in="79.2" data-fx="pop">2</div>
+    <div class="title" style="left:70px;top:400px;width:620px">
+      <div data-in="80.3" data-fx="up"><span class="hl" data-hl="80.7">Dual</span> action</div>
+    </div>
+    <div class="card" style="left:70px;top:700px;width:940px;height:400px" data-in="81.4" data-fx="card">
+      <div class="lbl" style="left:40px;top:30px;color:var(--purple)">A · Baiki barrier rosak</div>
+      <svg style="left:40px;top:90px" width="860" height="280" viewBox="0 0 860 280" id="wall8"></svg>
+    </div>
+    <div class="card" style="left:70px;top:1150px;width:940px;height:440px" data-in="84.8" data-fx="card">
+      <div class="lbl" style="left:40px;top:30px;color:var(--red)">B · Redakan kemerahan</div>
+      <svg style="left:40px;top:90px" width="860" height="320" viewBox="0 0 860 320" id="red8"></svg>
+    </div>
+    <div class="hand" style="left:500px;top:1610px;font-size:66px;transform-origin:center" data-in="88.6" data-fx="pop">micro-inflammation ↓</div>
+  </div>
+
+  <!-- ===== T9: 3 - enzyme (2600,3800) ===== -->
+  <div class="tile" id="T9" style="left:2600px;top:3800px">
+    <div class="num" style="left:70px;top:240px" data-in="92.3" data-fx="pop">3</div>
+    <div class="title" style="left:70px;top:400px;width:640px;font-size:76px">
+      <div data-in="93.6" data-fx="up">Kawal enzim</div>
+      <div data-in="94.6" data-fx="up" style="font-size:60px"><span class="hl" data-hl="95.4">5-alpha reductase</span></div>
+    </div>
+    <div class="card" style="left:70px;top:700px;width:940px;height:480px" data-in="96.3" data-fx="card">
+      <svg style="left:0;top:0" width="940" height="480" viewBox="0 0 940 480" id="gauge9"></svg>
+    </div>
+    <div class="body" style="left:70px;top:1240px;width:940px" data-in="103.4" data-fx="up">Barrier repair, <b>tanpa rasa:</b></div>
+    <div class="chip no" style="left:70px;top:1330px" data-in="104.4" data-fx="left"><b>✗</b>Melekit</div>
+    <div class="chip no" style="left:390px;top:1330px" data-in="105.9" data-fx="left"><b>✗</b>Tumpat</div>
+    <div class="chip no" style="left:700px;top:1330px" data-in="107.1" data-fx="left"><b>✗</b>Padat</div>
+  </div>
+
+  <!-- ===== T10: not just a moisturiser (1300,5700) ===== -->
+  <div class="tile" id="T10" style="left:1300px;top:5700px">
+    <div class="title" style="left:70px;top:250px;width:620px;font-size:72px">
+      <div data-in="109.3" data-fx="up">Bukan sekadar</div>
+      <div data-in="110.4" data-fx="up" style="color:#9a907f;position:relative"><span id="strike" style="position:relative!important">pelembap biasa</span></div>
+    </div>
+    <div class="title" style="left:70px;top:690px;width:940px;font-size:92px;color:var(--purple)">
+      <div data-in="112.3" data-fx="up">Advanced</div>
+      <div data-in="113.0" data-fx="up"><span class="hl" data-hl="113.5">barrier support.</span></div>
+    </div>
+    <div class="abs" style="left:300px;top:930px;width:520px;height:760px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 72%,transparent 98%)" data-in="112.0" data-fx="drop">
+      <img src="assets/tube_hand_s.png" style="left:0;top:0;width:520px" class="cut">
+    </div>
+    <div class="hand" style="left:400px;top:1600px;font-size:76px;transform-origin:center" data-in="115.6" data-fx="pop" data-rot="-6">with a touch of science ✦</div>
+  </div>
+
+  <!-- ===== T11: get it today (2600,5700) ===== -->
+  <div class="tile" id="T11" style="left:2600px;top:5700px">
+    <div class="kicker" style="left:70px;top:250px" data-in="118.2" data-fx="up">Dapatkan hari ini</div>
+    <img src="assets/logo.png" style="left:64px;top:300px;width:470px;transform-origin:left center" data-in="118.9" data-fx="pop">
+    <div class="body" style="left:70px;top:520px" data-in="120.4" data-fx="up">untuk kulit yang lebih</div>
+    <div class="title" style="left:70px;top:610px;font-size:104px;line-height:1.1">
+      <div data-in="121.2" data-fx="up" style="color:var(--purple)">tenang,</div>
+      <div data-in="121.9" data-fx="up" style="color:var(--deep)">kuat &amp;</div>
+      <div data-in="122.4" data-fx="up"><span class="hl" data-hl="122.6">sihat.</span></div>
+    </div>
+    <div class="abs" style="left:600px;top:700px;width:440px;height:820px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent 98%)" data-in="119.2" data-fx="drop">
+      <img src="assets/tube_hand_s.png" style="left:0;top:0;width:440px" class="cut">
+    </div>
+    <div class="tag" style="left:70px;top:1100px;font-size:40px;transform-origin:left center" data-in="123.0" data-fx="stamp" data-rot="-3">✓ Sesuai semua<br>&nbsp;&nbsp;&nbsp;jenis kulit</div>
+  </div>
+</div>
+
+<!-- presenter video (full screen <-> floating frame) -->
+<div id="vidbox"><img id="vid"></div>
+<div id="pipname"><span>Ts. Dr Fareez Ismail · CURALLÉ</span></div>
+
+<!-- overlays used while the presenter is full screen -->
+<div id="overlay">
+  <div class="ocard" id="o1" style="left:60px;top:230px;width:960px" data-in="0.2" data-fx="card">
+    <div style="position:static;font-family:Playfair;font-weight:900;font-size:76px;line-height:1.08">Semua pelembap <span class="hl" data-hl="1.8">ceramide</span> sama je?</div>
+  </div>
+  <div class="tag" id="o1q" style="left:780px;top:440px;font-size:96px;color:var(--red);border-color:var(--red);box-shadow:8px 8px 0 var(--red);transform-origin:center" data-in="3.6" data-fx="stamp" data-rot="10">?</div>
+  <div id="jars" style="left:60px;top:1330px;width:960px;height:300px"></div>
+
+  <div class="tag" id="o2" style="left:140px;top:1280px;font-size:110px;color:var(--red);border-color:var(--red);box-shadow:10px 10px 0 var(--red);transform-origin:center" data-in="24.9" data-fx="stamp" data-rot="-5">TAPI…</div>
+  <div class="hand" id="o2b" style="left:520px;top:1440px;font-size:96px;transform-origin:left center" data-in="25.4" data-fx="pop">masalahnya</div>
+
+  <div class="ocard" id="o3" style="left:60px;top:230px;width:960px" data-in="67.3" data-fx="card">
+    <div style="position:static;font-family:Playfair;font-weight:900;font-size:84px;line-height:1.08">Apa <span class="hl" data-hl="68.9">bezanya</span> dengan ceramide lain?</div>
+  </div>
+
+  <div class="ocard" id="o4logo" style="left:60px;top:230px;padding:24px 34px" data-in="126.9" data-fx="card"><img src="assets/logo.png" style="position:static;display:block;height:96px"></div>
+  <div class="chip" id="o4" style="left:60px;top:1240px;font-size:36px" data-in="129.4" data-fx="left"><b>✓</b>Bantu kulit bermasalah seperti ekzema</div>
+  <div id="cta" style="left:60px;top:1350px;width:960px;height:300px" data-in="134.2" data-fx="pop">
+    <div class="ocard" style="left:0;top:0;width:960px;height:220px;display:flex;align-items:center;gap:34px;padding:0 40px;background:var(--yellow)">
+      <svg width="150" height="150" viewBox="0 0 150 150" style="position:static;flex:none" id="bag"><path d="M28 52 h94 l-8 82 h-78 z" fill="#FFB800" stroke="#1B1B1B" stroke-width="7" stroke-linejoin="round"/><path d="M52 52 v-12 a23 23 0 0 1 46 0 v12" fill="none" stroke="#1B1B1B" stroke-width="7" stroke-linecap="round"/></svg>
+      <div style="position:static"><div style="position:static;font-weight:800;font-size:30px;letter-spacing:5px">JANGAN LUPA</div><div style="position:static;font-family:Playfair;font-weight:900;font-size:70px;line-height:1;white-space:nowrap">Tekan beg kuning</div></div>
+    </div>
+  </div>
+</div>
+
+<canvas id="noise" width="300" height="300"></canvas>
+<div id="vignette"></div>
+</div>
+
+<script>
+window.DURATION=137.4;window.OUTPUT='output/curalle_ceramide_explainer_9x16.mp4';
+const FRAMES=new URLSearchParams(location.search).get('frames')||'';
+const NFR=+(new URLSearchParams(location.search).get('n')||4078);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const inout=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.8;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const el=(parent,tag,attrs={})=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e;};
+let seed=5;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+
+// ---------------- tile positions & camera ----------------
+const TP={T1:[0,0],T2:[1300,0],T3:[2600,0],T4:[2600,1900],T5:[1300,1900],T6:[0,1900],T7:[0,3800],T8:[1300,3800],T9:[2600,3800],T10:[1300,5700],T11:[2600,5700]};
+const C=(k,dx=540,dy=960)=>[TP[k][0]+dx,TP[k][1]+dy];
+const mid=(a,b)=>[(C(a)[0]+C(b)[0])/2,(C(a)[1]+C(b)[1])/2];
+// [time, worldX, worldY, scale]
+const CAM=[
+ [0,...C('T1'),1],[11.5,...C('T1'),1],[12.3,...C('T1',500,1200),1.1],[15.5,...C('T1',500,1200),1.1],
+ [15.95,...mid('T1','T2'),.62],[16.4,...C('T2'),1],[24.4,...C('T2',540,1000),1.04],
+ [25.6,...C('T3'),1],[29.8,...C('T3'),1],[30.3,...C('T3',540,1000),1.12],[32.9,...C('T3',540,1000),1.12],
+ [33.35,...mid('T3','T4'),.6],[33.8,...C('T4'),1],[44.3,...C('T4'),1.03],
+ [44.95,1840,1900,.36],[45.6,...C('T5'),1],[55.3,...C('T5'),1.03],
+ [55.7,...mid('T5','T6'),.62],[56.1,...C('T6'),1],[63.5,...C('T6'),1],[64.2,...C('T6',470,1250),1.28],[66.6,...C('T6',470,1250),1.28],
+ [68.5,...C('T7'),1],[78.4,...C('T7'),1.03],
+ [78.85,...mid('T7','T8'),.62],[79.3,...C('T8'),1],[91.7,...C('T8'),1.03],
+ [92.15,...mid('T8','T9'),.62],[92.6,...C('T9'),1],[107.7,...C('T9'),1.03],
+ [108.5,1840,3300,.24],[109.4,...C('T10'),1],[117.6,...C('T10'),1.03],
+ [118.0,...mid('T10','T11'),.62],[118.45,...C('T11'),1],[137.4,...C('T11'),1.04]
+];
+function camAt(t){
+  let i=0;while(i<CAM.length-1&&CAM[i+1][0]<=t)i++;
+  if(i>=CAM.length-1)return CAM[CAM.length-1].slice(1);
+  const a=CAM[i],b=CAM[i+1],u=inout(P(t,a[0],b[0]-a[0]));
+  // zoom-outs read better if scale moves on a log curve
+  return [lerp(a[1],b[1],u),lerp(a[2],b[2],u),Math.exp(lerp(Math.log(a[3]),Math.log(b[3]),u))];
+}
+// trail connecting tiles in viewing order (seen during zoom-outs)
+(function(){const order=['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11'];const tr=$('trail');
+  let d='';order.forEach((k,i)=>{const [x,y]=C(k);d+=(i?' L':'M')+x+' '+y;});
+  el(tr,'path',{d,fill:'none',stroke:'#B9A98A','stroke-width':14,'stroke-dasharray':'2 34','stroke-linecap':'round'});})();
+
+// ---------------- presenter: full (1) <-> floating frame (0) ----------------
+const MODE=[[0,1],[4.85,1],[5.45,0],[24.55,0],[24.95,1],[26.4,1],[26.95,0],[66.85,0],[67.25,1],[70.75,1],[71.3,0],[126.55,0],[127.1,1]];
+function modeAt(t){let i=0;while(i<MODE.length-1&&MODE[i+1][0]<=t)i++;if(i>=MODE.length-1)return MODE[MODE.length-1][1];
+  const a=MODE[i],b=MODE[i+1];return lerp(a[1],b[1],inout(P(t,a[0],b[0]-a[0])));}
+// punch-in zooms on emphasis words (full-screen moments)
+const PUNCH=[[3.45,.14],[25.3,.16],[68.95,.13],[121.2,0],[134.85,.10]];
+function punchAt(t){let z=0;for(const [a,amt] of PUNCH){if(t>=a)z=amt*out3(P(t,a,.22));}return z;}
+const PIP={x:690,y:210,w:340,h:430}, FULL={x:0,y:0,w:1080,h:1920};
+function placeVideo(t){
+  const f=modeAt(t);
+  const r={x:lerp(PIP.x,FULL.x,f),y:lerp(PIP.y,FULL.y,f),w:lerp(PIP.w,FULL.w,f),h:lerp(PIP.h,FULL.h,f)};
+  const B=$('vidbox');B.style.left=r.x+'px';B.style.top=r.y+'px';B.style.width=r.w+'px';B.style.height=r.h+'px';
+  B.style.borderRadius=lerp(28,0,f)+'px';
+  B.style.boxShadow=f<1?`0 0 0 ${lerp(9,0,f)}px #fff, 0 ${lerp(26,0,f)}px ${lerp(60,0,f)}px rgba(40,25,5,${lerp(.35,0,f)})`:'none';
+  const bob=(1-f)*Math.sin(t*1.3)*6;
+  B.style.transform=`translateY(${bob}px) rotate(${(1-f)*1.6}deg)`;
+  // source framing: full shows the whole frame (watermark cropped off the bottom); floating frame centres the face
+  const kb=1+.035*((t%9)/9);                         // slow drift so full-screen shots never sit dead still
+  const scF=1.1*kb*(1+punchAt(t)), scP=.56;
+  const sc=lerp(scP,scF,f);
+  const fx=lerp(500,540,f), fy=lerp(930,lerp(912,880,punchAt(t)*5),f);
+  const V=$('vid');V.style.transform=`translate(${r.w/2-fx*sc}px,${r.h/2-fy*sc}px) scale(${sc})`;
+  $('pipname').style.opacity=clamp(1-f*3);$('pipname').style.transform=`translateY(${bob}px)`;
+  return f;
+}
+
+// ---------------- generic element animation ----------------
+function fx(e,t){
+  const a=+e.dataset.in,k=e.dataset.fx,rot=+(e.dataset.rot||0);let o=1,tr='';
+  if(k==='up'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateY(${(1-x)*50}px)`;}
+  else if(k==='left'){const x=out3(P(t,a,.45));o=P(t,a,.25);tr=`translateX(${(1-x)*-160}px)`;}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`scale(${x>0?back(x):.3}) rotate(${rot}deg)`;}
+  else if(k==='stamp'){const x=P(t,a,.3);o=P(t,a,.08);tr=`rotate(${rot}deg) scale(${1.9-.9*out3(x)})`;}
+  else if(k==='card'){const x=out3(P(t,a,.5));o=P(t,a,.2);tr=`translateY(${(1-x)*140}px) rotate(${(1-x)*-4}deg)`;}
+  else if(k==='drop'){const x=P(t,a,.85);o=P(t,a,.05);tr=`translateY(${(1-bounce(x))*-1400}px)`;}
+  else if(k==='fade'){o=P(t,a,.3);}
+  e.style.opacity=o;e.style.transform=tr;
+}
+const all=[...document.querySelectorAll('[data-in]')];
+const hls=[...document.querySelectorAll('[data-hl]')];
+
+// ---------------- illustrations ----------------
+// T1 skin cross-section with two ceramide molecules
+const sk=$('skin1');
+el(sk,'rect',{x:0,y:520,width:960,height:240,fill:'#EFBFAA'});
+for(let i=0;i<9;i++)el(sk,'path',{d:`M${i*120-40} ${560+i%3*50} q60 -30 120 0 t120 0`,fill:'none',stroke:'#E3A58E','stroke-width':6});
+el(sk,'rect',{x:0,y:290,width:960,height:230,fill:'#F6D9CA'});
+for(let i=0;i<24;i++)el(sk,'ellipse',{cx:(i%8)*125+40+(i>>3)%2*60,cy:330+(i>>3)*70,rx:46,ry:26,fill:'#F0C8B5',stroke:'#E3B09A','stroke-width':3});
+for(let r=0;r<3;r++)for(let c=0;c<8;c++){const off=r%2?-60:0;el(sk,'rect',{x:c*125+off+4,y:150+r*46,width:116,height:40,rx:6,fill:['#6A3FA0','#7F58B0','#9A7AC4'][r]});}
+el(sk,'line',{x1:0,y1:148,x2:960,y2:148,stroke:'#3E1F6B','stroke-width':4});
+[['SKIN BARRIER',196],['EPIDERMIS',420],['DERMIS',650]].forEach(([s,y])=>{const tx=el(sk,'text',{x:944,y,'text-anchor':'end','font-family':'Inter','font-weight':800,'font-size':22,'letter-spacing':4,fill:'rgba(255,255,255,.85)'});tx.textContent=s;});
+function cer(parent,id,col){const g=el(parent,'g',{id});
+  el(g,'path',{d:'M-10 18 q-14 22 0 44 q14 22 0 44 M12 18 q14 22 0 44 q-14 22 0 44',fill:'none',stroke:col,'stroke-width':7,'stroke-linecap':'round'});
+  el(g,'circle',{cx:0,cy:0,r:24,fill:col,stroke:'#fff','stroke-width':4});return g;}
+const molA=cer(sk,'molA','#6A3FA0'), molB=cer(sk,'molB','#E4472B');
+const pathA=el(sk,'path',{d:'M260 30 C 250 120, 270 200, 260 320',fill:'none',stroke:'#6A3FA0','stroke-width':5,'stroke-dasharray':'4 12','stroke-linecap':'round'});
+const LA=pathA.getTotalLength();pathA.style.strokeDasharray=`4 12`;
+
+// T2 ceramide NP structure
+const np=$('npmol');
+el(np,'circle',{cx:200,cy:240,r:56,fill:'#9A74D0',stroke:'#3E1F6B','stroke-width':6});
+const npT=[];
+[[-26,'#3E1F6B'],[26,'#3E1F6B']].forEach(([dy,c])=>{let d=`M250 ${240+dy}`;for(let i=1;i<=12;i++)d+=` L${250+i*50} ${240+dy+(i%2?-18:18)}`;npT.push(el(np,'path',{d,fill:'none',stroke:c,'stroke-width':8,'stroke-linejoin':'round','stroke-linecap':'round'}));});
+npT.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.L=L;});
+const tH=el(np,'text',{x:200,y:330,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':22,fill:'#6d6457'});tH.textContent='KEPALA (polar)';
+const tT=el(np,'text',{x:560,y:330,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':22,fill:'#6d6457'});tT.textContent='EKOR LIPID';
+// brick walls with gaps that fill in
+function wall(svg,w,h,rows,cols,miss){const bricks=[];const bw=w/cols-8,bh=h/rows-8;
+  for(let r=0;r<rows;r++)for(let c=0;c<cols+1;c++){const off=r%2?-bw/2:0,x=c*(bw+8)+off;if(x<-10||x+bw>w+10)continue;
+    const b=el(svg,'rect',{x,y:r*(bh+8),width:bw,height:bh,rx:6,fill:['#6A3FA0','#7F58B0','#9A7AC4','#B39AD6'][r%4]});b.dataset.miss=miss.has(bricks.length)?1:0;bricks.push(b);}
+  return bricks;}
+const w2=wall($('wall2'),840,200,3,6,new Set([1,6,9,14]));
+const w8=wall($('wall8'),860,280,4,7,new Set([2,5,9,12,17,22,25]));
+// T3 rigid lattice + separating jar
+const lat=$('lattice'),latNodes=[];
+for(let r=0;r<5;r++)for(let c=0;c<8;c++){const x=70+c*108+(r%2)*54,y=60+r*96;
+  if(c<7)el(lat,'line',{x1:x,y1:y,x2:x+108,y2:y,stroke:'#8a7a60','stroke-width':6});
+  if(r<4){el(lat,'line',{x1:x,y1:y,x2:x+54*(r%2?1:-1)+54*(r%2?0:2)-54,y2:y+96,stroke:'#8a7a60','stroke-width':6});}
+  latNodes.push(el(lat,'rect',{x:x-22,y:y-22,width:44,height:44,rx:6,fill:'#9A74D0',stroke:'#3E1F6B','stroke-width':4}));}
+const jar=$('jar3');
+el(jar,'rect',{x:40,y:40,width:220,height:40,rx:10,fill:'#6A3FA0'});
+el(jar,'path',{d:'M30 80 h240 v200 a30 30 0 0 1 -30 30 h-180 a30 30 0 0 1 -30 -30z',fill:'#FBF7EE',stroke:'#1B1B1B','stroke-width':6});
+const blobs=[...Array(9)].map((_,i)=>el(jar,'circle',{cx:70+(i%3)*80,cy:150+Math.floor(i/3)*50,r:16+(i%2)*6,fill:'#E9D27A',stroke:'#B9982A','stroke-width':3}));
+// T4 bowl with three blobs that refuse to blend
+const bowl=$('bowl4');
+el(bowl,'path',{d:'M60 120 h560 a280 260 0 0 1 -560 0z',fill:'#FBF7EE',stroke:'#1B1B1B','stroke-width':7});
+el(bowl,'ellipse',{cx:340,cy:120,rx:280,ry:40,fill:'#EFE6D3',stroke:'#1B1B1B','stroke-width':7});
+const bb=[['#9A74D0',230],['#F2C14E',340],['#8CC63F',450]].map(([c,x])=>el(bowl,'circle',{cx:x,cy:200,r:44,fill:c,stroke:'#1B1B1B','stroke-width':4}));
+// T6 omega-3 chain bonding into ceramide
+const om=$('omega6');
+el(om,'circle',{cx:200,cy:320,r:62,fill:'#9A74D0',stroke:'#3E1F6B','stroke-width':6});
+let d1='M260 290';for(let i=1;i<=10;i++)d1+=` L${260+i*62} ${290+(i%2?-20:20)}`;el(om,'path',{d:d1,fill:'none',stroke:'#3E1F6B','stroke-width':9,'stroke-linejoin':'round','stroke-linecap':'round'});
+const omg=el(om,'g',{id:'omg'});
+let d2='M0 0';for(let i=1;i<=10;i++)d2+=` L${i*62} ${(i%2?-20:20)}`;el(omg,'path',{d:d2,fill:'none',stroke:'#D99A1E','stroke-width':11,'stroke-linejoin':'round','stroke-linecap':'round'});
+[2,5,8].forEach(i=>el(omg,'line',{x1:i*62,y1:(i%2?-20:20)-14,x2:i*62+62,y2:((i+1)%2?-20:20)-14,stroke:'#D99A1E','stroke-width':5}));
+const bond=el(om,'circle',{cx:262,cy:360,r:0,fill:'none',stroke:'#FFE14D','stroke-width':8});
+const omLbl=el(om,'text',{x:200,y:430,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':24,fill:'#6d6457'});omLbl.textContent='CERAMIDE';
+// T7 shield and oxygen
+const sh=$('shield7');
+const shield=el(sh,'path',{d:'M500 90 L780 190 C 780 470, 680 650, 500 740 C 320 650, 220 470, 220 190 Z',fill:'rgba(106,63,160,.10)',stroke:'#6A3FA0','stroke-width':10,'stroke-linejoin':'round'});
+const SL=shield.getTotalLength();shield.style.strokeDasharray=SL;
+let d3='M330 420';for(let i=1;i<=6;i++)d3+=` L${330+i*56} ${420+(i%2?-24:24)}`;el(sh,'path',{d:d3,fill:'none',stroke:'#D99A1E','stroke-width':12,'stroke-linejoin':'round','stroke-linecap':'round'});
+const oxy=[...Array(8)].map((_,i)=>{const g=el(sh,'g',{});el(g,'circle',{cx:-16,cy:0,r:22,fill:'#E4472B'});el(g,'circle',{cx:16,cy:0,r:22,fill:'#E4472B'});
+  const tx=el(g,'text',{x:0,y:8,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':20,fill:'#fff'});tx.textContent='O₂';
+  const a=i/8*Math.PI*2+.3;return {g,a};});
+// T8 redness calming
+const rd=$('red8');
+el(rd,'rect',{x:0,y:0,width:860,height:320,rx:18,fill:'#F4D3C2'});
+const spots=[[150,120,70],[330,200,90],[560,110,80],[720,220,70],[440,250,50]].map(([x,y,r])=>el(rd,'circle',{cx:x,cy:y,r,fill:'#E4472B'}));
+// T9 gauge + balance
+const ga=$('gauge9');
+const gx=270,gy=330,gr=190;
+[['#8CC63F',180,240],['#F2C14E',240,300],['#E4472B',300,360]].forEach(([c,a0,a1])=>{const p=(a)=>[gx+gr*Math.cos(a*Math.PI/180),gy+gr*Math.sin(a*Math.PI/180)];const [x0,y0]=p(a0),[x1,y1]=p(a1);
+  el(ga,'path',{d:`M${x0} ${y0} A ${gr} ${gr} 0 0 1 ${x1} ${y1}`,fill:'none',stroke:c,'stroke-width':40});});
+const needle=el(ga,'line',{x1:gx,y1:gy,x2:gx,y2:gy-160,stroke:'#1B1B1B','stroke-width':12,'stroke-linecap':'round'});
+el(ga,'circle',{cx:gx,cy:gy,r:20,fill:'#1B1B1B'});
+const gl=el(ga,'text',{x:gx,y:gy+80,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':26,'letter-spacing':3,fill:'#6d6457'});gl.textContent='AKTIVITI ENZIM';
+const scale9=el(ga,'g',{});
+el(ga,'line',{x1:700,y1:120,x2:700,y2:390,stroke:'#1B1B1B','stroke-width':10});el(ga,'path',{d:'M640 400 h120',stroke:'#1B1B1B','stroke-width':12,'stroke-linecap':'round'});
+const beam=el(ga,'g',{});el(beam,'line',{x1:-160,y1:0,x2:160,y2:0,stroke:'#1B1B1B','stroke-width':10,'stroke-linecap':'round'});
+el(beam,'path',{d:'M-160 0 l-40 70 h80z',fill:'none',stroke:'#1B1B1B','stroke-width':5});el(beam,'path',{d:'M160 0 l-40 70 h80z',fill:'none',stroke:'#1B1B1B','stroke-width':5});
+el(beam,'path',{d:'M-160 22 c-14 20 -20 28 -20 36 a20 18 0 0 0 40 0 c0 -8 -6 -16 -20 -36z',fill:'#F2C14E',stroke:'#8a5a10','stroke-width':3});
+el(beam,'path',{d:'M160 22 c-14 20 -20 28 -20 36 a20 18 0 0 0 40 0 c0 -8 -6 -16 -20 -36z',fill:'#9ED0E6',stroke:'#2a6a85','stroke-width':3});
+const bl=el(ga,'text',{x:700,y:460,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':24,'letter-spacing':3,fill:'#6d6457'});bl.textContent='MINYAK ⇄ LIPID';
+// hook jars (overlay)
+const jarsBox=$('jars');
+jarsBox.innerHTML=[0,1,2].map(i=>`<div style="left:${i*330}px;top:0;width:300px;height:300px" data-in="${1.0+i*.35}" data-fx="pop" class="jarI"><svg width="300" height="300" viewBox="0 0 300 300" style="position:absolute;left:0;top:0"><rect x="80" y="40" width="140" height="40" rx="10" fill="${['#6A3FA0','#2a6a85','#C9772B'][i]}"/><path d="M60 80 h180 v160 a24 24 0 0 1 -24 24 h-132 a24 24 0 0 1 -24 -24z" fill="#FBF7EE" stroke="#1B1B1B" stroke-width="6"/><rect x="80" y="140" width="140" height="56" fill="${['#E9DDF6','#DCEFF6','#F8E6D3'][i]}"/><text x="150" y="176" text-anchor="middle" font-family="Inter" font-weight="800" font-size="22" fill="#1B1B1B">CERAMIDE</text></svg></div>`).join('')
+ +[0,1].map(i=>`<div style="left:${290+i*330}px;top:110px;font-family:Playfair;font-weight:900;font-size:80px;color:#fff;text-shadow:0 4px 12px rgba(0,0,0,.5)" data-in="${1.5+i*.3}" data-fx="pop">=</div>`).join('');
+jarsBox.querySelectorAll('[data-in]').forEach(e=>all.push(e));
+
+// grain
+(function(){const c=$('noise'),x=c.getContext('2d'),im=x.createImageData(300,300);for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}x.putImageData(im,0,0);
+  c.style.width='1200px';c.style.height='2040px';c.style.imageRendering='pixelated';})();
+
+// ---------------- per-frame ----------------
+function overlayVis(t,f){
+  const show=(id,a,b)=>{const e=$(id);if(!e)return;const vis=t>=a&&t<b;e.style.visibility=vis?'visible':'hidden';if(vis&&t>b-.3){e.style.opacity=(+e.style.opacity||1)*(1-P(t,b-.3,.3));}};
+  show('o1',0,5.1);show('o1q',0,5.1);show('jars',0,5.1);
+  show('o2',24.6,26.6);show('o2b',24.6,26.6);
+  show('o3',67.0,71.0);
+  show('o4logo',126.6,999);show('o4',126.6,999);show('cta',126.6,999);
+}
+window.render=async function(t){
+  all.forEach(e=>fx(e,t));
+  hls.forEach(e=>{e.style.backgroundSize=`${out3(P(t,+e.dataset.hl,.45))*100}% 100%`;});
+  const f=placeVideo(t);
+  overlayVis(t,f);
+
+  // camera over the world of tiles
+  const [cx,cy,s]=camAt(t);
+  $('world').style.transform=`translate(${540-cx*s}px,${960-cy*s}px) scale(${s})`;
+
+  // T1 molecules
+  const aIn=P(t,9.8,.4),aDown=inout(P(t,12.0,.9));
+  molA.setAttribute('transform',`translate(260 ${lerp(30,330,aDown)}) scale(${aIn>0?back(aIn):0})`);
+  pathA.style.opacity=P(t,11.8,.3);pathA.style.strokeDashoffset=-t*30;
+  const bIn=P(t,10.3,.4),bDrop=P(t,13.6,.7);
+  molB.setAttribute('transform',`translate(${600+Math.sin(t*5)*3*(bDrop>=1)} ${lerp(30,96,bounce(bDrop))}) rotate(${(bDrop>=1?Math.sin(t*4)*6:0)}) scale(${bIn>0?back(bIn):0})`);
+  // T2 tails draw + wall repair
+  npT.forEach((p,i)=>p.style.strokeDashoffset=p.dataset.L*(1-out3(P(t,19.6+i*.2,.8))));
+  w2.forEach((b,i)=>{if(b.dataset.miss==='1'){const x=out3(P(t,22.3+i*.04,.4));b.style.opacity=x;b.style.transform=`translateY(${(1-x)*-80}px)`;}});
+  // T3 rigid lattice shakes, jar separates
+  const shake=t>30.0&&t<33.2?1:0;
+  lat.style.transform=`translate(${shake*Math.sin(t*61)*6}px,${shake*Math.cos(t*53)*4}px)`;
+  latNodes.forEach((n,i)=>n.setAttribute('fill',t>30.1?'#B39AD6':'#9A74D0'));
+  blobs.forEach((b,i)=>{const s=out3(P(t,31.8,1));b.setAttribute('cy',150+Math.floor(i/3)*50-s*(60-Math.floor(i/3)*10)+Math.sin(t*3+i)*3);});
+  // T4 bowl blobs wobble but never merge
+  bb.forEach((b,i)=>{const k=P(t,43.0,.5);b.setAttribute('cy',lerp(-80,200,bounce(k)));b.setAttribute('cx',[230,340,450][i]+Math.sin(t*2.4+i*2)*16);b.style.opacity=k>0?1:0;});
+  // T6 omega-3 chain flies in and clicks into place
+  const oIn=inout(P(t,62.2,1.0));
+  $('omg').setAttribute('transform',`translate(${lerp(1100,262,oIn)} ${lerp(140,360,oIn)}) rotate(${lerp(-20,0,oIn)})`);
+  const bk=P(t,63.2,.6);bond.setAttribute('r',bk>0&&bk<1?20+bk*80:0);bond.style.opacity=1-bk;
+  // T7 shield + oxygen bouncing off
+  shield.style.strokeDashoffset=SL*(1-out3(P(t,72.6,.8)));
+  oxy.forEach((o,i)=>{const lt=t-75.0-i*.35;if(lt<0){o.g.style.opacity=0;return;}
+    const ph=(lt%1.8)/1.8;const R=ph<.5?lerp(560,300,ph*2):lerp(300,560,(ph-.5)*2);
+    o.g.setAttribute('transform',`translate(${500+Math.cos(o.a)*R} ${415+Math.sin(o.a)*R*.9})`);o.g.style.opacity=1;});
+  // T8 bricks + redness calming
+  w8.forEach((b,i)=>{if(b.dataset.miss==='1'){const x=out3(P(t,82.6+i*.03,.45));b.style.opacity=x;b.style.transform=`translateY(${(1-x)*-90}px)`;}});
+  spots.forEach((s,i)=>{const k=P(t,86.0+i*.25,1.4);s.style.opacity=lerp(.75,.06,inout(k));s.setAttribute('r',[70,90,80,70,50][i]*lerp(1,.7,k)+Math.sin(t*3+i)*3*(1-k));});
+  // T9 gauge settles, scale balances
+  const g9=inout(P(t,97.4,1.4));const ang=lerp(70,0,g9)+Math.sin(t*9)*3*(1-g9);
+  needle.setAttribute('transform',`rotate(${ang} ${gx} ${gy})`);
+  const tilt=lerp(-16,0,inout(P(t,98.2,1.2)))+Math.sin(t*2)*1.2;
+  beam.setAttribute('transform',`translate(700 150) rotate(${tilt})`);
+  // T10 strike-through
+  const st=$('strike');st.style.backgroundImage=`linear-gradient(transparent 52%, #E4472B 52%, #E4472B 60%, transparent 60%)`;st.style.backgroundRepeat='no-repeat';st.style.backgroundSize=`${out3(P(t,110.8,.4))*100}% 100%`;
+  // CTA bag wiggle
+  $('bag').style.transform=t>134.4?`rotate(${Math.sin((t-134.4)*10)*8*Math.exp(-(t-134.4)*1.2)}deg)`:'';
+
+  // grain jitter
+  const g=Math.floor(t*24);$('noise').style.transform=`translate(${(g*37)%60-30}px,${(g*53)%60-30}px)`;
+
+  // presenter frame
+  const n=Math.min(NFR,Math.floor(t*30)+1);
+  const V=$('vid');const src=`file://${FRAMES}/f${String(n).padStart(5,'0')}.jpg`;
+  if(FRAMES&&V.getAttribute('src')!==src){V.src=src;try{await V.decode();}catch(e){}}
+};
+window.render(0);
+</script>
+</body>
+</html>

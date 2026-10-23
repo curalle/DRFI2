@@ -79,3 +79,39 @@ node render-intro.js microencap.html video              # output/curalle_microen
 node render-intro.js products.html video                # output/curalle_products_16x9.mp4
 node render-intro.js recognition.html video             # output/curalle_recognition_16x9.mp4
 ```
+
+---
+
+# Video Penerangan Ceramide (9:16, 2:17, dengan suara)
+
+`output/curalle_ceramide_explainer_9x16.mp4`: 1080×1920, 30fps, audio AAC (suara asal, highpass 80Hz + loudnorm −14 LUFS).
+
+Disunting daripada rakaman selfie 2:51 (`video_20261023_170430.mp4`):
+- Jeda panjang (>0.35s) dipendekkan kepada ~0.25s; 40 segmen, 2:15.6.
+- Ayat berulang dibuang: "sesuai untuk segala jenis kulit" pertama (diulang semula) dan cubaan pertama "Jangan lupa…".
+- Grafik gaya Vox pada "jubin kertas"; kamera zoom keluar / pan / zoom masuk antara jubin.
+- Penyampai skrin penuh untuk hook, "Tapi masalahnya", "Apa bezanya?" dan CTA; selebihnya bingkai terapung (atas kanan, elak butang TikTok).
+
+| Masa | Babak |
+|---|---|
+| 0–5s | Hook: "Semua pelembap ceramide sama je?" + 3 balang |
+| 5–16s | Formulasi tentukan meresap masuk vs duduk di atas (keratan kulit) |
+| 16–24.6s | Contoh Ceramide NP: repair barrier, lock in moisture |
+| 24.6–44s | "TAPI…" molekul keras, susah stabil; perlu campur lipid berasingan |
+| 44–55s | CURALLÉ: Omega-3 Ceramide Flex = linseed oil + palm oil → aminopropanediol esters |
+| 55–67s | Pseudo-ceramide biomimetik; omega-3 diikat dalam rantai |
+| 67–71s | "Apa bezanya?" |
+| 71–108s | 1 Lebih stabil · 2 Dual action · 3 Kawal 5-alpha reductase, tanpa melekit |
+| 108–126s | Zoom keluar penuh → "Advanced barrier support"; tenang, kuat & sihat |
+| 126–137s | Ekzema + CTA "Tekan beg kuning" |
+
+Render (rakaman asal tidak disimpan dalam repo):
+```
+# 1) S=<folder kerja> dengan S/src/user.mp4 dan S/src/audio.wav (16kHz mono)
+python3 edit/cuts.py $S          # → S/edit/keep.json (senarai segmen; salinan dalam edit/keep.json)
+python3 edit/render_cut.py $S    # → S/edit/cut.mkv
+ffmpeg -i $S/edit/cut.mkv -q:v 3 frames_dir/f%05d.jpg
+ffmpeg -i $S/edit/cut.mkv -vn -af "highpass=f=80,loudnorm=I=-14:TP=-1.5:LRA=11" voice.wav
+node render-explainer.js stills <framesDir> 5,45,109
+node render-explainer.js video  <framesDir> <voice.wav>
+```
