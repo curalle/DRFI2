@@ -1,5 +1,5 @@
 // Renders explainer.html (1080x1920) with the presenter's frames and voice track.
-// Page: explainer.html by default, or set PAGE=eczema.html.
+// Page: explainer.html by default, or set PAGE=eczema.html. BROLL=<dir> points at B-roll frames from edit/broll.py.
 // Usage:
 //   node render-explainer.js stills <framesDir> 1,5.5,30
 //   node render-explainer.js video  <framesDir> <voice.wav> [workers=4]
@@ -14,7 +14,7 @@ const PAGE=process.env.PAGE||'explainer.html';
 const n=fs.readdirSync(framesDir).filter(f=>f.endsWith('.jpg')).length;
 async function page(b){
   const p=await b.newPage({viewport:{width:1080,height:1920}});
-  await p.goto('file://'+path.join(__dirname,PAGE)+`?frames=${encodeURIComponent(path.resolve(framesDir))}&n=${n}`);
+  await p.goto('file://'+path.join(__dirname,PAGE)+`?frames=${encodeURIComponent(path.resolve(framesDir))}&n=${n}`+(process.env.BROLL?`&broll=${encodeURIComponent(path.resolve(process.env.BROLL))}`:''));
   await p.evaluate(()=>document.fonts.ready);
   await p.waitForTimeout(300);
   return p;

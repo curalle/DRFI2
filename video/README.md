@@ -139,6 +139,20 @@ Disunting daripada rakaman 4:11 (`video_20261027_130719.mp4`): jeda >0.35s dipen
 | 190–212s | Pelembap vs rawatan spesifik; tip log ruam & bawa produk |
 | 212–233s | Save video, Siri DRFI, terima kasih |
 
+**B-roll** (8 sisipan, senarai dalam `edit/eczema.json` → `broll`): klip melintang dipaparkan sebagai kad foto (zoom masuk/keluar) atas latar kabur, klip menegak penuh skrin; penyampai kekal dalam bingkai terapung.
+
+| Masa | Klip Mixkit | Label |
+|---|---|---|
+| 0:19 | Saintis & mikroskop (4733) | (kad nama) |
+| 1:35 | Ibu & anak membasuh (8716) → air paip (10334) → buih sabun (44799) | Cuci pinggan / Air / Sabun |
+| 1:58 | Cincin (5218) | Nikel, cth. barang kemas |
+| 2:46 | Saintis sediakan sampel (4767) | Kadang-kadang perlu ujian |
+| 3:11 | Sapu krim pelembap (50426) | Pelembap: kekalkan hidrasi |
+| 3:22 | Menulis nota (42655) | Catat log ruam |
+
+Lesen: semua klip berlabel **Mixkit Stock Video Free License** (guna komersial, tanpa atribusi). Klip berlabel "Restricted" sengaja tidak digunakan.
+
 ```
-PAGE=eczema.html node render-explainer.js video <framesDir> <voice.wav>
+python3 edit/broll.py edit/eczema.json <klipMixkit> <brollDir>
+PAGE=eczema.html BROLL=<brollDir> node render-explainer.js video <framesDir> <voice.wav>
 ```

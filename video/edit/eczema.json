@@ -1,3 +1,92 @@
-{"src":"src2","start":0.45,"end":241.95,"noise_db":-29,
- "remove":[[107.40,110.50]],
- "notes":["misspoken 'semestinya start sebab allergic', corrected immediately at 110.58","end after the first 'Thank you'; camera moves after that"]}
+{
+ "src": "src2",
+ "start": 0.45,
+ "end": 241.95,
+ "noise_db": -29,
+ "remove": [
+  [
+   107.4,
+   110.5
+  ]
+ ],
+ "notes": [
+  "misspoken 'semestinya start sebab allergic', corrected immediately at 110.58",
+  "end after the first 'Thank you'; camera moves after that"
+ ],
+ "broll": [
+  {
+   "id": "e1",
+   "clip": "4733",
+   "src": "https://mixkit.co/free-stock-video/scientist-observing-through-a-microscope-4733/",
+   "in": 2.0,
+   "start": 19.35,
+   "end": 23.75,
+   "caption": ""
+  },
+  {
+   "id": "e2",
+   "clip": "8716",
+   "src": "https://mixkit.co/free-stock-video/woman-with-her-daughter-washing-dishes-together-8716/",
+   "in": 3.0,
+   "start": 95.5,
+   "end": 97.7,
+   "caption": "Cuci pinggan setiap hari"
+  },
+  {
+   "id": "e3",
+   "clip": "10334",
+   "src": "https://mixkit.co/free-stock-video/tap-turns-on-to-pour-water-seen-from-below-10334/",
+   "in": 0.3,
+   "start": 97.7,
+   "end": 98.35,
+   "caption": "Air"
+  },
+  {
+   "id": "e4",
+   "clip": "44799",
+   "src": "https://mixkit.co/free-stock-video/colorful-iridescent-surface-of-a-soap-bubble-44799/",
+   "in": 2.0,
+   "start": 98.35,
+   "end": 99.65,
+   "caption": "Sabun",
+   "full": true
+  },
+  {
+   "id": "e5",
+   "clip": "5218",
+   "src": "https://mixkit.co/free-stock-video/engagement-jewelry-5218/",
+   "in": 2.0,
+   "start": 117.9,
+   "end": 119.45,
+   "caption": "Nikel, cth. barang kemas"
+  },
+  {
+   "id": "e6",
+   "clip": "4767",
+   "src": "https://mixkit.co/free-stock-video/scientist-in-a-laboratory-preparing-a-sample-4767/",
+   "in": 1.0,
+   "start": 166.4,
+   "end": 170.6,
+   "caption": "Kadang-kadang perlu ujian"
+  },
+  {
+   "id": "e7",
+   "clip": "50426",
+   "src": "https://mixkit.co/free-stock-video/a-young-woman-applies-skincare-moisturizing-cream-on-her-face-50426/",
+   "in": 0.5,
+   "start": 190.9,
+   "end": 194.2,
+   "caption": "Pelembap: kekalkan hidrasi"
+  },
+  {
+   "id": "e8",
+   "clip": "42655",
+   "src": "https://mixkit.co/free-stock-video/a-woman-writing-in-her-spiral-notebook-42655/",
+   "in": 1.0,
+   "start": 202.3,
+   "end": 204.95,
+   "caption": "Catat log ruam"
+  }
+ ],
+ "broll_license": "All B-roll clips are Mixkit 'Stock Video Free License' (videoFree): commercial use, no attribution. Clips marked 'Restricted' were not used."
+}
