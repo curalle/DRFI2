@@ -1,23 +1,21 @@
+# Builds a keep-list of speech segments from a talking-head recording.
+# Usage: python3 cuts.py <config.json> <workdir>
+#   config: {"src":"src2","start":0.5,"end":241.9,"noise_db":-29,"remove":[[a,b],...]}
+#   reads <workdir>/<src>/audio.wav, writes <workdir>/<src>/keep.json
 import json,re,subprocess,sys
-S=sys.argv[1]
+cfg=json.load(open(sys.argv[1]));S=sys.argv[2];D=f"{S}/{cfg['src']}"
 FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
-log=subprocess.run([FF,'-hide_banner','-i',f'{S}/src/audio.wav','-af','silencedetect=noise=-32dB:d=0.35','-f','null','-'],capture_output=True,text=True).stderr
-st=[float(x) for x in re.findall(r'silence_start: ([0-9.]+)',log)]
-en=[float(x) for x in re.findall(r'silence_end: ([0-9.]+)',log)]
-sil=list(zip(st,en))
-# speech = complement of silence within [3.30, 167.95]
-A,B=3.30,167.95
+log=subprocess.run([FF,'-hide_banner','-i',f'{D}/audio.wav','-af',f"silencedetect=noise={cfg.get('noise_db',-32)}dB:d=0.35",'-f','null','-'],capture_output=True,text=True).stderr
+sil=list(zip([float(x) for x in re.findall(r'silence_start: ([0-9.]+)',log)],[float(x) for x in re.findall(r'silence_end: ([0-9.]+)',log)]))
+A,B=cfg['start'],cfg['end']
 speech=[];cur=A
 for s,e in sil:
     if e<=A or s>=B: continue
     if s>cur: speech.append([cur,s])
     cur=max(cur,e)
 if cur<B: speech.append([cur,B])
-PAD=0.12
+PAD=0.12   # pauses longer than 0.35s shrink to ~0.24s
 keep=[[max(A,a-PAD),min(B,b+PAD)] for a,b in speech]
-# manual removals (original seconds)
-remove=[(140.40,147.22),   # first "sesuai untuk segala jenis kulit" (said again at 147.3)
-        (157.30,164.40)]   # first "Jangan lupa" attempt + pause; restarted at 164.5
 def sub(segs,r):
     out=[]
     for a,b in segs:
@@ -25,13 +23,11 @@ def sub(segs,r):
         if a<r[0]: out.append([a,r[0]])
         if b>r[1]: out.append([r[1],b])
     return out
-for r in remove: keep=sub(keep,r)
-# merge overlaps / tiny gaps, drop slivers
+for r in cfg.get('remove',[]): keep=sub(keep,r)
 m=[]
 for a,b in sorted(keep):
     if m and a-m[-1][1]<0.08: m[-1][1]=max(m[-1][1],b)
     else: m.append([a,b])
 keep=[[round(a,3),round(b,3)] for a,b in m if b-a>0.12]
-tot=sum(b-a for a,b in keep)
-json.dump(keep,open(f'{S}/edit/keep.json','w'))
-print(len(keep),'segments, total',round(tot,2),'s')
+json.dump(keep,open(f'{D}/keep.json','w'))
+print(len(keep),'segments, total',round(sum(b-a for a,b in keep),2),'s')

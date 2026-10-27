@@ -108,10 +108,37 @@ Disunting daripada rakaman selfie 2:51 (`video_20261023_170430.mp4`):
 Render (rakaman asal tidak disimpan dalam repo):
 ```
 # 1) S=<folder kerja> dengan S/src/user.mp4 dan S/src/audio.wav (16kHz mono)
-python3 edit/cuts.py $S          # → S/edit/keep.json (senarai segmen; salinan dalam edit/keep.json)
-python3 edit/render_cut.py $S    # → S/edit/cut.mkv
-ffmpeg -i $S/edit/cut.mkv -q:v 3 frames_dir/f%05d.jpg
-ffmpeg -i $S/edit/cut.mkv -vn -af "highpass=f=80,loudnorm=I=-14:TP=-1.5:LRA=11" voice.wav
+python3 edit/cuts.py edit/ceramide.json $S        # → S/src/keep.json (salinan: edit/ceramide.keep.json)
+python3 edit/render_cut.py edit/ceramide.json $S  # → S/src/cut.mkv
+ffmpeg -i $S/src/cut.mkv -q:v 3 frames_dir/f%05d.jpg
+ffmpeg -i $S/src/cut.mkv -vn -af "highpass=f=80,loudnorm=I=-14:TP=-1.5:LRA=11" voice.wav
 node render-explainer.js stills <framesDir> 5,45,109
 node render-explainer.js video  <framesDir> <voice.wav>
+```
+
+---
+
+# Siri DRFI: Ekzema (9:16, 3:53, dengan suara)
+
+`output/drfi_eczema_explainer_9x16.mp4`, halaman `eczema.html`, potongan `edit/eczema.json`.
+
+Disunting daripada rakaman 4:11 (`video_20261027_130719.mp4`): jeda >0.35s dipendekkan (ambang −29 dB kerana bunyi latar bilik), ayat tersasul "semestinya start sebab allergic" dibuang, tamat selepas "Thank you" pertama. 17 segmen, 3:51.5.
+
+| Masa | Babak |
+|---|---|
+| 0–7s | Hook penuh: "Anak naik ruam & gatal-gatal…" → ECZEMA? |
+| 7–17s | "Sebut eczema je tak cukup", kanta pembesar atas ruam |
+| 17–24s | Kad nama: Ts. Dr Fareez Ismail, Siri DRFI, CURALLÉ |
+| 24–52s | Istilah payung, simptom, pathway berbeza, 1 krim ≠ semua ruam |
+| 52–89s | Contoh 1 Atopic dermatitis: imun ↔ barrier, IL-4/IL-13, filaggrin ↓, barrier lemah |
+| 89–108s | Contoh 2 Irritant contact dermatitis: pinggan, air, sabun, geseran → lapisan luar rosak |
+| 108–122s | Contoh 3 Allergic contact dermatitis: imun kenal pasti alergen (nikel, wangian) |
+| 122–129s | Zoom keluar atas tiga contoh → gunung ais: sama di permukaan, punca berbeza |
+| 129–175s | 3 soalan penting + peta badan (tangan, lipatan), jumpa doktor & ujian |
+| 175–190s | Mummies: tak perlu hafal; rupa ruam = petunjuk, bukan diagnosis |
+| 190–212s | Pelembap vs rawatan spesifik; tip log ruam & bawa produk |
+| 212–233s | Save video, Siri DRFI, terima kasih |
+
+```
+PAGE=eczema.html node render-explainer.js video <framesDir> <voice.wav>
 ```

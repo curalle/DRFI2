@@ -1,4 +1,5 @@
 // Renders explainer.html (1080x1920) with the presenter's frames and voice track.
+// Page: explainer.html by default, or set PAGE=eczema.html.
 // Usage:
 //   node render-explainer.js stills <framesDir> 1,5.5,30
 //   node render-explainer.js video  <framesDir> <voice.wav> [workers=4]
@@ -9,10 +10,11 @@ const fs=require('fs'),path=require('path');
 const FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
 const FPS=30,FR=path.join(__dirname,'frames');
 const [mode,framesDir,arg,workers]=process.argv.slice(2);
+const PAGE=process.env.PAGE||'explainer.html';
 const n=fs.readdirSync(framesDir).filter(f=>f.endsWith('.jpg')).length;
 async function page(b){
   const p=await b.newPage({viewport:{width:1080,height:1920}});
-  await p.goto('file://'+path.join(__dirname,'explainer.html')+`?frames=${encodeURIComponent(path.resolve(framesDir))}&n=${n}`);
+  await p.goto('file://'+path.join(__dirname,PAGE)+`?frames=${encodeURIComponent(path.resolve(framesDir))}&n=${n}`);
   await p.evaluate(()=>document.fonts.ready);
   await p.waitForTimeout(300);
   return p;
@@ -23,7 +25,7 @@ async function page(b){
     const p=await page(b);
     for(const t of arg.split(',').map(Number)){
       await p.evaluate(t=>render(t),t);
-      await p.screenshot({path:`still_explainer_${t}.png`});
+      await p.screenshot({path:`still_${path.basename(PAGE,'.html')}_${t}.png`});
     }
   } else {
     const W=+(workers||4);
