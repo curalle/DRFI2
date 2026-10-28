@@ -1,0 +1,377 @@
+# Content for pompholyx.html (9:16). make_pompholyx.py splices these into the eczema.html engine.
+
+TITLE = 'DRFI Pompholyx Explainer 9:16'
+DURATION = 165.8
+OUTPUT = 'output/drfi_pompholyx_explainer_9x16.mp4'
+NFR = 4934
+
+TILES = r'''
+  <!-- T1: "ruam panas" / "tangan naik air"? -> dyshidrotic eczema (0,0) -->
+  <div class="tile" id="T1" style="left:0;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="9.5" data-fx="up">Ramai panggil…</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="10.3" data-fx="up"><span class="strike" data-st="12.9">ruam panas?</span></div>
+      <div data-in="11.4" data-fx="up"><span class="strike" data-st="13.1">tangan naik air?</span></div>
+    </div>
+    <div class="card" style="left:70px;top:700px;width:940px;height:300px" data-in="13.0" data-fx="card">
+      <div class="lbl" style="left:40px;top:40px;color:var(--red)">Sebenarnya, boleh jadi</div>
+      <div style="left:40px;top:100px;font-family:Playfair;font-weight:900;font-size:84px;line-height:1.05"><span class="hl" data-hl="14.9">Dyshidrotic</span><br>eczema</div>
+    </div>
+    <svg style="left:140px;top:1050px" width="800" height="620" viewBox="0 0 800 620" id="hand1"></svg>
+  </div>
+
+  <!-- T2: pompholyx: tiny, very itchy blisters (1300,0) -->
+  <div class="tile" id="T2" style="left:1300px;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="21.7" data-fx="up">Juga dikenali sebagai</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="21.8" data-fx="up"><span class="hl" data-hl="22.1">Pompholyx</span></div>
+    </div>
+    <div class="body" style="left:70px;top:430px;width:600px" data-in="22.9" data-fx="up">Lepuh <b>kecil</b> yang <b>sangat gatal</b>.</div>
+    <svg style="left:120px;top:620px" width="840" height="700" viewBox="0 0 840 700" id="hand2"></svg>
+    <div class="lbl" style="left:70px;top:1380px" data-in="25.8" data-fx="up">Boleh berlaku di</div>
+    <div class="chip" style="left:70px;top:1440px" data-in="26.9" data-fx="left"><b>1</b>Tangan</div>
+    <div class="chip" style="left:330px;top:1440px" data-in="27.6" data-fx="left"><b>2</b>Kaki</div>
+    <div class="chip" style="left:560px;top:1440px" data-in="28.9" data-fx="left"><b>+</b>Kedua-duanya</div>
+  </div>
+
+  <!-- T3: the sweat-duct myth (2600,0) -->
+  <div class="tile" id="T3" style="left:2600px;top:0">
+    <div class="kicker" style="left:70px;top:250px;color:var(--gold)" data-in="30.0" data-fx="up">Fun fact</div>
+    <div class="title" style="left:70px;top:300px;width:620px;font-size:72px">
+      <div data-in="31.4" data-fx="up">Dulu: saluran</div>
+      <div data-in="33.4" data-fx="up">peluh tersumbat?</div>
+    </div>
+    <svg style="left:60px;top:620px" width="960" height="800" viewBox="0 0 960 800" id="sweat3"></svg>
+    <div class="tag red" style="left:520px;top:900px;font-size:110px;transform-origin:center" data-in="39.6" data-fx="stamp" data-rot="-10">MITOS</div>
+    <div class="body" style="left:70px;top:1480px;width:940px" data-in="35.3" data-fx="up">Perubatan moden dah buktikan: <b>bukan</b> sebab peluh tersumbat.</div>
+  </div>
+
+  <!-- T4: popping the blister does not remove the cause (2600,1900) -->
+  <div class="tile" id="T4" style="left:2600px;top:1900px">
+    <div class="kicker" style="left:70px;top:250px;color:var(--red)" data-in="40.4" data-fx="up">Tolong jangan anggap</div>
+    <div class="title" style="left:70px;top:300px;width:620px;font-size:76px">
+      <div data-in="42.4" data-fx="up">Pecahkan lepuh</div>
+      <div data-in="44.4" data-fx="up">= buang <span class="hl" data-hl="46.0">punca?</span></div>
+    </div>
+    <svg style="left:90px;top:640px" width="900" height="760" viewBox="0 0 900 760" id="pop4"></svg>
+    <div class="tag red" style="left:640px;top:760px;font-size:120px;padding:0 30px;transform-origin:center" data-in="44.6" data-fx="stamp" data-rot="12">✗</div>
+  </div>
+
+  <!-- T5: popped blisters -> barrier disrupted -> water, soap, friction sting (1300,1900) -->
+  <div class="tile" id="T5" style="left:1300px;top:1900px">
+    <div class="kicker" style="left:70px;top:250px" data-in="47.9" data-fx="up">Bila lepuh pecah</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="52.4" data-fx="up">Skin barrier</div>
+      <div data-in="54.0" data-fx="up"><span class="hl" data-hl="54.4">terganggu.</span></div>
+    </div>
+    <svg style="left:90px;top:640px" width="900" height="420" viewBox="0 0 900 420" id="wall5"></svg>
+    <div class="card" style="left:70px;top:1110px;width:210px;height:230px" data-in="60.3" data-fx="pop"><svg style="left:45px;top:15px" width="120" height="160" viewBox="0 0 120 160"><path d="M60 10 C 30 60, 15 85, 15 105 a45 40 0 0 0 90 0 C 105 85, 90 60, 60 10Z" fill="#9ED0E6" stroke="#2a6a85" stroke-width="6"/></svg><div style="left:0;width:210px;top:178px;text-align:center;font-weight:800;font-size:26px">Air</div></div>
+    <div class="card" style="left:300px;top:1110px;width:210px;height:230px" data-in="60.45" data-fx="pop"><svg style="left:25px;top:20px" width="160" height="150" viewBox="0 0 160 150"><circle cx="60" cy="80" r="40" fill="#E9F4FA" stroke="#2a6a85" stroke-width="5"/><circle cx="110" cy="60" r="26" fill="#E9F4FA" stroke="#2a6a85" stroke-width="5"/><circle cx="112" cy="112" r="18" fill="#E9F4FA" stroke="#2a6a85" stroke-width="5"/></svg><div style="left:0;width:210px;top:178px;text-align:center;font-weight:800;font-size:26px">Sabun</div></div>
+    <div class="card" style="left:530px;top:1110px;width:210px;height:230px" data-in="60.6" data-fx="pop"><svg style="left:55px;top:10px" width="100" height="170" viewBox="0 0 100 170"><rect x="22" y="40" width="56" height="120" rx="14" fill="#F2C14E" stroke="#1B1B1B" stroke-width="5"/><rect x="36" y="10" width="28" height="32" rx="4" fill="#2a6a85"/><rect x="60" y="14" width="30" height="10" fill="#2a6a85"/></svg><div style="left:0;width:210px;top:178px;text-align:center;font-weight:800;font-size:26px">Pencuci</div></div>
+    <div class="card" style="left:760px;top:1110px;width:250px;height:230px" data-in="60.75" data-fx="pop"><svg style="left:35px;top:30px" width="180" height="130" viewBox="0 0 180 130"><path d="M10 40 h150 l-22 -20 M170 90 h-150 l22 20" fill="none" stroke="#E4472B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="left:0;width:250px;top:178px;text-align:center;font-weight:800;font-size:26px">Geseran</div></div>
+    <div class="hand" style="left:180px;top:1420px;font-size:96px;transform-origin:center" data-in="62.4" data-fx="pop" data-rot="-5">Ouch! pedih amat sangat</div>
+  </div>
+
+  <!-- T6: the vicious cycle (0,1900) -->
+  <div class="tile" id="T6" style="left:0;top:1900px">
+    <div class="kicker" style="left:70px;top:250px;color:var(--red)" data-in="64.5" data-fx="up">Vicious cycle</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="64.9" data-fx="up">Kitaran yang</div>
+      <div data-in="65.2" data-fx="up"><span class="hl" data-hl="65.6">tak berhenti.</span></div>
+    </div>
+    <svg style="left:90px;top:600px" width="900" height="820" viewBox="0 0 900 820" id="cyc6"></svg>
+    <div class="chip" style="left:70px;top:1450px;font-size:34px" data-in="70.6" data-fx="left"><b>!</b>Susah pegang barang &amp; memasak</div>
+    <div class="chip" style="left:70px;top:1560px;font-size:34px" data-in="71.6" data-fx="left"><b>!</b>Ganggu rutin harian ibu-ibu</div>
+  </div>
+
+  <!-- T7: triggers (0,3800) -->
+  <div class="tile" id="T7" style="left:0;top:3800px">
+    <div class="kicker" style="left:70px;top:250px" data-in="74.6" data-fx="up">Habis tu, apa puncanya?</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="77.8" data-fx="up"><span class="hl" data-hl="78.3">Pencetus</span></div>
+      <div data-in="78.9" data-fx="up" style="font-size:60px;color:var(--muted)">(triggers)</div>
+    </div>
+    <div class="body" style="left:70px;top:500px;width:600px;font-size:34px" data-in="80.4" data-fx="up">Berbeza untuk <b>setiap orang</b>.</div>
+    <div class="card" style="left:70px;top:640px;width:940px;height:150px;display:flex;align-items:center" data-in="82.0" data-fx="card">
+      <svg style="left:34px;top:30px" width="90" height="90" viewBox="0 0 90 90"><circle cx="45" cy="45" r="42" fill="#6A3FA0"/><path d="M35 27 L64 45 L35 63Z" fill="#fff"/></svg>
+      <div style="left:150px;top:30px" class="lbl">Video saya sebelum ini</div>
+      <div style="left:150px;top:70px;font-family:Playfair;font-weight:900;font-size:44px">Eczema: istilah payung</div>
+    </div>
+    <div class="chip" style="left:70px;top:880px" data-in="89.8" data-fx="left"><b style="background:#3E1F6B">1</b>Stres</div>
+    <div class="chip" style="left:540px;top:880px" data-in="89.95" data-fx="left"><b style="background:#2a6a85">2</b>Perubahan cuaca</div>
+    <div class="chip" style="left:70px;top:1000px" data-in="90.1" data-fx="left"><b style="background:#D99A1E">3</b>Bahan kimia tertentu</div>
+    <div class="chip" style="left:70px;top:1120px" data-in="90.3" data-fx="left"><b style="background:#E4472B">4</b>Sejarah ekzema</div>
+    <svg style="left:560px;top:1000px" width="460" height="560" viewBox="0 0 460 560" id="trig7"></svg>
+  </div>
+
+  <!-- T8: keep track (1300,3800) -->
+  <div class="tile" id="T8" style="left:1300px;top:3800px">
+    <div class="kicker" style="left:70px;top:250px" data-in="97.1" data-fx="up">Cara terbaik</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="97.9" data-fx="up">Keep</div>
+      <div data-in="98.2" data-fx="up"><span class="hl" data-hl="98.5">track.</span></div>
+    </div>
+    <div class="card" style="left:70px;top:640px;width:940px;height:620px" data-in="100.8" data-fx="card">
+      <div class="lbl" style="left:40px;top:36px">Catat dalam log</div>
+      <div class="chip" style="left:40px;top:110px" data-in="100.9" data-fx="left"><b>✓</b>Bila ia mula</div>
+      <div class="chip" style="left:40px;top:250px" data-in="101.6" data-fx="left"><b>✓</b>Produk baharu yang digunakan</div>
+      <div class="chip" style="left:40px;top:390px" data-in="103.6" data-fx="left"><b>✓</b>Aktiviti tangan</div>
+    </div>
+    <svg style="left:300px;top:1320px" width="480" height="340" viewBox="0 0 480 340" id="note8"></svg>
+  </div>
+
+  <!-- T9: what NOT to do (2600,3800) -->
+  <div class="tile" id="T9" style="left:2600px;top:3800px">
+    <div class="kicker" style="left:70px;top:250px;color:var(--red)" data-in="106.0" data-fx="up">Apa yang</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="106.9" data-fx="up" style="color:var(--red)">TIDAK patut</div>
+      <div data-in="107.6" data-fx="up">dibuat</div>
+    </div>
+    <div class="card" style="left:70px;top:640px;width:940px;height:200px" data-in="108.4" data-fx="left">
+      <div class="num" style="left:34px;top:52px;background:var(--red);box-shadow:0 8px 0 #a02f1b">✗</div>
+      <div style="left:160px;top:62px;width:740px;font-size:40px;font-weight:700;line-height:1.25">Pecahkan lepuh sendiri</div>
+    </div>
+    <div class="card" style="left:70px;top:880px;width:940px;height:200px" data-in="111.5" data-fx="left">
+      <div class="num" style="left:34px;top:52px;background:var(--red);box-shadow:0 8px 0 #a02f1b">✗</div>
+      <div style="left:160px;top:62px;width:740px;font-size:40px;font-weight:700;line-height:1.25">Sental kuat-kuat</div>
+    </div>
+    <div class="card" style="left:70px;top:1120px;width:940px;height:220px" data-in="113.7" data-fx="left">
+      <div class="num" style="left:34px;top:62px;background:var(--red);box-shadow:0 8px 0 #a02f1b">✗</div>
+      <div style="left:160px;top:50px;width:740px;font-size:40px;font-weight:700;line-height:1.25">Sapu bahan yang pedih semata-mata nak keringkan luka</div>
+    </div>
+  </div>
+
+  <!-- T10: when to see a doctor (2600,5700) -->
+  <div class="tile" id="T10" style="left:2600px;top:5700px">
+    <div class="kicker" style="left:70px;top:250px" data-in="118.4" data-fx="up">Bila perlu</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="118.9" data-fx="up">jumpa</div>
+      <div data-in="119.2" data-fx="up"><span class="hl" data-hl="119.6">doktor?</span></div>
+    </div>
+    <div class="chip no" style="left:70px;top:660px" data-in="119.3" data-fx="left"><b>!</b>Asyik berulang</div>
+    <div class="chip no" style="left:70px;top:780px" data-in="120.9" data-fx="left"><b>!</b>Sakit atau bernanah</div>
+    <div class="chip no" style="left:70px;top:900px" data-in="122.7" data-fx="left"><b>!</b>Ganggu pergerakan tangan</div>
+    <svg style="left:300px;top:1040px" width="480" height="420" viewBox="0 0 480 420" id="doc10"></svg>
+    <div class="tag pur" style="left:220px;top:1500px;font-size:56px;transform-origin:center" data-in="125.0" data-fx="stamp" data-rot="-3">Medical check-up</div>
+  </div>
+
+  <!-- T11: real treatment (1300,5700) -->
+  <div class="tile" id="T11" style="left:1300px;top:5700px">
+    <div class="kicker" style="left:70px;top:250px" data-in="126.2" data-fx="up">Rawatan sebenar</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="127.4" data-fx="up">Dua perkara</div>
+      <div data-in="127.7" data-fx="up"><span class="hl" data-hl="128.0">penting:</span></div>
+    </div>
+    <div class="card" style="left:70px;top:620px;width:430px;height:400px" data-in="128.0" data-fx="card">
+      <svg style="left:115px;top:40px" width="200" height="180" viewBox="0 0 200 180" id="fire11"></svg>
+      <div style="left:0;width:430px;top:250px;text-align:center;font-family:Playfair;font-weight:900;font-size:46px;line-height:1.1">Kawal<br>keradangan</div>
+    </div>
+    <div class="abs" style="left:505px;top:760px;font-family:Playfair;font-weight:900;font-size:90px;color:var(--muted)" data-in="132.0" data-fx="pop">+</div>
+    <div class="card" style="left:580px;top:620px;width:430px;height:400px" data-in="132.5" data-fx="card">
+      <svg style="left:65px;top:50px" width="300" height="170" viewBox="0 0 300 170" id="wall11"></svg>
+      <div style="left:0;width:430px;top:250px;text-align:center;font-family:Playfair;font-weight:900;font-size:46px;line-height:1.1">Jaga skin<br>barrier</div>
+    </div>
+    <div class="card" style="left:70px;top:1100px;width:940px;height:330px;background:#FFF4F1" data-in="135.2" data-fx="card">
+      <div class="lbl" style="left:40px;top:36px;color:var(--red)">Ingat</div>
+      <div style="left:40px;top:90px;width:860px;font-family:Playfair;font-weight:900;font-size:58px;line-height:1.12">Krim kosmetik biasa <span style="color:var(--red)">≠</span> <span class="hl" data-hl="138.4">penawar automatik.</span></div>
+    </div>
+  </div>
+
+  <!-- T12: photograph the active episode for the doctor (0,5700) -->
+  <div class="tile" id="T12" style="left:0;top:5700px">
+    <div class="kicker" style="left:70px;top:250px" data-in="146.4" data-fx="up">Tip untuk mak-mak</div>
+    <div class="title" style="left:70px;top:300px;width:600px">
+      <div data-in="147.0" data-fx="up">Tangkap gambar</div>
+      <div data-in="148.3" data-fx="up"><span class="hl" data-hl="149.0">masa aktif.</span></div>
+    </div>
+    <svg style="left:60px;top:640px" width="960" height="760" viewBox="0 0 960 760" id="snap12"></svg>
+    <div class="body" style="left:70px;top:1460px;width:940px" data-in="150.0" data-fx="up">…untuk <b>tunjuk kepada doktor</b> nanti.</div>
+  </div>
+'''
+
+OVERLAYS = r'''
+  <div class="ocard" id="o1" style="left:60px;top:230px;width:960px" data-in="0.4" data-fx="card">
+    <div style="font-family:Playfair;font-weight:900;font-size:72px;line-height:1.1">Bintik <span class="hl" data-hl="1.5">air kecil</span> di celah jari?</div>
+  </div>
+  <div class="tag red" id="o1s" style="left:220px;top:1180px;font-size:120px;transform-origin:center" data-in="4.7" data-fx="stamp" data-rot="-6">GATAL!</div>
+  <div class="chip" id="o1c" style="left:300px;top:1400px;font-size:40px" data-in="8.4" data-fx="left"><b style="background:var(--red)">!</b>Kulit menggelupas</div>
+
+  <div class="ocard" id="o2" style="left:60px;top:1300px;width:960px;padding:30px 40px 34px" data-in="17.2" data-fx="card">
+    <div style="font-weight:800;font-size:26px;letter-spacing:6px;color:var(--purple)">SIRI DRFI</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:66px;line-height:1.1;margin-top:8px">Ts. Dr Fareez Ismail</div>
+    <div style="display:flex;align-items:center;gap:20px;margin-top:14px"><div style="font-size:32px;color:var(--muted)">Penyelidik &amp; pengasas</div><img src="assets/logo.png" style="height:64px"></div>
+  </div>
+  <div class="tag pur" id="o2b" style="left:300px;top:1110px;font-size:52px;transform-origin:center" data-in="20.5" data-fx="stamp" data-rot="-3">a.k.a. Pompholyx</div>
+
+  <div class="tag red" id="o3" style="left:170px;top:1250px;font-size:150px;transform-origin:center" data-in="47.2" data-fx="stamp" data-rot="-8">BIG NO.</div>
+
+  <div class="ocard" id="o4" style="left:60px;top:230px;width:960px" data-in="92.3" data-fx="card">
+    <div style="font-size:36px;font-weight:800;color:var(--red)">Tapi ingat</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:66px;line-height:1.1;margin-top:6px">Jangan tiba-tiba <span class="hl" data-hl="94.3">buang semua makanan</span></div>
+    <div style="font-size:36px;color:var(--muted);margin-top:12px">…lepas tengok satu video.</div>
+  </div>
+
+  <div class="ocard" id="o5" style="left:60px;top:230px;width:960px" data-in="140.3" data-fx="card">
+    <div style="font-size:36px;color:var(--muted)">Mak-mak atau kawan asyik mengadu</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:76px;line-height:1.1;margin-top:6px">"Tangan <span class="hl" data-hl="144.6">naik air</span> lagi"?</div>
+  </div>
+
+  <div class="ocard" id="o6" style="left:60px;top:230px;display:flex;align-items:center;gap:28px" data-in="155.7" data-fx="card">
+    <svg width="90" height="110" viewBox="0 0 90 110" id="bm"><path d="M10 8 h70 v94 l-35 -26 l-35 26z" fill="#FFE14D" stroke="#1B1B1B" stroke-width="7" stroke-linejoin="round"/></svg>
+    <div><div style="font-weight:800;font-size:28px;letter-spacing:5px;color:var(--muted)">JANGAN LUPA</div><div style="font-family:Playfair;font-weight:900;font-size:76px;line-height:1">Save video ini</div></div>
+  </div>
+  <div class="ocard" id="o7" style="left:60px;top:1180px;width:960px" data-in="157.2" data-fx="card">
+    <div style="font-size:36px;color:var(--muted)">Share dengan yang masih percaya</div>
+    <div style="font-family:Playfair;font-weight:900;font-size:64px;line-height:1.1;margin-top:8px">mitos <span class="hl" data-hl="161.0">"peluh tersumbat"</span>.</div>
+  </div>
+  <div class="ocard" id="o8" style="left:60px;top:1180px;width:960px;display:flex;align-items:center;justify-content:space-between" data-in="162.6" data-fx="card">
+    <div style="font-family:Playfair;font-weight:900;font-size:70px;line-height:1.05">Jaga kulit anda.<br><span style="color:var(--purple)">Jumpa lagi!</span></div><img src="assets/logo.png" style="height:80px">
+  </div>
+'''
+
+OV = "[['o1',0,9.4],['o1s',0,9.4],['o1c',0,9.4],['o2',16.8,21.8],['o2b',16.8,21.8],['o3',46.2,47.95],['o4',91.9,97.2],['o5',139.8,146.5],['o6',152.3,999],['o7',152.3,162.5],['o8',162.5,999]]"
+
+TP = "{T1:[0,0],T2:[1300,0],T3:[2600,0],T4:[2600,1900],T5:[1300,1900],T6:[0,1900],T7:[0,3800],T8:[1300,3800],T9:[2600,3800],T10:[2600,5700],T11:[1300,5700],T12:[0,5700]}"
+ORDER = "['T1','T2','T3','T4','T5','T6','T7','T8','T9','T10','T11','T12']"
+
+CAM = r'''const CAM=[
+ [0,...C('T1'),1],[16.5,...C('T1'),1.03],
+ [21.0,...C('T2'),1],[23.2,...C('T2'),1],[24.0,...C('T2',540,960),1.12],[25.6,...C('T2',540,960),1.12],[26.3,...C('T2'),1],[29.6,...C('T2'),1.02],
+ [30.0,...mid('T2','T3'),.62],[30.45,...C('T3'),1],[39.2,...C('T3'),1],[39.7,...C('T3',540,1000),1.1],[40.0,...C('T3',540,1000),1.1],
+ [40.4,...mid('T3','T4'),.62],[40.85,...C('T4'),1],[46.2,...C('T4'),1.03],
+ [47.6,...C('T5'),1],[57.0,...C('T5'),1.02],[61.0,...C('T5'),1],[64.0,...C('T5'),1.03],
+ [64.4,...mid('T5','T6'),.62],[64.85,...C('T6'),1],[74.0,...C('T6'),1.03],
+ // "so what causes it?": pull back over everything so far, then drop to the triggers
+ [74.9,1840,1900,.26],[76.2,1840,1900,.26],[77.2,...C('T7'),1],[91.8,...C('T7'),1.03],
+ [96.6,...C('T8'),1],[105.6,...C('T8'),1.03],
+ [106.0,...mid('T8','T9'),.62],[106.45,...C('T9'),1],[118.0,...C('T9'),1.03],
+ [118.4,...mid('T9','T10'),.62],[118.85,...C('T10'),1],[126.0,...C('T10'),1.03],
+ [126.4,...mid('T10','T11'),.62],[126.85,...C('T11'),1],[139.6,...C('T11'),1.03],
+ [145.8,...C('T12'),1],[152.5,...C('T12'),1.04],[165.8,...C('T12'),1.04]
+];'''
+
+MODE = "[[0,1],[9.2,1],[9.7,0],[16.8,0],[17.25,1],[21.3,1],[21.75,0],[46.2,0],[46.55,1],[47.7,1],[48.1,0],[91.9,0],[92.3,1],[96.8,1],[97.2,0],[139.7,0],[140.1,1],[146.0,1],[146.45,0],[152.2,0],[152.65,1]]"
+PUNCH = "[[4.7,.13],[9.2,0],[17.2,0],[47.1,.15],[48,0],[94.2,.1],[97,0],[143.2,.1],[146,0],[156.0,.07],[162.6,.04]]"
+PIPNAME = 'Ts. Dr Fareez Ismail · DRFI'
+
+BR = """[['p1',57.0,60.2,'Air, sabun & pencuci',0],['p2',67.9,70.55,'Susah nak pegang barang & memasak',1],
+          ['p3',84.6,86.0,'Stres',1],['p4',86.0,87.4,'Perubahan cuaca',0],['p5',87.4,89.7,'Bahan kimia tertentu',0],
+          ['p6',98.7,100.75,'Catat bila ia mula',0]]"""
+
+ILLUSTRATIONS = r'''
+// hand with tiny blisters along the fingers (T1, T2)
+const HAND='M250 470 C 230 380, 220 300, 240 220 L 250 110 a22 22 0 0 1 44 0 L 300 210 L 320 70 a22 22 0 0 1 44 0 L 360 200 L 395 60 a22 22 0 0 1 44 4 L 430 210 L 470 100 a22 22 0 0 1 42 12 L 480 260 C 520 220, 580 200, 610 230 C 560 300, 520 380, 500 470 Z';
+function blisterHand(svg,tx,ty,sc){
+  const g=el(svg,'g',{transform:`translate(${tx} ${ty}) scale(${sc})`});
+  el(g,'path',{d:HAND,fill:'#F4D3C2',stroke:'#C79A86','stroke-width':6,'stroke-linejoin':'round'});
+  const spots=[[298,170],[302,140],[318,190],[362,150],[358,120],[372,175],[432,170],[428,140],[440,195],[470,190],[476,160],[300,215],[355,205],[420,215]];
+  const bl=spots.map(([x,y],i)=>{const b=el(g,'g',{});el(b,'circle',{cx:x,cy:y,r:9,fill:'rgba(255,255,255,.85)',stroke:'#E4472B','stroke-width':2.5});
+    el(b,'circle',{cx:x-3,cy:y-3,r:2.5,fill:'#fff'});return b;});
+  return {g,bl};
+}
+const H1=blisterHand($('hand1'),40,40,1.1);
+const H2=blisterHand($('hand2'),-60,-40,1.45);
+const itch2=[0,1,2].map(i=>el($('hand2'),'path',{d:`M${560+i*40} ${150+i*30} q20 -15 40 0 t40 0`,fill:'none',stroke:'#E4472B','stroke-width':6,'stroke-linecap':'round',opacity:0}));
+// sweat gland + duct with a "blockage" (T3)
+const s3=$('sweat3');
+el(s3,'rect',{x:0,y:120,width:960,height:680,fill:'#F6D9CA'});
+el(s3,'rect',{x:0,y:120,width:960,height:70,fill:'#E9B9A3'});
+txt(s3,860,170,'KULIT',{'font-size':24,'letter-spacing':4,fill:'#fff'});
+const duct=drawPath(el(s3,'path',{d:'M300 120 C 300 220, 340 300, 300 380 S 280 520, 320 580',fill:'none',stroke:'#2a6a85','stroke-width':16,'stroke-linecap':'round'}),31.6,1.0);
+const gland=el(s3,'path',{d:'M320 580 c 60 10, 80 60, 40 90 c -40 30, -110 10, -100 -40 c 10 -40, 70 -40, 80 -10 c 10 30, -40 40, -50 20',fill:'none',stroke:'#2a6a85','stroke-width':16,'stroke-linecap':'round',opacity:0});
+txt(s3,470,660,'KELENJAR PELUH',{'font-size':24,'letter-spacing':4,'text-anchor':'start',fill:'#2a6a85'});
+const plug=el(s3,'ellipse',{cx:302,cy:250,rx:30,ry:44,fill:'#C9A26B',stroke:'#1B1B1B','stroke-width':4,opacity:0});
+const plugL=txt(s3,360,258,'"tersumbat"?',{'font-family':'Caveat','font-size':52,'text-anchor':'start',fill:'#1B1B1B'});
+const drops3=[0,1,2].map(i=>el(s3,'circle',{cx:300,cy:600,r:12,fill:'#9ED0E6',opacity:0}));
+// blister + needle (T4)
+const p4=$('pop4');
+el(p4,'rect',{x:0,y:430,width:900,height:330,fill:'#F4D3C2'});
+const dome=el(p4,'path',{d:'M260 432 C 270 250, 630 250, 640 432 Z',fill:'rgba(255,255,255,.75)',stroke:'#E4472B','stroke-width':6});
+const shine=el(p4,'ellipse',{cx:380,cy:330,rx:50,ry:22,fill:'#fff',opacity:.9});
+const needle=el(p4,'g',{});el(needle,'line',{x1:0,y1:0,x2:300,y2:-180,stroke:'#9aa3ad','stroke-width':10,'stroke-linecap':'round'});el(needle,'circle',{cx:300,cy:-180,r:16,fill:'#9aa3ad'});
+const burst=[...Array(8)].map((_,i)=>{const a=i/8*Math.PI*2;return el(p4,'line',{x1:450+Math.cos(a)*120,y1:340+Math.sin(a)*80,x2:450+Math.cos(a)*190,y2:340+Math.sin(a)*130,stroke:'#E4472B','stroke-width':6,'stroke-linecap':'round',opacity:0});});
+const causeT=txt(p4,450,640,'PUNCA MASIH ADA',{'font-size':34,'letter-spacing':6,fill:'#E4472B'});
+// barrier wall with blisters popping into gaps (T5)
+const w5=$('wall5');const bricks5=[];
+for(let r=0;r<4;r++)for(let c=0;c<7;c++){const off=r%2?-62:0;const x=c*130+off;if(x<-60||x>860)continue;
+  bricks5.push(el(w5,'rect',{x,y:100+r*70,width:120,height:60,rx:8,fill:['#6A3FA0','#7F58B0','#9A7AC4','#B39AD6'][r]}));}
+const holes5=[3,8,10,15,19,22].map(i=>bricks5[i]).filter(Boolean);
+const bub5=holes5.map(b=>el(w5,'circle',{cx:+b.getAttribute('x')+60,cy:+b.getAttribute('y')-6,r:22,fill:'rgba(255,255,255,.9)',stroke:'#E4472B','stroke-width':4,opacity:0}));
+txt(w5,450,60,'SKIN BARRIER',{'font-size':26,'letter-spacing':5});
+// vicious cycle (T6)
+const c6=$('cyc6');const CX6=450,CY6=410,R6=290;
+const nodes6=[['Gatal','#E4472B'],['Garu & lepuh pecah','#D99A1E'],['Barrier rosak','#6A3FA0'],['Pedih & lebih gatal','#2a6a85']].map(([s,c],i)=>{
+  const a=-Math.PI/2+i*Math.PI/2;const x=CX6+Math.cos(a)*R6,y=CY6+Math.sin(a)*R6;const g=el(c6,'g',{});
+  el(g,'rect',{x:x-150,y:y-46,width:300,height:92,rx:46,fill:'#FBF7EE',stroke:c,'stroke-width':6});
+  txt(g,x,y+11,s,{'font-size':s.length>14?24:30,fill:c});return g;});
+const arcs6=[0,1,2,3].map(i=>{const a0=-Math.PI/2+i*Math.PI/2+.42,a1=a0+Math.PI/2-.84;
+  const p=el(c6,'path',{d:`M${CX6+Math.cos(a0)*R6} ${CY6+Math.sin(a0)*R6} A ${R6} ${R6} 0 0 1 ${CX6+Math.cos(a1)*R6} ${CY6+Math.sin(a1)*R6}`,fill:'none',stroke:'#1B1B1B','stroke-width':8,'stroke-linecap':'round','marker-end':'url(#ah6)'});
+  return drawPath(p,65.3+i*.45,.45);});
+const defs6=el(c6,'defs',{});defs6.innerHTML='<marker id="ah6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#1B1B1B"/></marker>';
+const spin6=el(c6,'g',{});
+// triggers: a small question-mark lightbulb (T7)
+const t7=$('trig7');
+el(t7,'circle',{cx:230,cy:220,r:150,fill:'#FFE14D',stroke:'#1B1B1B','stroke-width':8});
+el(t7,'rect',{x:170,y:360,width:120,height:80,rx:14,fill:'#9aa3ad',stroke:'#1B1B1B','stroke-width':6});
+txt(t7,230,280,'?',{'font-family':'Playfair','font-weight':900,'font-size':170,fill:'#1B1B1B'});
+const rays7=[...Array(8)].map((_,i)=>{const a=i/8*Math.PI*2;return el(t7,'line',{x1:230+Math.cos(a)*175,y1:220+Math.sin(a)*175,x2:230+Math.cos(a)*215,y2:220+Math.sin(a)*215,stroke:'#D99A1E','stroke-width':10,'stroke-linecap':'round'});});
+// notebook + pen (T8)
+const n8=$('note8');
+el(n8,'rect',{x:80,y:30,width:320,height:280,rx:16,fill:'#fff',stroke:'#1B1B1B','stroke-width':6});
+for(let i=0;i<6;i++)el(n8,'circle',{cx:110+i*55,cy:30,r:10,fill:'none',stroke:'#1B1B1B','stroke-width':5});
+const lines8=[90,140,190,240].map((y,i)=>drawPath(el(n8,'path',{d:`M120 ${y} q40 -12 80 0 t80 0 t80 0`,fill:'none',stroke:'#6A3FA0','stroke-width':6,'stroke-linecap':'round'}),101.0+i*.9,.7));
+const pen8=el(n8,'g',{});el(pen8,'rect',{x:-8,y:-90,width:16,height:90,rx:6,fill:'#2a6a85'});el(pen8,'path',{d:'M-8 0 L0 18 L8 0z',fill:'#1B1B1B'});
+// doctor (T10)
+const d10=$('doc10');
+const st10=el(d10,'g',{transform:'translate(240 210)'});
+el(st10,'path',{d:'M-90 -160 v100 a90 90 0 0 0 180 0 v-100',fill:'none',stroke:'#1B1B1B','stroke-width':16,'stroke-linecap':'round'});
+el(st10,'path',{d:'M0 30 v70 a70 70 0 0 0 140 0 v-30',fill:'none',stroke:'#1B1B1B','stroke-width':16,'stroke-linecap':'round'});
+el(st10,'circle',{cx:140,cy:60,r:40,fill:'#6A3FA0',stroke:'#1B1B1B','stroke-width':8});
+// treatment icons (T11)
+const f11=$('fire11');const flame11=el(f11,'path',{d:'M100 160 c-50 0 -70 -40 -50 -80 c10 -20 30 -30 30 -60 c30 20 60 50 60 90 c10 -10 10 -20 10 -30 c20 20 30 40 20 60 c-10 15 -40 20 -70 20z',fill:'#E4472B'});
+const calm11=el(f11,'path',{d:'M30 120 q35 -30 70 0 t70 0',fill:'none',stroke:'#2a6a85','stroke-width':10,'stroke-linecap':'round',opacity:0});
+const w11=$('wall11');const bricks11=[];
+for(let r=0;r<3;r++)for(let c=0;c<4;c++){const off=r%2?-40:0;const x=c*80+off;if(x<-30||x>250)continue;bricks11.push(el(w11,'rect',{x:x+10,y:20+r*50,width:72,height:42,rx:6,fill:['#6A3FA0','#7F58B0','#9A7AC4'][r]}));}
+// phone snapping the hand, then arrow to the doctor (T12)
+const s12=$('snap12');
+const hand12=blisterHand(s12,-40,120,1.0);
+const phone=el(s12,'g',{});
+el(phone,'rect',{x:-110,y:-200,width:220,height:400,rx:30,fill:'#1B1B1B'});
+el(phone,'rect',{x:-96,y:-176,width:192,height:340,rx:12,fill:'#F4D3C2'});
+el(phone,'circle',{cx:0,cy:182,r:10,fill:'#555'});
+const shot=blisterHand(phone,-135,-170,.42);
+const flash=el(s12,'rect',{x:0,y:0,width:960,height:760,fill:'#fff',opacity:0});
+const arr12=drawPath(el(s12,'path',{d:'M760 380 C 840 380, 860 470, 860 560',fill:'none',stroke:'#1B1B1B','stroke-width':8,'stroke-linecap':'round'}),150.3,.6);
+const doc12=el(s12,'g',{transform:'translate(860 650)',opacity:0});el(doc12,'circle',{cx:0,cy:0,r:80,fill:'#E9DDF6',stroke:'#6A3FA0','stroke-width':6});
+el(doc12,'path',{d:'M-34 -34 v30 a34 34 0 0 0 68 0 v-30',fill:'none',stroke:'#1B1B1B','stroke-width':8,'stroke-linecap':'round'});el(doc12,'circle',{cx:34,cy:34,r:12,fill:'#6A3FA0'});
+'''
+
+FRAME = r'''
+  // T1/T2 blisters pop up, then itch lines
+  H1.bl.forEach((b,i)=>{const k=P(t,13.6+i*.06,.3);b.setAttribute('transform',`translate(0 0) scale(1)`);b.style.opacity=k;});
+  H2.bl.forEach((b,i)=>{const k=P(t,22.8+i*.08,.3);b.style.opacity=k;});
+  itch2.forEach((p,i)=>p.style.opacity=t>24.4&&t<30?.4+.6*Math.abs(Math.sin(t*6+i)):0);
+  // T3 gland + plug, then the myth is struck
+  gland.style.opacity=P(t,32.4,.5);plug.style.opacity=P(t,34.0,.4)*(1-.6*P(t,39.6,.3));
+  plugL.style.opacity=P(t,34.2,.4)*(1-P(t,39.6,.3));
+  drops3.forEach((d,i)=>{const ph=((t*.6+i*.33)%1);d.setAttribute('cy',600-ph*470);d.style.opacity=t>36?.9*(1-ph):0;});
+  // T4 needle pops the blister
+  const nd=inout(P(t,42.3,.9));needle.setAttribute('transform',`translate(${lerp(820,500,nd)} ${lerp(80,320,nd)}) rotate(${0})`);
+  const pp=P(t,43.2,.4);dome.style.opacity=1-pp*.85;shine.style.opacity=.9*(1-pp);
+  burst.forEach(b=>b.style.opacity=pp>0&&pp<1?1-pp:0);causeT.style.opacity=P(t,45.4,.4);
+  // T5 blisters burst into gaps
+  holes5.forEach((b,i)=>{const k=P(t,49.6+i*.25,.4);bub5[i].style.opacity=t<49.4?0:(1-k);b.style.opacity=1-k;});
+  // T6 cycle slowly rotating highlight
+  nodes6.forEach((g,i)=>{const on=t>65.3+i*.45;g.style.opacity=on?1:.15;const hot=t>67&&(Math.floor((t-67)*1.5)%4===i);g.setAttribute('transform',hot?`translate(${(CX6+Math.cos(-Math.PI/2+i*Math.PI/2)*R6)*-.06} ${(CY6+Math.sin(-Math.PI/2+i*Math.PI/2)*R6)*-.06}) scale(1.06)`:'');});
+  // T7 bulb rays pulse
+  rays7.forEach((r,i)=>r.style.opacity=.4+.6*Math.abs(Math.sin(t*3+i)));
+  // T8 pen writes
+  const pw=P(t,101.0,3.6);pen8.setAttribute('transform',`translate(${120+((pw*4)%1)*240} ${90+Math.floor(pw*4)*50}) rotate(25)`);pen8.style.opacity=t>100.8&&t<105?1:0;
+  // T11 inflammation calms, barrier stands
+  flame11.style.opacity=1-.8*P(t,130.0,1.2);calm11.style.opacity=P(t,130.4,.8);
+  bricks11.forEach((b,i)=>{const k=out3(P(t,132.6+i*.06,.4));b.style.opacity=k;b.setAttribute('transform',`translate(0 ${(1-k)*-40})`);});
+  // T12 phone raises, flash, arrow to doctor
+  const ph=inout(P(t,146.6,.8));phone.setAttribute('transform',`translate(${lerp(1100,640,ph)} ${lerp(500,330,ph)}) rotate(${lerp(20,-6,ph)})`);
+  const fl=P(t,147.5,.35);flash.style.opacity=fl>0&&fl<1?.85*(1-fl):0;shot.g.style.opacity=t>147.6?1:0;
+  const dk=P(t,150.9,.45);doc12.style.opacity=dk;doc12.setAttribute('transform',`translate(860 650) scale(${dk>0?back(dk):.3})`);
+'''

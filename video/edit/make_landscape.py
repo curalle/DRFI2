@@ -1,10 +1,12 @@
-# Builds the 16:9 YouTube page (eczema169.html) from the 9:16 page (eczema.html).
+# Builds a 16:9 YouTube page from a 9:16 explainer page (default: eczema.html -> eczema169.html).
 # The tiles keep their content; at load time each tile's header (kicker/title/body, top < 550px)
 # moves to a left column and the illustrations below are grouped and scaled into a right column.
-# Usage: python3 edit/make_landscape.py   (run from video/)
-import re
+# Usage: python3 edit/make_landscape.py [src.html dst.html]   (run from video/)
+import re,sys
 
-src = open('eczema.html').read()
+SRC,DST=(sys.argv[1],sys.argv[2]) if len(sys.argv)>2 else ('eczema.html','eczema169.html')
+ECZ=SRC=='eczema.html'   # the eczema page has hand-tuned overlay positions and camera moves
+src = open(SRC).read()
 s = src
 
 def rep(a, b, cnt=1):
@@ -12,7 +14,7 @@ def rep(a, b, cnt=1):
     assert s.count(a) == cnt, (s.count(a), a)
     s = s.replace(a, b)
 
-rep('<title>DRFI Eczema Explainer 9:16</title>', '<title>DRFI Eczema Explainer 16:9</title>')
+s = re.sub(r'<title>(.*?)9:16</title>', r'<title>\g<1>16:9</title>', s, count=1)
 rep('html,body{width:1080px;height:1920px;', 'html,body{width:1920px;height:1080px;')
 rep('#stage{position:relative;width:1080px;height:1920px;', '#stage{position:relative;width:1920px;height:1080px;')
 rep('.tile{position:absolute;width:1080px;height:1920px;', '.tile{position:absolute;width:1920px;height:1080px;')
@@ -28,6 +30,13 @@ rep('#brcard img{position:absolute;left:0;top:0;width:976px;height:539px;object-
 rep('#brfull{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}',
     '#brfull{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover}')
 rep('#brcap{position:absolute;left:60px;top:1290px;', '#brcap{position:absolute;left:620px;top:830px;')
+
+# portrait B-roll clips (e.g. tomato, stress) become a tall card on the right over their blurred still
+if not ECZ:
+    rep('#brfull{position:absolute;left:0;top:0;width:1920px;height:1080px;object-fit:cover}',
+        '#brfull{position:absolute;left:1150px;top:50px;width:540px;height:960px;object-fit:cover;border:12px solid #fff;border-radius:6px;box-shadow:0 30px 70px rgba(0,0,0,.45)}')
+    rep("$('brbg').style.display=full?'none':'block';","$('brbg').style.display='block';")
+    rep("if(full){await setImg($('brfull'),f);","if(full){await setImg($('brbg'),`file://${BROLL}/${id}/bg.jpg`);$('brbg').style.opacity=vis;await setImg($('brfull'),f);")
 
 # presenter frame: 16:9 crop of the portrait source when full, floating card bottom-left otherwise
 rep('#vid{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:1920px}',
@@ -55,20 +64,36 @@ ov = {
  'id="o6" style="left:60px;top:1180px;width:960px"': 'id="o6" style="left:50px;top:520px;width:600px"',
  'id="o7" style="left:60px;top:1180px;width:960px;': 'id="o7" style="left:50px;top:820px;width:600px;',
 }
-for a, b in ov.items():
-    rep(a, b)
+if ECZ:
+    for a, b in ov.items():
+        rep(a, b)
+else:
+    # generic: every overlay moves into the paper column on the left, upper or lower half
+    rep("// ---------------- camera over the tiles ----------------", r'''(function(){
+  [...document.getElementById('overlay').children].forEach(o=>{
+    const top=parseFloat(o.style.top||'0');
+    o.style.left='50px';
+    o.style.top=(top<800?100:top<1250?600:760)+'px';
+    if(o.classList.contains('ocard')){const z=.8;o.style.zoom=z;o.style.left=(50/z)+'px';o.style.top=(parseFloat(o.style.top)/z)+'px';o.style.width=(600/z)+'px';}
+    else{const fs=parseFloat(o.style.fontSize||'44');o.style.fontSize=Math.min(fs,fs*.75)+'px';}
+  });
+})();
+// ---------------- camera over the tiles ----------------''')
 
 rep("$('world').style.transform=`translate(${540-cx*s}px,${960-cy*s}px) scale(${s})`;",
     "$('world').style.transform=`translate(${960-cx*s}px,${540-cy*s}px) scale(${s})`;")
 rep("c.style.width='1200px';c.style.height='2040px';", "c.style.width='2040px';c.style.height='1200px';")
-rep("window.OUTPUT='output/drfi_eczema_explainer_9x16.mp4';", "window.OUTPUT='output/drfi_eczema_explainer_16x9.mp4';")
+s = re.sub(r"(window.OUTPUT='[^']*)_9x16\.mp4'", r"\1_16x9.mp4'", s, count=1)
 
 # camera: landscape tiles on a 2200x1300 grid; zooms aim at the illustration column
-rep("const TP={T1:[0,0],T2:[1300,0],T3:[2600,0],T4:[2600,1900],T5:[1300,1900],T6:[0,1900],T7:[0,3800],T8:[1300,3800],T9:[2600,3800],T10:[2600,5700],T11:[1300,5700]};",
-    "const TP={T1:[0,0],T2:[2200,0],T3:[4400,0],T4:[4400,1300],T5:[2200,1300],T6:[0,1300],T7:[0,2600],T8:[2200,2600],T9:[4400,2600],T10:[4400,3900],T11:[2200,3900]};")
+# portrait grid (1300 x 1900 spacing) -> landscape grid (2200 x 1300)
+m = re.search(r'const TP=\{([^}]*)\};', s)
+PTP = {k: (int(x), int(y)) for k, x, y in re.findall(r'(T\d+):\[(\d+),(\d+)\]', m.group(1))}
+LTP = {k: (x*2200//1300, y*1300//1900) for k, (x, y) in PTP.items()}
+s = s.replace(m.group(0), 'const TP={' + ','.join(f'{k}:[{x},{y}]' for k, (x, y) in LTP.items()) + '};')
 rep("const C=(k,dx=540,dy=960)=>[TP[k][0]+dx,TP[k][1]+dy];", "const C=(k,dx=960,dy=540)=>[TP[k][0]+dx,TP[k][1]+dy];")
 cam_old = s[s.index('const CAM=['):s.index('];', s.index('const CAM=['))+2]
-cam_new = """const V=(k)=>C(k,960,560);   // gentle push-in that keeps the titles in frame
+cam_ecz = """const V=(k)=>C(k,960,560);   // gentle push-in that keeps the titles in frame
 const CAM=[
  [0,...C('T1'),1],[13.0,...C('T1'),1],[13.8,...V('T1'),1.04],[16.8,...V('T1'),1.04],
  [23.0,...C('T2'),1],[39.6,...C('T2'),1.03],
@@ -84,7 +109,14 @@ const CAM=[
  [189.6,...C('T10'),1],[200.7,...C('T10'),1.03],
  [201.1,...mid('T10','T11'),.6],[201.55,...C('T11'),1],[233.2,...C('T11'),1.04]
 ];"""
-s = s.replace(cam_old, cam_new)
+def cam_generic(c):
+    c = re.sub(r"C\('(T\d+)',[0-9.]+,[0-9.]+\),([0-9.]+)\]", lambda m: f"C('{m.group(1)}',960,560),{min(float(m.group(2)),1.04)}]", c)
+    c = re.sub(r"\],1\.(0[5-9]|[1-9][0-9]*)\]", "],1.04]", c)
+    def raw(m):
+        t, X, Y, sc = float(m.group(1)), float(m.group(2)), float(m.group(3)), float(m.group(4))
+        return f"[{t},{(X-540)*2200/1300+960:.0f},{(Y-960)*1300/1900+540:.0f},{sc*1.05 if sc<.9 else sc:.2f}]"
+    return re.sub(r"\[([0-9.]+),([0-9.]+),([0-9.]+),([0-9.]+)\]", raw, c)
+s = s.replace(cam_old, cam_ecz if ECZ else cam_generic(cam_old))
 
 # re-layout each tile at load: header -> left column, illustrations -> scaled right column
 layout = r"""
@@ -111,11 +143,10 @@ layout = r"""
 """
 rep("// ---------------- camera over the tiles ----------------", layout + "\n// ---------------- camera over the tiles ----------------")
 # tiles sit on the landscape grid used by TP above
-LTP={'T1':(0,0),'T2':(2200,0),'T3':(4400,0),'T4':(4400,1300),'T5':(2200,1300),'T6':(0,1300),'T7':(0,2600),'T8':(2200,2600),'T9':(4400,2600),'T10':(4400,3900),'T11':(2200,3900)}
 def tilepos(m):
     x,y=LTP[m.group(1)]
     return f'<div class="tile" id="{m.group(1)}" style="left:{x}px;top:{y}px">'
 s,n=re.subn(r'<div class="tile" id="(T\d+)" style="left:[0-9]+(?:px)?;top:[0-9]+(?:px)?">',tilepos,s)
-assert n==11,n
-open('eczema169.html', 'w').write(s)
-print('wrote eczema169.html')
+assert n==len(LTP),n
+open(DST, 'w').write(s)
+print('wrote',DST)

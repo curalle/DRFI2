@@ -1,0 +1,77 @@
+{
+ "out": "src3",
+ "noise_db": -29,
+ "parts": [
+  {
+   "src": "src3a",
+   "start": 3.0,
+   "end": 53.75,
+   "note": "video_20261028_170527: hook, pompholyx, sweat-duct myth; stop after 'that's a big no' (the barrier part is retaken in part 2, and this take ends with a flub)"
+  },
+  {
+   "src": "src3b",
+   "start": 0.0,
+   "end": 121.35,
+   "note": "video_20261028_170719: retake from 'Bila lepuh ni pecah...' to 'jumpa lagi'"
+  }
+ ],
+ "broll": [
+  {
+   "id": "p1",
+   "clip": "8716",
+   "src": "https://mixkit.co/free-stock-video/woman-with-her-daughter-washing-dishes-together-8716/",
+   "in": 3.0,
+   "start": 57.0,
+   "end": 60.2,
+   "caption": "Air, sabun & pencuci"
+  },
+  {
+   "id": "p2",
+   "clip": "40534",
+   "src": "https://mixkit.co/free-stock-video/a-man-slices-a-tomato-40534/",
+   "in": 2.0,
+   "start": 67.9,
+   "end": 70.55,
+   "caption": "Susah nak pegang barang & memasak",
+   "full": true
+  },
+  {
+   "id": "p3",
+   "clip": "39854",
+   "src": "https://mixkit.co/free-stock-video/exhausted-man-working-in-an-office-overtime-39854/",
+   "in": 2.0,
+   "start": 84.6,
+   "end": 86.0,
+   "caption": "Stres",
+   "full": true
+  },
+  {
+   "id": "p4",
+   "clip": "2716",
+   "src": "https://mixkit.co/free-stock-video/rain-falling-from-the-roof-on-a-rainy-day-2716/",
+   "in": 1.0,
+   "start": 86.0,
+   "end": 87.4,
+   "caption": "Perubahan cuaca"
+  },
+  {
+   "id": "p5",
+   "clip": "4564",
+   "src": "https://mixkit.co/free-stock-video/little-girl-cleaning-in-a-kitchen-with-detergent-4564/",
+   "in": 0.5,
+   "start": 87.4,
+   "end": 89.7,
+   "caption": "Bahan kimia tertentu"
+  },
+  {
+   "id": "p6",
+   "clip": "42655",
+   "src": "https://mixkit.co/free-stock-video/a-woman-writing-in-her-spiral-notebook-42655/",
+   "in": 1.0,
+   "start": 98.7,
+   "end": 100.75,
+   "caption": "Catat bila ia mula"
+  }
+ ],
+ "broll_license": "All B-roll clips are Mixkit 'Stock Video Free License' (videoFree): commercial use, no attribution."
+}

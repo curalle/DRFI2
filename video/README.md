@@ -171,3 +171,41 @@ python3 edit/make_landscape.py
 python3 edit/broll.py edit/eczema.json <klipMixkit> <brollDir169> 1280:720
 PAGE=eczema169.html SIZE=1920x1080 BROLL=<brollDir169> node render-explainer.js video <framesDir> <voice.wav>
 ```
+
+---
+
+# Siri DRFI: Pompholyx / Dyshidrotic Eczema (9:16 & 16:9, 2:46, dengan suara)
+
+`output/drfi_pompholyx_explainer_9x16.mp4` dan `output/drfi_pompholyx_explainer_16x9.mp4`.
+
+Gabungan dua rakaman (`edit/pompholyx.json`):
+- `video_20261028_170527` (1:23): hook, pompholyx, mitos saluran peluh; diambil hingga "that's a big no". Bahagian lepuh pecah → barrier dirakam semula dalam rakaman kedua, dan rakaman ini berakhir dengan tersasul ("Tapi jangan, apa benda ni"), jadi dibuang.
+- `video_20261028_170719` (2:06): ambilan semula dari "Bila lepuh ni pecah…" hingga "jumpa lagi".
+- Jeda >0.35s dipendekkan (−29 dB). 33 segmen, 2:44.5.
+
+| Masa | Babak |
+|---|---|
+| 0–9s | Hook penuh: "Bintik air kecil di celah jari?" → GATAL! → kulit menggelupas |
+| 9–17s | "Ruam panas? Tangan naik air?" dicoret → Dyshidrotic eczema |
+| 17–22s | Kad nama, "a.k.a. Pompholyx" |
+| 22–30s | Lepuh kecil & sangat gatal; tangan / kaki / kedua-duanya |
+| 30–40s | Fun fact: "saluran peluh tersumbat" → MITOS |
+| 40–48s | Pecahkan lepuh ≠ buang punca → "BIG NO." |
+| 48–74s | Barrier terganggu; B-roll air/sabun/pencuci; "Ouch!"; kitaran ganas; B-roll memotong (memasak) |
+| 75–92s | Zoom keluar → pencetus: B-roll stres, hujan, detergen; rujukan video ekzema |
+| 92–97s | Jangan buang semua makanan lepas tengok satu video |
+| 97–126s | Keep track (B-roll menulis), apa TIDAK patut buat, bila jumpa doktor |
+| 126–140s | Rawatan: kawal keradangan + jaga barrier; krim kosmetik ≠ penawar |
+| 140–152s | Tip mak-mak: tangkap gambar masa aktif untuk doktor |
+| 152–166s | Save, share (mitos peluh tersumbat), jumpa lagi |
+
+B-roll Mixkit (lesen Free): 8716 (cuci), 40534 (tomato), 39854 (stres), 2716 (hujan), 4564 (detergen), 42655 (menulis). Dalam 16:9, klip menegak dipaparkan sebagai kad potret.
+
+Halaman: `pompholyx.html` dibina oleh `edit/make_pompholyx.py` (kandungan dalam `edit/pompholyx_parts.py`, enjin daripada `eczema.html`); `pompholyx169.html` oleh `python3 edit/make_landscape.py pompholyx.html pompholyx169.html`.
+
+```
+python3 edit/cuts.py edit/pompholyx.json $S && python3 edit/render_cut.py edit/pompholyx.json $S   # → S/src3/cut.mkv
+python3 edit/broll.py edit/pompholyx.json <klip> <br>; python3 edit/broll.py edit/pompholyx.json <klip> <br169> 1280:720
+PAGE=pompholyx.html BROLL=<br> node render-explainer.js video <framesDir> <voice.wav>
+PAGE=pompholyx169.html SIZE=1920x1080 BROLL=<br169> node render-explainer.js video <framesDir> <voice.wav>
+```
