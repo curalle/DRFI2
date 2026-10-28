@@ -1,5 +1,5 @@
-// Renders explainer.html (1080x1920) with the presenter's frames and voice track.
-// Page: explainer.html by default, or set PAGE=eczema.html. BROLL=<dir> points at B-roll frames from edit/broll.py.
+// Renders explainer pages (1080x1920, or SIZE) with the presenter's frames and voice track.
+// Page: explainer.html by default, or set PAGE=eczema.html; SIZE=1920x1080 for landscape pages. BROLL=<dir> points at B-roll frames from edit/broll.py.
 // Usage:
 //   node render-explainer.js stills <framesDir> 1,5.5,30
 //   node render-explainer.js video  <framesDir> <voice.wav> [workers=4]
@@ -11,9 +11,10 @@ const FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg
 const FPS=30,FR=path.join(__dirname,'frames');
 const [mode,framesDir,arg,workers]=process.argv.slice(2);
 const PAGE=process.env.PAGE||'explainer.html';
+const [VW,VH]=(process.env.SIZE||'1080x1920').split('x').map(Number);
 const n=fs.readdirSync(framesDir).filter(f=>f.endsWith('.jpg')).length;
 async function page(b){
-  const p=await b.newPage({viewport:{width:1080,height:1920}});
+  const p=await b.newPage({viewport:{width:VW,height:VH}});
   await p.goto('file://'+path.join(__dirname,PAGE)+`?frames=${encodeURIComponent(path.resolve(framesDir))}&n=${n}`+(process.env.BROLL?`&broll=${encodeURIComponent(path.resolve(process.env.BROLL))}`:''));
   await p.evaluate(()=>document.fonts.ready);
   await p.waitForTimeout(300);

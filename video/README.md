@@ -156,3 +156,18 @@ Lesen: semua klip berlabel **Mixkit Stock Video Free License** (guna komersial, 
 python3 edit/broll.py edit/eczema.json <klipMixkit> <brollDir>
 PAGE=eczema.html BROLL=<brollDir> node render-explainer.js video <framesDir> <voice.wav>
 ```
+
+## Versi YouTube 16:9
+
+`output/drfi_eczema_explainer_16x9.mp4`: 1920×1080, 30fps, 3:53, dengan suara & B-roll.
+
+`eczema169.html` dijana daripada `eczema.html` oleh `edit/make_landscape.py`, jadi pembetulan pada versi 9:16 dibawa ke 16:9 dengan menjana semula:
+- Setiap jubin: tajuk/teks (atas) → lajur kiri; ilustrasi (bawah) → dikumpul & diskala ke lajur kanan.
+- Penyampai penuh skrin = panel kanan 1280×1080 (kepala hingga bahu), kad teks atas kertas di kiri; bingkai terapung di kiri bawah.
+- B-roll: kad 1200×675 di kanan (bingkai diekstrak semula pada 1280×720).
+
+```
+python3 edit/make_landscape.py
+python3 edit/broll.py edit/eczema.json <klipMixkit> <brollDir169> 1280:720
+PAGE=eczema169.html SIZE=1920x1080 BROLL=<brollDir169> node render-explainer.js video <framesDir> <voice.wav>
+```
