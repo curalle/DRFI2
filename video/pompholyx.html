@@ -18,7 +18,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--table)}
   background:radial-gradient(circle at 50% 40%,#E6DBC4 0,var(--table) 70%)}
 .abs,.tile *{position:absolute}
 .tile .flow,.tile .flow *{position:static}
-.tile b,.tile i,.tile br{position:static}
+.tile b,.tile i,.tile br,.tile .kicker span{position:static}
 .strike{position:static!important;background-image:linear-gradient(transparent 52%,#E4472B 52%,#E4472B 60%,transparent 60%);background-repeat:no-repeat;background-size:0% 100%}
 #world{position:absolute;left:0;top:0;transform-origin:0 0}
 .tile{position:absolute;width:1080px;height:1920px;background:var(--paper);border-radius:6px;
@@ -358,7 +358,7 @@ function placeVideo(t){
   B.style.boxShadow=f<1?`0 0 0 ${lerp(9,0,f)}px #fff, 0 ${lerp(26,0,f)}px ${lerp(60,0,f)}px rgba(40,25,5,${lerp(.35,0,f)})`:'none';
   const bob=(1-f)*Math.sin(t*1.3)*6;
   B.style.transform=`translateY(${bob}px) rotate(${(1-f)*1.6}deg)`;
-  const kb=1+.035*((t%9)/9), pz=punchAt(t);
+  const kb=1+.0175*(1-Math.cos(t*.35)), pz=punchAt(t);   // smooth drift between 1 and 1.035
   const scF=1.1*kb*(1+pz), scP=.6;
   const sc=lerp(scP,scF,f);
   const fx=lerp(510,540,f), fy=lerp(900,lerp(900,880,pz*5),f);
@@ -382,6 +382,7 @@ const hls=[...document.querySelectorAll('[data-hl]')];
 const draws=[];const drawPath=(p,at,dur)=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.L=L;draws.push([p,at,dur]);return p;};
 
 // ---------------- illustrations ----------------
+
 
 // hand with tiny blisters along the fingers (T1, T2)
 const HAND='M250 470 C 230 380, 220 300, 240 220 L 250 110 a22 22 0 0 1 44 0 L 300 210 L 320 70 a22 22 0 0 1 44 0 L 360 200 L 395 60 a22 22 0 0 1 44 4 L 430 210 L 470 100 a22 22 0 0 1 42 12 L 480 260 C 520 220, 580 200, 610 230 C 560 300, 520 380, 500 470 Z';
@@ -542,7 +543,7 @@ window.render=async function(t){
   const fl=P(t,147.5,.35);flash.style.opacity=fl>0&&fl<1?.85*(1-fl):0;shot.g.style.opacity=t>147.6?1:0;
   const dk=P(t,150.9,.45);doc12.style.opacity=dk;doc12.setAttribute('transform',`translate(860 650) scale(${dk>0?back(dk):.3})`);
   // overlays
-  $('bm').style.transform=t>212.4?`translateY(${Math.abs(Math.sin((t-212.4)*7))*-14*Math.exp(-(t-212.4)*1.5)}px)`:'';
+  if($('bm'))$('bm').style.transform=t>212.4?`translateY(${Math.abs(Math.sin((t-212.4)*7))*-14*Math.exp(-(t-212.4)*1.5)}px)`:'';
 
   const g=Math.floor(t*24);$('noise').style.transform=`translate(${(g*37)%60-30}px,${(g*53)%60-30}px)`;
   const n=Math.min(NFR,Math.floor(t*30)+1);

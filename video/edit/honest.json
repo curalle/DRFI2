@@ -1,0 +1,5 @@
+{"src":"src4","start":0.85,"end":150.35,"noise_db":-31,"highpass":250,
+ "remove":[[68.9,77.75],[97.5,112.05]],
+ "notes":["video_20261030_092439 (car)",
+  "68.9-77.75: garbled 'So of course bila kita formulate kurali, ia memifid beratkan tentang keperluan tepatannya. Itulah' -> next line starts 'kita ada bahan postbiotik'",
+  "97.5-112.05: muddled steroid sentence ('ia bukan steroid, ia perlukan steroid... jangan sapu sekali sehari... Sebab') restated cleanly right after as 'ia 100% bebas steroid ... 3-4 kali sehari'"]}

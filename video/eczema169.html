@@ -360,7 +360,7 @@ function placeVideo(t){
   B.style.boxShadow=f<1?`0 0 0 ${lerp(9,0,f)}px #fff, 0 ${lerp(26,0,f)}px ${lerp(60,0,f)}px rgba(40,25,5,${lerp(.35,0,f)})`:'none';
   const bob=(1-f)*Math.sin(t*1.3)*6;
   B.style.transform=`translateY(${bob}px) rotate(${(1-f)*1.6}deg)`;
-  const kb=1+.035*((t%9)/9), pz=punchAt(t);
+  const kb=1+.0175*(1-Math.cos(t*.35)), pz=punchAt(t);   // smooth drift between 1 and 1.035
   const scF=1.19*kb*(1+pz), scP=.55;
   const sc=lerp(scP,scF,f);
   const fx=lerp(510,540,f), fy=lerp(900,lerp(880,860,pz*5),f);

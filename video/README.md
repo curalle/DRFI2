@@ -209,3 +209,25 @@ python3 edit/broll.py edit/pompholyx.json <klip> <br>; python3 edit/broll.py edi
 PAGE=pompholyx.html BROLL=<br> node render-explainer.js video <framesDir> <voice.wav>
 PAGE=pompholyx169.html SIZE=1920x1080 BROLL=<br169> node render-explainer.js video <framesDir> <voice.wav>
 ```
+
+---
+
+# CURALLÉ: "Jujur, tak semua feedback positif" (9:16, 1:58, dengan suara)
+
+`output/curalle_honest_9x16.mp4`, halaman `honest.html` (dibina oleh `python3 edit/make_page.py honest honest.html`, kandungan dalam `edit/honest_parts.py`).
+
+Disunting daripada `video_20261030_092439.mp4` (2:35, dalam kereta), konfigurasi `edit/honest.json`:
+- Jeda dikesan selepas highpass 250 Hz (bunyi enjin), −31 dB; 36 segmen, 1:57.
+- Dibuang: ayat tak lengkap "So, of course, bila kita formulate kurali, ia memifid beratkan… Itulah" (1:09–1:18) dan ayat steroid yang bercelaru "ia bukan steroid, ia perlukan steroid… jangan sapu sekali sehari… Sebab" (1:37–1:52), yang dinyatakan semula dengan jelas sejurus selepasnya.
+- Gred warna pada bingkai (lapisan pelarasan): `eq=saturation=1.15:contrast=1.08:gamma=0.98` + lengkung yang menggelapkan bayang.
+
+Dua gaya:
+- **Jalur tajuk atas (~38% atas):** bila penyampai penuh skrin, bingkai diturunkan supaya kepala bermula tepat di bawah jalur; tajuk animasi, nombor langkah (01–04), lencana kata kunci, bar kemajuan bab, titik "3–4× sehari", bar "consistency".
+- **Jubin Vox** (bingkai terapung): setiap ekzema berbeza (bar tahap), pelembap = lapisan luar, keradangan dalaman + pencetus, luar ✓ dalam ?, formula (postbiotik, ceramide + oatmeal koloid, panthenol, 100% bebas steroid), kombinasi dalam + luar.
+- Zum perlahan & licin semasa penyampaian bersemangat (`ZOOM`), punch-in pada perkataan kunci.
+
+```
+python3 edit/cuts.py edit/honest.json $S && python3 edit/render_cut.py edit/honest.json $S
+ffmpeg -i $S/src4/cut.mkv -vf "eq=saturation=1.15:contrast=1.08:gamma=0.98,curves=all='0/0 0.12/0.07 0.3/0.25 0.6/0.62 1/1'" -q:v 3 vf/f%05d.jpg
+PAGE=honest.html node render-explainer.js video vf voice.wav
+```

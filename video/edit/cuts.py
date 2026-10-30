@@ -1,6 +1,7 @@
 # Builds a keep-list of speech segments from one or more talking-head recordings.
 # Usage: python3 cuts.py <config.json> <workdir>
 #   single recording: {"src":"src2","start":0.5,"end":241.9,"noise_db":-29,"remove":[[a,b],...]}
+#   optional "highpass": 250 filters engine rumble before silence detection
 #   several, joined in order: {"out":"src3","noise_db":-29,"parts":[{"src":"src3a","start":..,"end":..,"remove":[..]},...]}
 #   reads <workdir>/<src>/audio.wav; writes <workdir>/<out or src>/keep.json as [[partIndex,a,b],...]
 import json,os,re,subprocess,sys
@@ -17,7 +18,8 @@ def sub(segs,r):
     return out
 keep=[]
 for pi,p in enumerate(parts):
-    log=subprocess.run([FF,'-hide_banner','-i',f"{S}/{p['src']}/audio.wav",'-af',f"silencedetect=noise={cfg.get('noise_db',-32)}dB:d=0.35",'-f','null','-'],capture_output=True,text=True).stderr
+    hp=f"highpass=f={cfg['highpass']}," if cfg.get('highpass') else ''   # e.g. 250 Hz to ignore engine rumble in car recordings
+    log=subprocess.run([FF,'-hide_banner','-i',f"{S}/{p['src']}/audio.wav",'-af',f"{hp}silencedetect=noise={cfg.get('noise_db',-32)}dB:d=0.35",'-f','null','-'],capture_output=True,text=True).stderr
     sil=list(zip([float(x) for x in re.findall(r'silence_start: ([0-9.]+)',log)],[float(x) for x in re.findall(r'silence_end: ([0-9.]+)',log)]))
     A,B=p['start'],p['end'];speech=[];cur=A
     for s,e in sil:

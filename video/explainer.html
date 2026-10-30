@@ -320,7 +320,7 @@ function placeVideo(t){
   const bob=(1-f)*Math.sin(t*1.3)*6;
   B.style.transform=`translateY(${bob}px) rotate(${(1-f)*1.6}deg)`;
   // source framing: full shows the whole frame (watermark cropped off the bottom); floating frame centres the face
-  const kb=1+.035*((t%9)/9);                         // slow drift so full-screen shots never sit dead still
+  const kb=1+.0175*(1-Math.cos(t*.35));                // smooth slow drift so full-screen shots never sit dead still
   const scF=1.1*kb*(1+punchAt(t)), scP=.56;
   const sc=lerp(scP,scF,f);
   const fx=lerp(500,540,f), fy=lerp(930,lerp(912,880,punchAt(t)*5),f);
