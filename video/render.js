@@ -1,9 +1,18 @@
 const {chromium}=require('playwright');
+// Use Playwright's own browser when present, otherwise any Chromium preinstalled under /opt/pw-browsers.
+function resolveChromium(){
+  const fs=require('fs');
+  try{if(fs.existsSync(chromium.executablePath()))return undefined;}catch(e){}
+  const base='/opt/pw-browsers';
+  for(const d of (fs.existsSync(base)?fs.readdirSync(base):[]).filter(d=>/^chromium-\d+$/.test(d)).sort().reverse())
+    for(const sub of ['chrome-linux64/chrome','chrome-linux/chrome']){const p=`${base}/${d}/${sub}`;if(fs.existsSync(p))return p;}
+  return undefined;
+}
 const {spawn}=require('child_process');
 const FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
 (async()=>{
   const [mode,variant,arg]=process.argv.slice(2);
-  const b=await chromium.launch();
+  const b=await chromium.launch({executablePath:resolveChromium()});
   const p=await b.newPage({viewport:{width:1080,height:1920}});
   await p.goto('file://'+__dirname+'/video.html?v='+variant);
   await p.evaluate(()=>document.fonts.ready);

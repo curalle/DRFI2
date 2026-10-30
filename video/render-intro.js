@@ -1,6 +1,15 @@
 // Renders a 1920x1080 scene page to MP4. The page defines window.render(t), window.DURATION and window.OUTPUT.
 // Usage: node render-intro.js [page.html] stills 1,3.5,7   |   node render-intro.js [page.html] video [workers=4]
 const {chromium}=require('playwright');
+// Use Playwright's own browser when present, otherwise any Chromium preinstalled under /opt/pw-browsers.
+function resolveChromium(){
+  const fs=require('fs');
+  try{if(fs.existsSync(chromium.executablePath()))return undefined;}catch(e){}
+  const base='/opt/pw-browsers';
+  for(const d of (fs.existsSync(base)?fs.readdirSync(base):[]).filter(d=>/^chromium-\d+$/.test(d)).sort().reverse())
+    for(const sub of ['chrome-linux64/chrome','chrome-linux/chrome']){const p=`${base}/${d}/${sub}`;if(fs.existsSync(p))return p;}
+  return undefined;
+}
 const {spawnSync}=require('child_process');
 const fs=require('fs'),path=require('path');
 const FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
@@ -16,7 +25,7 @@ async function page(b){
   return p;
 }
 (async()=>{
-  const b=await chromium.launch();
+  const b=await chromium.launch({executablePath:resolveChromium()});
   if(mode==='stills'){
     const p=await page(b);
     for(const t of arg.split(',').map(Number)){
