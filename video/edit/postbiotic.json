@@ -1,0 +1,21 @@
+{
+ "src": "src5",
+ "start": 0.0,
+ "end": 137.9,
+ "noise_db": -32,
+ "remove": [
+  [
+   55.45,
+   56.88
+  ],
+  [
+   108.3,
+   120.15
+  ]
+ ],
+ "notes": [
+  "video_20261102 (office): postbiotics are not all equal",
+  "55.45-56.88: 'saya nak telus.' immediately restated as 'Saya nak jujur dengan anda'",
+  "108.3-120.15: abandoned sentence 'Dan jika anda minat pada skincare inovation, jadi satu...' (restarted at 120.3)"
+ ]
+}

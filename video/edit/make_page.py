@@ -6,6 +6,7 @@
 #   LOW      [[t,0|1],...] when full-screen shots are framed low so the band sits above the head
 #   ZOOM     [[t0,t1,z0,z1],...] slow, eased push-ins while the presenter is full screen
 #   ILLUSTRATIONS_PRE  code that must run before the illustrations
+#   FREEZE_AT  seconds; the presenter holds this frame from then on
 # Usage: python3 edit/make_page.py <name> <out.html>   (run from video/)
 import importlib,re,sys
 sys.path.insert(0,'edit')
@@ -52,6 +53,9 @@ if hasattr(C,'FRAMING'):
         "function placeVideo(t){")
 if hasattr(C,'BAND'):
     rep("const OV=[",f"const BANDS={C.BANDS};\nconst CH=({C.CHAPTERS}).map(([s,t])=>{{const d=document.createElement('div');d.className='tick';d.innerHTML=`<i></i><span>${{s}}</span>`;d.style.left=`${{960*t/DURATION+12}}px`;$('prog').appendChild(d);return {{el:d,t}};}});\nconst OV=[")
+# FREEZE_AT: hold the presenter on the last clean frame (e.g. before reaching for the phone)
+if hasattr(C,'FREEZE_AT'):
+    rep("const n=Math.min(NFR,Math.floor(t*30)+1);",f"const n=Math.min(NFR,{int(C.FREEZE_AT*30)},Math.floor(t*30)+1);")
 # the bookmark wiggle belongs to pages that have a "Save" overlay
 s=s.replace("  $('bm').style.transform=t>212.4?","  if($('bm'))$('bm').style.transform=t>212.4?")
 open(OUT,'w').write(s)

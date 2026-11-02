@@ -231,3 +231,12 @@ python3 edit/cuts.py edit/honest.json $S && python3 edit/render_cut.py edit/hone
 ffmpeg -i $S/src4/cut.mkv -vf "eq=saturation=1.15:contrast=1.08:gamma=0.98,curves=all='0/0 0.12/0.07 0.3/0.25 0.6/0.62 1/1'" -q:v 3 vf/f%05d.jpg
 PAGE=honest.html node render-explainer.js video vf voice.wav
 ```
+
+---
+
+# Siri DRFI: Dua produk postbiotik, kesan sama? (9:16, 1:50)
+
+`output/drfi_postbiotic_9x16.mp4`, halaman `postbiotic.html` (`python3 edit/make_page.py postbiotic postbiotic.html`, kandungan `edit/postbiotic_parts.py`, potongan `edit/postbiotic.json`). Gaya sama dengan `honest`: jalur tajuk atas + jubin Vox, gred warna, zum perlahan.
+- Dibuang: "saya nak telus" (diulang sebagai "saya nak jujur"), ayat tergantung "Dan jika anda minat pada skincare inovation, jadi satu…", jeda panjang.
+- Penutup: bingkai dibekukan pada 1:43.6 (sebelum tangan mencapai telefon); "Terima kasih kerana menonton" dimainkan atas bingkai itu.
+- Senarai bahan dalam jubin "Pesanan saya" ialah contoh ilustrasi, bukan senarai bahan CURALLÉ.
