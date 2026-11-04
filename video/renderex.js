@@ -5,10 +5,10 @@
 const {chromium}=require('playwright');
 const {spawn}=require('child_process');
 const fs=require('fs');
-const FF=process.env.FF||'/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2';
+const FF=process.env.FF||require('child_process').execSync("python3 -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())'").toString().trim();
 (async()=>{
   const [mode,a1,a2,a3]=process.argv.slice(2);
-  const b=await chromium.launch();
+  const b=await chromium.launch(process.env.CHROME?{executablePath:process.env.CHROME}:{});
   const p=await b.newPage({viewport:{width:1920,height:1080}});
   p.on('console',m=>{if(m.type()==='warning'||m.type()==='error')console.log('PAGE',m.text());});
   await p.goto('file://'+__dirname+'/explainer.html');

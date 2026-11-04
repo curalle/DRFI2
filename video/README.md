@@ -51,9 +51,9 @@ node render15.js video && python3 mix_audio.py
 
 # Explainer 2 minutes: Vox style, 16:9, English (`output/curalle_explainer_16x9.mp4`)
 
-1:55, 1920×1080, English voiceover (en-US-AndrewNeural) with burned-in English subtitles. Uses the `CURALLE VIDEO.mp4` footage (pump bottle) plus Vox-style explainer scenes. Script and shot list: `script_2min_vox.md`.
+2:00, 1920×1080, English voiceover (en-US-AndrewNeural) with burned-in English subtitles, plus Dr. Fareez in his own voice. Uses the `CURALLE VIDEO.mp4` footage (pump bottle), the lab clips in `explainer/clips/` (Fareez1, lab1, lab2, lab3; not committed) and Vox-style explainer scenes. Script and shot list: `script_2min_vox.md`.
 
-Flow: hook (footage) → "Why does eczema keep coming back?" → brick-wall skin barrier → microbiome → product → Dr. Fareez → post·bi·ot·ics → glycerosomes (3D footage) → wall rebuilt → how to use → proof (IIDEX, KKM) → CTA (RM55, curalle.co / ask your pharmacist).
+Flow: hook (footage) → "Why does eczema keep coming back?" → brick-wall skin barrier → microbiome → product → Dr. Fareez (own clips) → post·bi·ot·ics → glycerosomes (3D footage) → how to use → lab clips → proof (IIDEX, KKM) → CTA (RM129, curalle.co / ask your pharmacist).
 
 ## Re-render
 ```
@@ -62,7 +62,7 @@ cd explainer && python3 tts_lines.py                       # voiceover per scene
 python3 build_timeline.py "/path/CURALLE VIDEO.mp4"        # scene timing + footage cuts -> foot/
 cd .. && node renderex.js stills 20,35,60,90               # check
 node renderex.js sfx                                       # sound-effect cues
-N=3446; Q=862; for i in 0 1 2 3; do node renderex.js video $((i*Q)) $(((i+1)*Q)) explainer/part$i.mp4 & done; wait
+N=3600; Q=900; export CHROME=/opt/pw-browsers/chromium; for i in 0 1 2 3; do node renderex.js video $((i*Q)) $(((i+1)*Q)) explainer/part$i.mp4 & done; wait
 # concat part0-3 -> explainer/silent.mp4 (ffmpeg concat), then:
 python3 mix_explainer.py
 ```

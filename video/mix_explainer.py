@@ -8,7 +8,9 @@ vo=np.zeros(N); bed=np.zeros(N); fx=np.zeros(N); rng=np.random.default_rng(7)
 def add(buf,sig,at,g=1.0):
     i=int(at*SR); j=min(len(buf),i+len(sig))
     if j>i: buf[i:j]+=sig[:j-i]*g
-for s in TL['scenes']: add(vo,load(f"explainer/vo/{s['key']}.mp3"),s['vo'])
+for s in TL['scenes']:
+    if s['kind']=='clip': add(vo,load(f"explainer/clips/{s['key']}.wav"),s['a'])   # the clip's own speech
+    else: add(vo,load(f"explainer/vo/{s['key']}.mp3"),s['vo'])
 # --- piano-ish bed: Am F C G, 84 bpm, warmer in act 3/4
 bpm=84; beat=60/bpm
 def note(f,d,amp=1):
