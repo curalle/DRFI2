@@ -249,3 +249,12 @@ PAGE=honest.html node render-explainer.js video vf voice.wav
 - Rakaman malam dalam kereta (0:37); ambilan bersih, hanya jeda dipendekkan.
 - Gred malam: `hqdn3d=3:3:6:6,eq=gamma=1.7:saturation=1.25:contrast=1.08` + lengkung bayang (cerahkan muka, kekalkan bayang gelap).
 - Jalur tajuk untuk hook & CTA komen; jubin Vox kulit normal (folikel rambut, kelenjar peluh, kolagen anyaman) lawan tisu parut (kolagen padat & selari, tiada kelenjar/folikel).
+
+---
+
+# Mesej Dr Sabrina kepada panel (9:16, 0:51), untuk pembentangan panel
+
+`output/curalle_panel_drsabrina_9x16.mp4`, halaman `panel.html` (`python3 edit/make_page.py panel panel.html`, kandungan `edit/panel_parts.py`, potongan `edit/panel.json`).
+- Sumber: eksport media sosial 576×1024 (1:01) dengan sari kata Inggeris yang terbakar dalam gambar; dinaikkan ke 1080×1920. Ambilan bersih, hanya jeda dipendekkan.
+- Untuk panel/geran, bukan media sosial: Bahasa Inggeris formal, tiada CTA jualan. Grafik kekal di jalur atas supaya sari kata asal kelihatan.
+- Jubin: kitaran flare (steroid) lawan penjagaan harian; soalan pesakit (steroid jangka panjang, halal) dan pilihan yang sedikit; peranan klinikal (saringan & pengambilan, SCORAD, pemantauan keselamatan) dan kajian 60 peserta double-blind, vehicle-controlled, kelulusan etika penuh. Semua fakta seperti yang disebut dalam rakaman.

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Dr Sabrina Panel Message 9:16</title>
+<style>
+@font-face{font-family:Playfair;font-weight:700;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Playfair;font-weight:700;font-style:italic;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-700-italic.woff2)}
+@font-face{font-family:Inter;font-weight:400;src:url(node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2)}
+@font-face{font-family:Inter;font-weight:600;src:url(node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+:root{--paper:#F3ECDC;--table:#DCCFB4;--ink:#1B1B1B;--purple:#6A3FA0;--deep:#3E1F6B;--yellow:#FFE14D;--red:#E4472B;--cream:#FBF7EE;--muted:#6d6457;--gold:#D99A1E;--skin:#F4D3C2;--blue:#2a6a85;--green:#5E9A1E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--table)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif;color:var(--ink);
+  background:radial-gradient(circle at 50% 40%,#E6DBC4 0,var(--table) 70%)}
+.abs,.tile *{position:absolute}
+.tile .flow,.tile .flow *{position:static}
+.tile b,.tile i,.tile br,.tile .kicker span{position:static}
+.strike{position:static!important;background-image:linear-gradient(transparent 52%,#E4472B 52%,#E4472B 60%,transparent 60%);background-repeat:no-repeat;background-size:0% 100%}
+#band{position:absolute;left:0;top:0;width:1080px;height:860px;pointer-events:none;opacity:0;
+  background:linear-gradient(180deg,#1E1236 0,#1E1236 52%,rgba(30,18,54,.86) 70%,rgba(30,18,54,0) 100%)}
+#band .bk{position:absolute;left:60px;font-weight:800;font-size:28px;letter-spacing:7px;text-transform:uppercase;color:#FFE14D;white-space:nowrap}
+#band .bt{position:absolute;left:60px;width:960px;font-family:Playfair;font-weight:900;font-size:76px;line-height:1.06;color:#fff}
+#band .bt .hl{color:#FFE14D;background-image:linear-gradient(transparent 84%,#FFE14D 84%,#FFE14D 95%,transparent 95%)}
+#band .badge{position:absolute;display:flex;align-items:center;gap:14px;font-weight:800;font-size:34px;color:#1B1B1B;background:#FBF7EE;padding:12px 24px 12px 12px;border-radius:999px;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.35)}
+#band .badge b{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;color:#fff;font-size:26px}
+#band .step{position:absolute;left:60px;display:flex;align-items:center;gap:18px}
+#band .step .n{width:84px;height:84px;border-radius:18px;background:#FFE14D;color:#1E1236;font-family:Playfair;font-weight:900;font-size:52px;display:flex;align-items:center;justify-content:center;transform:rotate(-4deg)}
+#band .step .s{font-weight:800;font-size:30px;letter-spacing:6px;color:#fff;text-transform:uppercase}
+#prog{position:absolute;left:60px;top:70px;width:960px;height:56px}
+#prog .track{position:absolute;left:0;top:22px;width:960px;height:10px;border-radius:99px;background:rgba(255,255,255,.18)}
+#prog .fill{position:absolute;left:0;top:22px;height:10px;border-radius:99px;background:#FFE14D;width:0}
+#prog .tick{position:absolute;top:0;transform:translateX(-50%);text-align:center}
+#prog .tick i{display:block;width:24px;height:24px;margin:15px auto 0;border-radius:50%;background:#3a2a5c;border:4px solid rgba(255,255,255,.35)}
+#prog .tick span{display:block;margin-top:8px;font-weight:800;font-size:16px;letter-spacing:3px;color:rgba(255,255,255,.55);text-transform:uppercase;white-space:nowrap}
+#prog .tick.on i{background:#FFE14D;border-color:#FFE14D}
+#prog .tick.on span{color:#FFE14D}
+.dots{position:absolute;display:flex;gap:18px}
+.dots i{display:block;width:54px;height:54px;border-radius:50%;border:5px solid #FFE14D;background:transparent}
+.bar{position:absolute;height:22px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.bar>div{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:#FFE14D;width:0}
+
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+.tile{position:absolute;width:1080px;height:1920px;background:var(--paper);border-radius:6px;
+  box-shadow:0 30px 0 rgba(0,0,0,.05),0 40px 120px rgba(60,40,10,.25);overflow:hidden}
+.tile::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 60%,rgba(120,90,40,.12) 100%)}
+.kicker{font-weight:800;font-size:32px;letter-spacing:6px;text-transform:uppercase;color:var(--purple);white-space:nowrap}
+.title{font-family:Playfair;font-weight:900;font-size:84px;line-height:1.06;letter-spacing:-1px}
+.title div{position:static}
+.body{font-size:38px;line-height:1.4;color:#3d3830}
+.hl{background-image:linear-gradient(transparent 14%,var(--yellow) 14%,var(--yellow) 90%,transparent 90%);background-repeat:no-repeat;background-size:0% 100%;padding:0 10px;margin:0 -10px;-webkit-box-decoration-break:clone;box-decoration-break:clone;position:static!important}
+.hand{font-family:Caveat;font-weight:700;color:var(--red);white-space:nowrap}
+.tag{font-weight:800;font-size:44px;padding:12px 28px;border:5px solid var(--ink);border-radius:8px;background:var(--cream);box-shadow:7px 7px 0 var(--ink);white-space:nowrap}
+.tag.red{color:var(--red);border-color:var(--red);box-shadow:7px 7px 0 var(--red)}
+.tag.pur{color:var(--purple);border-color:var(--purple);box-shadow:7px 7px 0 var(--purple)}
+.chip{font-weight:700;font-size:38px;display:flex;align-items:center;gap:16px;background:var(--cream);padding:12px 28px 12px 12px;border-radius:999px;box-shadow:0 8px 0 rgba(0,0,0,.07),0 14px 30px rgba(60,40,10,.1);white-space:nowrap}
+.chip b{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:var(--purple);color:#fff;font-size:30px}
+.chip.no b{background:var(--red)}
+.card{background:var(--cream);border-radius:10px;box-shadow:0 16px 0 rgba(0,0,0,.06),0 28px 60px rgba(60,40,10,.14)}
+.num{width:96px;height:96px;border-radius:50%;background:var(--purple);color:#fff;font-family:Playfair;font-weight:900;font-size:60px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 0 var(--deep)}
+.lbl{font-weight:800;font-size:26px;letter-spacing:4px;text-transform:uppercase;color:#8a7a60;white-space:nowrap}
+.q{display:flex;align-items:center;gap:26px;width:940px;padding:26px 30px;font-size:38px;font-weight:700;line-height:1.25}
+.q>*{position:static!important}
+.q .num{flex:none}
+#broll{position:absolute;inset:0;visibility:hidden}
+#brbg{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#brcard{position:absolute;left:40px;top:690px;width:1000px;height:563px;border:12px solid #fff;border-radius:6px;box-shadow:0 30px 70px rgba(0,0,0,.45);overflow:hidden;background:#000;transform-origin:50% 50%}
+#brcard img{position:absolute;left:0;top:0;width:976px;height:539px;object-fit:cover}
+#brfull{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover}
+#brcap{position:absolute;left:60px;top:1290px;transform-origin:left center}
+#vidbox{position:absolute;overflow:hidden;background:#222;transform-origin:50% 50%}
+#vid{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:1920px}
+#pipname{position:absolute;left:690px;width:340px;top:652px;text-align:center}
+#pipname span{display:inline-block;font-weight:800;font-size:22px;background:var(--ink);color:#fff;padding:7px 16px;border-radius:999px;white-space:nowrap}
+#overlay *{position:static}
+#overlay>*{position:absolute}
+.ocard{background:var(--cream);border-radius:14px;box-shadow:0 14px 0 rgba(0,0,0,.12),0 30px 60px rgba(0,0,0,.25);padding:30px 40px}
+#noise{position:absolute;inset:-60px;pointer-events:none;opacity:.07}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 60%,rgba(40,25,5,.22) 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="world">
+  <svg id="trail" class="abs" style="left:0;top:0;overflow:visible" width="10" height="10"></svg>
+
+  <!-- T1: steroids for flares, daily barrier care in between (0,0) -->
+  <div class="tile" id="T1" style="left:0;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="10.1" data-fx="up">In my clinic</div>
+    <div class="title" style="left:70px;top:300px;width:620px;font-size:58px">
+      <div data-in="12.5" data-fx="up">Flares need steroids.</div>
+      <div data-in="14.4" data-fx="up">Between flares, the barrier</div>
+      <div data-in="15.8" data-fx="up">still needs <span class="hl" data-hl="15.9">daily care.</span></div>
+    </div>
+    <div class="card" style="left:70px;top:680px;width:940px;height:760px" data-in="11.2" data-fx="card">
+      <div class="lbl" style="left:40px;top:34px">Eczema activity over time</div>
+      <svg style="left:20px;top:90px" width="900" height="640" viewBox="0 0 900 640" id="chart1"></svg>
+    </div>
+  </div>
+
+  <!-- T2: patient concerns and the lack of options (1300,0) -->
+  <div class="tile" id="T2" style="left:1300px;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="18.0" data-fx="up">What patients ask</div>
+    <div class="card" style="left:70px;top:320px;width:620px;height:150px" data-in="18.2" data-fx="left">
+      <div style="left:36px;top:30px;width:560px;font-family:Playfair;font-weight:900;font-size:40px;line-height:1.15">“Is long-term steroid use safe?”</div>
+    </div>
+    <div class="card" style="left:70px;top:500px;width:620px;height:110px" data-in="20.4" data-fx="left">
+      <div style="left:36px;top:28px;width:560px;font-family:Playfair;font-weight:900;font-size:40px">“Is this product halal?”</div>
+    </div>
+    <div class="card" style="left:70px;top:680px;width:940px;height:780px" data-in="22.3" data-fx="card">
+      <div class="lbl" style="left:40px;top:36px;color:var(--red)">Very few options are</div>
+      <div class="chip" style="left:40px;top:110px" data-in="25.0" data-fx="left"><b>✓</b>Steroid-free</div>
+      <div class="chip" style="left:40px;top:230px" data-in="26.4" data-fx="left"><b>✓</b>Halal</div>
+      <div class="chip" style="left:40px;top:350px" data-in="27.1" data-fx="left"><b>✓</b>Comfortable in our hot, humid climate</div>
+      <svg style="left:40px;top:500px" width="860" height="240" viewBox="0 0 860 240" id="gap2"></svg>
+    </div>
+  </div>
+
+  <!-- T3: the clinical study (2600,0) -->
+  <div class="tile" id="T3" style="left:2600px;top:0">
+    <div class="kicker" style="left:70px;top:250px" data-in="35.6" data-fx="up">My role: clinical lead</div>
+    <div class="card" style="left:70px;top:320px;width:620px;height:110px" data-in="36.9" data-fx="left">
+      <div class="num" style="left:20px;top:7px;width:96px;height:96px">1</div>
+      <div style="left:140px;top:32px;font-size:34px;font-weight:800">Screening &amp; recruitment</div>
+    </div>
+    <div class="card" style="left:70px;top:460px;width:620px;height:110px" data-in="38.7" data-fx="left">
+      <div class="num" style="left:20px;top:7px;width:96px;height:96px">2</div>
+      <div style="left:140px;top:34px;font-size:30px;font-weight:800;white-space:nowrap">SCORAD assessment</div>
+    </div>
+    <div class="card" style="left:70px;top:600px;width:620px;height:110px" data-in="40.8" data-fx="left">
+      <div class="num" style="left:20px;top:7px;width:96px;height:96px">3</div>
+      <div style="left:140px;top:32px;font-size:34px;font-weight:800">Safety monitoring</div>
+    </div>
+    <div class="card" style="left:70px;top:770px;width:940px;height:720px" data-in="41.8" data-fx="card">
+      <div class="lbl" style="left:40px;top:36px;color:var(--purple)">Clinical study</div>
+      <div style="left:40px;top:80px;font-family:Playfair;font-weight:900;font-size:150px;line-height:1;color:var(--deep)" id="n60">0</div>
+      <div style="left:260px;top:140px;font-size:36px;font-weight:800">participants</div>
+      <svg style="left:40px;top:250px" width="860" height="240" viewBox="0 0 860 240" id="dots3"></svg>
+      <div class="chip" style="left:40px;top:520px;font-size:30px" data-in="43.3" data-fx="pop"><b>◐</b>Double-blind</div>
+      <div class="chip" style="left:340px;top:520px;font-size:30px" data-in="44.0" data-fx="pop"><b>▣</b>Vehicle-controlled</div>
+      <div class="chip" style="left:40px;top:620px;font-size:30px" data-in="45.7" data-fx="pop"><b>✓</b>Full ethical approval</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- B-roll: card over a blurred still, or full-bleed for portrait clips -->
+<div id="broll"><img id="brbg"><img id="brfull"><div id="brcard"><img id="brimg"></div><div id="brcap" class="tag" style="font-size:40px"></div></div>
+
+<!-- presenter -->
+<div id="vidbox"><img id="vid"></div>
+<div id="pipname"><span>Dr Sabrina · Dermatologist</span></div>
+<div id="band">
+  <div id="prog"><div class="track"></div><div class="fill" id="pfill"></div></div>
+  <div id="b1">
+    <div class="bk" style="top:180px" data-in="0.2" data-fx="up">A message to the panel</div>
+    <div class="bt" style="top:230px" data-in="2.2" data-fx="up">Dr <span class="hl" data-hl="2.6">Sabrina</span></div>
+    <div class="badge" style="left:60px;top:370px" data-in="3.9" data-fx="left"><b style="background:#6A3FA0">✚</b>Consultant Dermatologist</div>
+    <div class="badge" style="left:60px;top:460px" data-in="5.0" data-fx="left"><b style="background:#2a6a85">H</b>Hospital Al-Sultan Abdullah</div>
+    <div class="badge" style="left:60px;top:550px" data-in="6.7" data-fx="left"><b style="background:#D99A1E">✓</b>Clinical co-researcher · CURALLÉ</div>
+  </div>
+  <div id="b2">
+    <div class="bk" style="top:180px" data-in="29.4" data-fx="up">CURALLÉ is designed to fill the gap</div>
+    <div class="bt" style="top:230px" data-in="31.8" data-fx="up">A <span class="hl" data-hl="32.1">daily moisturiser</span></div>
+    <div class="badge" style="left:60px;top:400px" data-in="33.1" data-fx="left"><b style="background:#5E9A1E">✓</b>Used alongside medical treatment</div>
+    <div class="badge" style="left:60px;top:500px" data-in="34.7" data-fx="left"><b style="background:#E4472B">✗</b>Not a replacement for it</div>
+  </div>
+  <div id="b3">
+    <div class="bk" style="top:180px" data-in="46.8" data-fx="up">Dr Sabrina</div>
+    <div class="bt" style="top:230px;font-size:64px" data-in="47.0" data-fx="up">“I fully support this project and its <span class="hl" data-hl="48.9">path to the patients.</span>”</div>
+    <div class="badge" style="left:60px;top:500px" data-in="50.0" data-fx="pop"><b style="background:#6A3FA0">♥</b>Thank you</div>
+  </div>
+</div>
+
+
+<!-- full-screen overlays -->
+<div id="overlay">
+</div>
+
+<canvas id="noise" width="300" height="300"></canvas>
+<div id="vignette"></div>
+</div>
+
+<script>
+window.DURATION=51.0;window.OUTPUT='output/curalle_panel_drsabrina_9x16.mp4';
+const Q=new URLSearchParams(location.search);
+const FRAMES=Q.get('frames')||'', NFR=+(Q.get('n')||1510);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);
+const inout=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.8;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const bounce=x=>{const n=7.5625,d=2.75;if(x<1/d)return n*x*x;if(x<2/d)return n*(x-=1.5/d)*x+.75;if(x<2.5/d)return n*(x-=2.25/d)*x+.9375;return n*(x-=2.625/d)*x+.984375};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const NS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const el=(parent,tag,attrs={},txt)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(txt!=null)e.textContent=txt;parent.appendChild(e);return e;};
+const txt=(p,x,y,s,o={})=>el(p,'text',Object.assign({x,y,'text-anchor':'middle','font-family':'Inter','font-weight':800,'font-size':24,fill:'#6d6457'},o),s);
+
+// ---------------- camera over the tiles ----------------
+const TP={T1:[0,0],T2:[1300,0],T3:[2600,0]};
+const C=(k,dx=540,dy=960)=>[TP[k][0]+dx,TP[k][1]+dy];
+const mid=(a,b)=>[(C(a)[0]+C(b)[0])/2,(C(a)[1]+C(b)[1])/2];
+const CAM=[
+ [0,...C('T1'),1],[17.4,...C('T1'),1.03],
+ [17.75,...mid('T1','T2'),.62],[18.15,...C('T2'),1],[24.6,...C('T2'),1],[25.3,...C('T2',540,1120),1.08],[29.2,...C('T2',540,1120),1.08],
+ [33.0,...C('T3'),1],[41.6,...C('T3'),1],[42.3,...C('T3',540,1160),1.08],[46.6,...C('T3',540,1160),1.08],[51.0,...C('T3'),1]
+];
+function camAt(t){let i=0;while(i<CAM.length-1&&CAM[i+1][0]<=t)i++;if(i>=CAM.length-1)return CAM[CAM.length-1].slice(1);
+  const a=CAM[i],b=CAM[i+1],u=inout(P(t,a[0],b[0]-a[0]));
+  return [lerp(a[1],b[1],u),lerp(a[2],b[2],u),Math.exp(lerp(Math.log(a[3]),Math.log(b[3]),u))];}
+(function(){const order=['T1','T2','T3'];let d='';
+  order.forEach((k,i)=>{const [x,y]=C(k);d+=(i?' L':'M')+x+' '+y;});
+  el($('trail'),'path',{d,fill:'none',stroke:'#B9A98A','stroke-width':14,'stroke-dasharray':'2 34','stroke-linecap':'round'});})();
+
+// ---------------- presenter ----------------
+const MODE=[[0,1],[9.9,1],[10.35,0],[29.0,0],[29.4,1],[35.3,1],[35.75,0],[46.4,0],[46.8,1]];
+function modeAt(t){let i=0;while(i<MODE.length-1&&MODE[i+1][0]<=t)i++;if(i>=MODE.length-1)return MODE[MODE.length-1][1];
+  const a=MODE[i],b=MODE[i+1];return lerp(a[1],b[1],inout(P(t,a[0],b[0]-a[0])));}
+const PUNCH=[[2.3,.02],[9.6,0],[32.0,.03],[35,0],[48.9,.03]];
+function punchAt(t){let z=0;for(const [a,amt] of PUNCH){if(t>=a)z=lerp(z,amt,out3(P(t,a,.25)));}return z;}
+const PIP={x:690,y:210,w:340,h:430},FULL={x:0,y:0,w:1080,h:1920};
+const LOW=[[0,1]];
+function lowAt(t){let i=0;while(i<LOW.length-1&&LOW[i+1][0]<=t)i++;if(i>=LOW.length-1)return LOW[LOW.length-1][1];const a=LOW[i],b=LOW[i+1];return lerp(a[1],b[1],inout(P(t,a[0],b[0]-a[0])));}
+const ZOOM=[[0,9.9,0,.02],[29.4,35.4,0,.03],[46.8,51.0,0,.03]];
+function zoomAt(t){for(const [a,b,z0,z1] of ZOOM){if(t>=a&&t<b)return lerp(z0,z1,inout(P(t,a,b-a)));}return 0;}
+function placeVideo(t){
+  const f=modeAt(t);
+  const r={x:lerp(PIP.x,FULL.x,f),y:lerp(PIP.y,FULL.y,f),w:lerp(PIP.w,FULL.w,f),h:lerp(PIP.h,FULL.h,f)};
+  const B=$('vidbox');B.style.left=r.x+'px';B.style.top=r.y+'px';B.style.width=r.w+'px';B.style.height=r.h+'px';
+  B.style.borderRadius=lerp(28,0,f)+'px';
+  B.style.boxShadow=f<1?`0 0 0 ${lerp(9,0,f)}px #fff, 0 ${lerp(26,0,f)}px ${lerp(60,0,f)}px rgba(40,25,5,${lerp(.35,0,f)})`:'none';
+  const bob=(1-f)*Math.sin(t*1.3)*6;
+  B.style.transform=`translateY(${bob}px) rotate(${(1-f)*1.6}deg)`;
+  const kb=1+.015*Math.sin(t*.21), pz=punchAt(t), zm=zoomAt(t), L=lowAt(t);   // smooth drift (no sawtooth reset)
+  const scF=1.12*kb*(1+pz+zm), scP=.6;
+  const sc=lerp(scP,scF,f);
+  const fyLow=500+(960-610)/scF;   // head top lands just under the title band
+  const fx=lerp(460,470,f), fy=lerp(700,lerp(lerp(900,880,pz*5),fyLow,L),f);
+  $('vid').style.transform=`translate(${r.w/2-fx*sc}px,${r.h/2-fy*sc}px) scale(${sc})`;
+  $('pipname').style.opacity=clamp(1-f*3);$('pipname').style.transform=`translateY(${bob}px)`;
+  return f;
+}
+
+// ---------------- element animation ----------------
+function fx(e,t){
+  const a=+e.dataset.in,k=e.dataset.fx,rot=+(e.dataset.rot||0);let o=1,tr='';
+  if(k==='up'){const x=out3(P(t,a,.4));o=P(t,a,.25);tr=`translateY(${(1-x)*50}px)`;}
+  else if(k==='left'){const x=out3(P(t,a,.45));o=P(t,a,.25);tr=`translateX(${(1-x)*-160}px)`;}
+  else if(k==='pop'){const x=P(t,a,.45);o=P(t,a,.12);tr=`scale(${x>0?back(x):.3}) rotate(${rot}deg)`;}
+  else if(k==='stamp'){const x=P(t,a,.3);o=P(t,a,.08);tr=`rotate(${rot}deg) scale(${1.9-.9*out3(x)})`;}
+  else if(k==='card'){const x=out3(P(t,a,.5));o=P(t,a,.2);tr=`translateY(${(1-x)*140}px) rotate(${(1-x)*-4}deg)`;}
+  e.style.opacity=o;e.style.transform=tr;
+}
+const all=[...document.querySelectorAll('[data-in]')];
+const hls=[...document.querySelectorAll('[data-hl]')];
+const draws=[];const drawPath=(p,at,dur)=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.dataset.L=L;draws.push([p,at,dur]);return p;};
+
+// ---------------- illustrations ----------------
+
+
+// T1 activity curve: flare peaks (steroid) and calm valleys (daily care)
+const ch=$('chart1');
+el(ch,'line',{x1:40,y1:520,x2:880,y2:520,stroke:'#1B1B1B','stroke-width':4});
+el(ch,'line',{x1:40,y1:40,x2:40,y2:520,stroke:'#1B1B1B','stroke-width':4});
+txt(ch,860,560,'TIME',{'font-size':20,'letter-spacing':4,'text-anchor':'end'});
+const pk=[[180,110],[470,150],[760,120]];
+let dd='M40 430';pk.forEach(([x,y],i)=>{dd+=` C ${x-90} 430, ${x-40} ${y}, ${x} ${y} S ${x+90} 430, ${x+140} 430`;});dd+=' L880 430';
+const curve=drawPath(el(ch,'path',{d:dd,fill:'none',stroke:'#E4472B','stroke-width':8,'stroke-linecap':'round'}),11.4,2.4);
+const flareTags=pk.map(([x,y],i)=>{const g=el(ch,'g',{opacity:0});el(g,'rect',{x:x-80,y:y-70,width:160,height:46,rx:23,fill:'#E4472B'});txt(g,x,y-38,'Steroid',{'font-size':22,fill:'#fff'});return g;});
+const valley=[[250,400],[540,690]].map(([x0,x1])=>{const g=el(ch,'g',{opacity:0});
+  el(g,'rect',{x:x0,y:360,width:x1-x0,height:160,rx:12,fill:'#6A3FA0',opacity:.18});
+  el(g,'rect',{x:x0+6,y:470,width:x1-x0-12,height:40,rx:20,fill:'#6A3FA0'});txt(g,(x0+x1)/2,498,'Daily care',{'font-size':20,fill:'#fff'});return g;});
+// T2 a small bar showing how few options tick all three boxes
+const g2=$('gap2');
+txt(g2,0,30,'OPTIONS THAT TICK ALL THREE',{'font-size':20,'letter-spacing':3,'text-anchor':'start'});
+el(g2,'rect',{x:0,y:60,width:860,height:40,rx:20,fill:'#E6DCC8'});
+const gbar=el(g2,'rect',{x:0,y:60,width:0,height:40,rx:20,fill:'#E4472B'});
+const gT=el(g2,'text',{x:0,y:170,'font-family':'Caveat','font-weight':700,'font-size':56,fill:'#E4472B'},'very few…');
+// T3 sixty participant dots
+const d3=$('dots3');const pdots=[];
+for(let i=0;i<60;i++){const c=el(d3,'circle',{cx:30+(i%15)*56,cy:40+Math.floor(i/15)*56,r:20,fill:'#E6DCC8'});pdots.push(c);}
+
+// grain
+(function(){const c=$('noise'),x=c.getContext('2d'),im=x.createImageData(300,300);for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255;im.data[i]=im.data[i+1]=im.data[i+2]=v;im.data[i+3]=255;}x.putImageData(im,0,0);
+  c.style.width='1200px';c.style.height='2040px';c.style.imageRendering='pixelated';})();
+
+const BROLL=Q.get('broll')||'';
+const BR=[];
+async function setImg(img,src){if(img.getAttribute('src')!==src){img.src=src;try{await img.decode();}catch(e){}}}
+async function placeBroll(t){
+  const L=$('broll');const e=BR.find(b=>t>=b[1]&&t<b[2])||BR.find(b=>t>=b[1]-.35&&t<b[2]+.35);
+  if(!e||!BROLL){L.style.visibility='hidden';return;}
+  const [id,a,b,cap,full]=e;
+  // chained clips (e2->e3->e4) cut straight between each other; the first/last zoom in and out
+  const prev=BR.find(x=>Math.abs(x[2]-a)<.01), next=BR.find(x=>Math.abs(x[1]-b)<.01);
+  const tin=prev?1:out3(P(t,a-.35,.35)), tout=next?0:inout(P(t,b,.35));
+  if(t<a&&prev||t>=b&&next){L.style.visibility='hidden';return;}
+  L.style.visibility='visible';
+  const n=Math.max(1,Math.floor((t-a)*30)+1);
+  const f=`file://${BROLL}/${id}/f${String(n).padStart(5,'0')}.jpg`;
+  $('brbg').style.display=full?'none':'block';$('brfull').style.display=full?'block':'none';$('brcard').style.display=full?'none':'block';
+  const vis=tin*(1-tout);
+  if(full){await setImg($('brfull'),f);$('brfull').style.opacity=vis;$('brfull').style.transform=`scale(${1.06-.06*P(t,a,b-a)})`;}
+  else{
+    await setImg($('brbg'),`file://${BROLL}/${id}/bg.jpg`);await setImg($('brimg'),f);
+    $('brbg').style.opacity=vis;
+    const sc=lerp(.45,1,tin)*lerp(1,.6,tout), rot=lerp(-7,-1.5,tin)+lerp(0,5,tout);
+    $('brcard').style.opacity=clamp(vis*1.4);$('brcard').style.transform=`scale(${sc*(1+.04*P(t,a,b-a))}) rotate(${rot}deg)`;
+  }
+  const c=$('brcap');c.textContent=cap;c.style.display=cap?'block':'none';
+  const k=P(t,a+.15,.3);c.style.opacity=k*(1-tout);c.style.transform=`rotate(-2deg) scale(${k>0?back(k):.3})`;
+}
+const BANDS=[['b1',0,10.0],['b2',29.2,35.5],['b3',46.6,999]];
+const CH=([['Intro',0],['Need',10.1],['CURALLÉ',29.3],['Study',35.6],['Support',46.7]]).map(([s,t])=>{const d=document.createElement('div');d.className='tick';d.innerHTML=`<i></i><span>${s}</span>`;d.style.left=`${960*t/DURATION+12}px`;$('prog').appendChild(d);return {el:d,t};});
+const OV=[];
+function overlays(t){OV.forEach(([id,a,b])=>{const e=$(id);const vis=t>=a&&t<b;e.style.visibility=vis?'visible':'hidden';if(vis&&t>b-.3)e.style.opacity=(+e.style.opacity||1)*(1-P(t,b-.3,.3));});}
+
+window.render=async function(t){
+  all.forEach(e=>fx(e,t));
+  hls.forEach(e=>{e.style.backgroundSize=`${out3(P(t,+e.dataset.hl,.45))*100}% 100%`;});
+  draws.forEach(([p,a,d])=>{p.style.strokeDashoffset=p.dataset.L*(1-out3(P(t,a,d)));});
+  placeVideo(t);overlays(t);await placeBroll(t);
+  const [cx,cy,s]=camAt(t);
+  $('world').style.transform=`translate(${540-cx*s}px,${960-cy*s}px) scale(${s})`;
+
+  document.querySelectorAll('[data-st]').forEach(e=>{e.style.backgroundSize=`${out3(P(t,+e.dataset.st,.4))*100}% 100%`;});
+
+  flareTags.forEach((g,i)=>g.style.opacity=P(t,12.8+i*.35,.3));
+  valley.forEach((g,i)=>g.style.opacity=P(t,14.5+i*.4,.4));
+  gbar.setAttribute('width',860*.12*out3(P(t,22.6,.8)));gT.style.opacity=P(t,23.6,.3);
+  const k3=P(t,42.2,1.0);$('n60').textContent=Math.round(60*out3(k3));
+  pdots.forEach((c,i)=>{const on=i<Math.round(60*out3(k3));c.setAttribute('fill',on?(i%2?'#6A3FA0':'#9A74D0'):'#E6DCC8');});
+
+  {const f=modeAt(t);$('band').style.opacity=clamp(f*1.2-.1);
+   BANDS.forEach(([id,a,b])=>{const e=$(id);const v=t>=a&&t<b;e.style.visibility=v?'visible':'hidden';e.style.opacity=v&&t>b-.25?1-P(t,b-.25,.25):1;});
+   $('pfill').style.width=`${960*clamp(t/DURATION)}px`;
+   CH.forEach(c=>c.el.classList.toggle('on',t>=c.t));
+  }
+  // overlays
+  if($('bm'))$('bm').style.transform=t>212.4?`translateY(${Math.abs(Math.sin((t-212.4)*7))*-14*Math.exp(-(t-212.4)*1.5)}px)`:'';
+
+  const g=Math.floor(t*24);$('noise').style.transform=`translate(${(g*37)%60-30}px,${(g*53)%60-30}px)`;
+  const n=Math.min(NFR,Math.floor(t*30)+1);
+  const V=$('vid');const src=`file://${FRAMES}/f${String(n).padStart(5,'0')}.jpg`;
+  if(FRAMES&&V.getAttribute('src')!==src){V.src=src;try{await V.decode();}catch(e){}}
+};
+window.render(0);
+</script>
+</body>
+</html>
