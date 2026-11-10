@@ -240,3 +240,12 @@ PAGE=honest.html node render-explainer.js video vf voice.wav
 - Dibuang: "saya nak telus" (diulang sebagai "saya nak jujur"), ayat tergantung "Dan jika anda minat pada skincare inovation, jadi satu…", jeda panjang.
 - Penutup: bingkai dibekukan pada 1:43.6 (sebelum tangan mencapai telefon); "Terima kasih kerana menonton" dimainkan atas bingkai itu.
 - Senarai bahan dalam jubin "Pesanan saya" ialah contoh ilustrasi, bukan senarai bahan CURALLÉ.
+
+---
+
+# Siri DRFI: Kenapa parut tak berpeluh & tak tumbuh bulu (9:16, 0:32)
+
+`output/drfi_scar_9x16.mp4`, halaman `scar.html` (`python3 edit/make_page.py scar scar.html`, kandungan `edit/scar_parts.py`, potongan `edit/scar.json`).
+- Rakaman malam dalam kereta (0:37); ambilan bersih, hanya jeda dipendekkan.
+- Gred malam: `hqdn3d=3:3:6:6,eq=gamma=1.7:saturation=1.25:contrast=1.08` + lengkung bayang (cerahkan muka, kekalkan bayang gelap).
+- Jalur tajuk untuk hook & CTA komen; jubin Vox kulit normal (folikel rambut, kelenjar peluh, kolagen anyaman) lawan tisu parut (kolagen padat & selari, tiada kelenjar/folikel).
