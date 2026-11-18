@@ -2,13 +2,14 @@
 # Usage: python3 cuts.py <config.json> <workdir>
 #   single recording: {"src":"src2","start":0.5,"end":241.9,"noise_db":-29,"remove":[[a,b],...]}
 #   optional "highpass": 250 filters engine rumble before silence detection
+#   optional "pad" (default 0.12 s kept each side of speech) and "min_silence" (default 0.35 s) for tighter cuts
 #   several, joined in order: {"out":"src3","noise_db":-29,"parts":[{"src":"src3a","start":..,"end":..,"remove":[..]},...]}
 #   reads <workdir>/<src>/audio.wav; writes <workdir>/<out or src>/keep.json as [[partIndex,a,b],...]
 import json,os,re,subprocess,sys
 cfg=json.load(open(sys.argv[1]));S=sys.argv[2]
 FF='/usr/local/lib/python3.11/dist-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2'
 parts=cfg.get('parts') or [{k:cfg[k] for k in ('src','start','end','remove') if k in cfg}]
-PAD=0.12   # pauses longer than 0.35s shrink to ~0.24s
+PAD=cfg.get('pad',0.12)   # pauses longer than min_silence shrink to ~2*PAD
 def sub(segs,r):
     out=[]
     for a,b in segs:
@@ -19,7 +20,7 @@ def sub(segs,r):
 keep=[]
 for pi,p in enumerate(parts):
     hp=f"highpass=f={cfg['highpass']}," if cfg.get('highpass') else ''   # e.g. 250 Hz to ignore engine rumble in car recordings
-    log=subprocess.run([FF,'-hide_banner','-i',f"{S}/{p['src']}/audio.wav",'-af',f"{hp}silencedetect=noise={cfg.get('noise_db',-32)}dB:d=0.35",'-f','null','-'],capture_output=True,text=True).stderr
+    log=subprocess.run([FF,'-hide_banner','-i',f"{S}/{p['src']}/audio.wav",'-af',f"{hp}silencedetect=noise={cfg.get('noise_db',-32)}dB:d={cfg.get('min_silence',0.35)}",'-f','null','-'],capture_output=True,text=True).stderr
     sil=list(zip([float(x) for x in re.findall(r'silence_start: ([0-9.]+)',log)],[float(x) for x in re.findall(r'silence_end: ([0-9.]+)',log)]))
     A,B=p['start'],p['end'];speech=[];cur=A
     for s,e in sil:
