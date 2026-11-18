@@ -1,11 +1,11 @@
 {
  "src": "src8",
  "start": 0.0,
- "end": 24.05,
+ "end": 33.3,
  "noise_db": -30,
  "notes": [
-  "Family video: child recites the hadith (Arabic) then the Malay meaning, said twice; kept the first, clearer Malay reading (11.4-24.0) and dropped the rushed second one.",
-  "Tight cut on request ('potong yg silent'): pauses > 0.25 s shrink to ~0.16 s."
+  "Family video: child recites the hadith (Arabic), its Malay meaning, 'sallallahu alaihi wasallam' and 'riwayat Tirmidzi'. Whole reading kept to the end.",
+  "Tight cut: pauses > 0.25 s shrink to ~0.16 s."
  ],
  "highpass": 150,
  "pad": 0.08,

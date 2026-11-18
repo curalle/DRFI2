@@ -261,9 +261,9 @@ PAGE=honest.html node render-explainer.js video vf voice.wav
 
 ---
 
-# Hafazan Hadis: Senyuman Nabi (9:16, 0:19), video keluarga
+# Hafazan Hadis: Senyuman Nabi (9:16, 0:26), video keluarga
 
 `output/hafazan_hadis_9x16.mp4`, halaman `hadith.html` (berdiri sendiri, dirender dengan `PAGE=hadith.html node render-explainer.js video …`), potongan `edit/hadith.json`.
-- Kanak-kanak membaca hadis (Arab) dan maksudnya (Melayu, dua kali). Bacaan Melayu pertama yang lebih jelas disimpan; yang kedua dibuang. Potongan ketat: jeda > 0.25 s dipendekkan kepada ~0.16 s (`pad`, `min_silence` dalam `edit/hadith.json`).
+- Kanak-kanak membaca hadis (Arab), maksudnya (Melayu), selawat dan "riwayat at-Tirmizi"; keseluruhan bacaan disimpan hingga akhir. Potongan ketat: jeda > 0.25 s dipendekkan kepada ~0.16 s (`pad`, `min_silence` dalam `edit/hadith.json`).
 - Teks Arab tidak dipaparkan (tidak dapat ditranskrip dengan pasti); maksud Melayu dipaparkan perkataan demi perkataan mengikut bacaan.
 - Fon Arab Amiri (`@fontsource/amiri`) untuk simbol ﷺ.
