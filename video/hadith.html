@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Hafazan Hadis 9:16</title>
+<style>
+@font-face{font-family:Playfair;font-weight:900;src:url(node_modules/@fontsource/playfair-display/files/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:Inter;font-weight:800;src:url(node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:700;src:url(node_modules/@fontsource/caveat/files/caveat-latin-700-normal.woff2)}
+@font-face{font-family:Amiri;font-weight:700;src:url(node_modules/@fontsource/amiri/files/amiri-arabic-700-normal.woff2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter,sans-serif}
+#vid{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 700px}
+.abs{position:absolute}
+#title{left:0;width:1080px;top:150px;text-align:center}
+#title .k{display:inline-block;font-weight:800;font-size:30px;letter-spacing:8px;color:#3E1F6B;background:#FFE14D;padding:10px 26px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+#title .t{margin-top:18px;font-family:Playfair;font-weight:900;font-size:92px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.45)}
+#arab{left:0;width:1080px;top:1500px;text-align:center;font-family:Caveat;font-weight:700;font-size:64px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.6)}
+#card{left:60px;width:960px;top:1290px;padding:34px 44px 40px;background:rgba(251,247,238,.94);border-radius:28px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+#card .who{font-weight:800;font-size:28px;letter-spacing:5px;color:#6A3FA0;text-transform:uppercase}
+#card .m{margin-top:12px;font-family:Playfair;font-weight:900;font-size:62px;line-height:1.18;color:#1B1B1B}
+#card .m span{opacity:.18;transition:none}
+#card .m span.on{opacity:1}
+#card .m span.hot{background:linear-gradient(transparent 60%,#FFE14D 60%,#FFE14D 92%,transparent 92%)}
+#card .m span.saw{opacity:1}
+.saw{font-family:Amiri;font-weight:700;font-size:1.5em;line-height:.6;vertical-align:-.12em}
+#ms{left:0;width:1080px;top:350px;text-align:center;font-family:Caveat;font-weight:700;font-size:120px;color:#FFE14D;text-shadow:0 6px 24px rgba(0,0,0,.5)}
+.star{position:absolute;width:40px;height:40px}
+#vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(0,0,0,.35) 100%)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="vid">
+  <div id="vignette"></div>
+  <svg id="stars" class="abs" style="left:0;top:0" width="1080" height="1920"></svg>
+  <div id="title" class="abs"><div class="k" id="tk">HAFAZAN HADIS</div><div class="t" id="tt">Senyuman Nabi</div></div>
+  <div id="arab" class="abs">~ bacaan dalam bahasa Arab ~</div>
+  <div id="card" class="abs">
+    <div class="who">Maksudnya</div>
+    <div class="m" id="words"></div>
+  </div>
+  <div id="ms" class="abs">MasyaAllah!</div>
+</div>
+<script>
+window.DURATION=24.0;window.OUTPUT='output/hafazan_hadis_9x16.mp4';
+const Q=new URLSearchParams(location.search);const FRAMES=Q.get('frames')||'',NFR=+(Q.get('n')||674);
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));const P=(t,a,d)=>clamp((t-a)/d);
+const out3=x=>1-Math.pow(1-x,3);const back=x=>{const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const $=id=>document.getElementById(id);
+// Malay meaning, timed to the child's reading (cut timeline)
+const W=[['Beliau',9.9],['berkata:',11.3],['“Saya',12.8],['tidak',13.7],['pernah',14.4],['melihat',15.3],['seorang',16.4],['yang',17.4],['lebih',18.0],['banyak',19.0],['tersenyum',19.9],['daripada',21.0],['Rasulullah <span class="saw">ﷺ</span>.”',21.4]];
+$('words').innerHTML=W.map(([w],i)=>`<span id="w${i}">${w}</span>`).join(' ');
+// sparkles around the title
+const NS='http://www.w3.org/2000/svg';const ST=[];
+[[150,190],[930,180],[110,330],[970,340],[260,110],[820,110]].forEach(([x,y],i)=>{const p=document.createElementNS(NS,'path');
+  p.setAttribute('d','M0 -26 L7 -7 L26 0 L7 7 L0 26 L-7 7 L-26 0 L-7 -7Z');p.setAttribute('fill',i%2?'#FFE14D':'#fff');$('stars').appendChild(p);ST.push([p,x,y,i]);});
+window.render=async function(t){
+  // gentle push-in over the whole clip
+  const z=1.02+.05*out3(P(t,0,24));$('vid').style.transform=`scale(${z})`;
+  // title pops in, then eases up and fades as the meaning card arrives
+  const ti=P(t,.2,.5),to=P(t,9.4,.5);
+  $('title').style.opacity=clamp(ti*3)*(1-to*.0);$('title').style.transform=`translateY(${-to*40}px) scale(${(ti>0?back(ti):.5)*(1-to*.15)})`;
+  ST.forEach(([p,x,y,i])=>{const k=P(t,.5+i*.12,.4);p.setAttribute('transform',`translate(${x} ${y+Math.sin(t*2+i)*8}) rotate(${t*40+i*30}) scale(${k*(.7+.3*Math.sin(t*3+i))})`);});
+  // Arabic recitation hint while the child recites (no Arabic text shown)
+  $('arab').style.opacity=P(t,1.0,.5)*(1-P(t,9.3,.4));
+  // meaning card slides up; words light up as they are spoken
+  const ci=out3(P(t,9.5,.6));$('card').style.opacity=ci;$('card').style.transform=`translateY(${(1-ci)*120}px)`;
+  W.forEach(([w,a],i)=>{const e=$('w'+i);e.className=t>=a?(W[i+1]&&t<W[i+1][1]&&i>1?'on hot':'on'):'';});
+  // "MasyaAllah!" at the end
+  const mk=P(t,22.5,.5);$('ms').style.opacity=clamp(mk*3);$('ms').style.transform=`rotate(-4deg) scale(${mk>0?back(mk):.3})`;
+  const n=Math.min(NFR,Math.floor(t*30)+1);const src=`file://${FRAMES}/f${String(n).padStart(5,'0')}.jpg`;
+  const V=$('vid');if(FRAMES&&V.getAttribute('src')!==src){V.src=src;try{await V.decode();}catch(e){}}
+};
+window.render(0);
+</script>
+</body>
+</html>

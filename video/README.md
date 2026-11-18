@@ -258,3 +258,12 @@ PAGE=honest.html node render-explainer.js video vf voice.wav
 - Sumber: eksport media sosial 576×1024 (1:01) dengan sari kata Inggeris yang terbakar dalam gambar; dinaikkan ke 1080×1920. Ambilan bersih, hanya jeda dipendekkan.
 - Untuk panel/geran, bukan media sosial: Bahasa Inggeris formal, tiada CTA jualan. Grafik kekal di jalur atas supaya sari kata asal kelihatan.
 - Jubin: kitaran flare (steroid) lawan penjagaan harian; soalan pesakit (steroid jangka panjang, halal) dan pilihan yang sedikit; peranan klinikal (saringan & pengambilan, SCORAD, pemantauan keselamatan) dan kajian 60 peserta double-blind, vehicle-controlled, kelulusan etika penuh. Semua fakta seperti yang disebut dalam rakaman.
+
+---
+
+# Hafazan Hadis: Senyuman Nabi (9:16, 0:24), video keluarga
+
+`output/hafazan_hadis_9x16.mp4`, halaman `hadith.html` (berdiri sendiri, dirender dengan `PAGE=hadith.html node render-explainer.js video …`), potongan `edit/hadith.json`.
+- Kanak-kanak membaca hadis (Arab) dan maksudnya (Melayu, dua kali). Bacaan Melayu pertama yang lebih jelas disimpan; yang kedua dibuang.
+- Teks Arab tidak dipaparkan (tidak dapat ditranskrip dengan pasti); maksud Melayu dipaparkan perkataan demi perkataan mengikut bacaan.
+- Fon Arab Amiri (`@fontsource/amiri`) untuk simbol ﷺ.
